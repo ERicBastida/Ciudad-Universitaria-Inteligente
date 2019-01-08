@@ -51,6 +51,8 @@ import java.util.Vector;
  * Created by Lautaro on 29/11/2016.
  */
 public class MapsFragment extends Fragment implements OnMapReadyCallback, SensorEventListener {
+
+    // String utilizado para el tracking de errores
     private String STRING_MENSAJE = "MapsFragment/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
 
     public GoogleMap miMapa = null;

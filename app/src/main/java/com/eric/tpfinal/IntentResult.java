@@ -15,12 +15,17 @@ package com.eric.tpfinal;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.util.Log;
+
 /**
  * <p>Encapsulates the result of a barcode scan invoked through {@link IntentIntegrator}.</p>
  *
  * @author Sean Owen
  */
 public final class IntentResult {
+    // String utilizado para el tracking de errores
+    private String STRING_MENSAJE = "IntentResult/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
 
     private final String contents;
     private final String formatName;
@@ -32,16 +37,19 @@ public final class IntentResult {
         this(null, null, null, null, null);
     }
 
-    IntentResult(String contents,
-                 String formatName,
-                 byte[] rawBytes,
-                 Integer orientation,
-                 String errorCorrectionLevel) {
-        this.contents = contents;
-        this.formatName = formatName;
-        this.rawBytes = rawBytes;
-        this.orientation = orientation;
-        this.errorCorrectionLevel = errorCorrectionLevel;
+    IntentResult(String contents,  String formatName, byte[] rawBytes, Integer orientation, String errorCorrectionLevel) {
+        try {
+            this.contents = contents;
+            this.formatName = formatName;
+            this.rawBytes = rawBytes;
+            this.orientation = orientation;
+            this.errorCorrectionLevel = errorCorrectionLevel;
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"IntentResult",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
+        }
     }
 
     /**
@@ -81,12 +89,19 @@ public final class IntentResult {
 
     @Override
     public String toString() {
-        int rawBytesLength = rawBytes == null ? 0 : rawBytes.length;
-        return "Format: " + formatName + '\n' +
-                "Contents: " + contents + '\n' +
-                "Raw bytes: (" + rawBytesLength + " bytes)\n" +
-                "Orientation: " + orientation + '\n' +
-                "EC level: " + errorCorrectionLevel + '\n';
+        try {
+            int rawBytesLength = rawBytes == null ? 0 : rawBytes.length;
+            return "Format: " + formatName + '\n' +
+                    "Contents: " + contents + '\n' +
+                    "Raw bytes: (" + rawBytesLength + " bytes)\n" +
+                    "Orientation: " + orientation + '\n' +
+                    "EC level: " + errorCorrectionLevel + '\n';
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"toString",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
+        }
     }
 
 }
