@@ -249,7 +249,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
     public int getPisoActual(){return pisoActual;}
 
-    public boolean modoPolilinea(){return !misPolilineas.isEmpty();}
+    public boolean modoPolilinea() throws Exception {
+        try{
+            return !misPolilineas.isEmpty();
+        }
+        catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"modoPolilinea",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw new Exception("Error sl consultar el estado de modo polilinea..",null);
+
+        }
+
+    }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -296,243 +307,299 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
         }catch (Exception e){
 
-            Log.d("ERROR-CUI","MapsFragment/limparMapa : [CAUSA] : " + e.getCause() + " [Mensaje] : " + e.getMessage() + "   " + e.getStackTrace());
-            throw new Exception("Error al limpiar el mapa",null);
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"limpiarMapa",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw new Exception("Error al limpiar el mapa.",null);
         }
 
     }
 
     //Actualizo mi posición si me moví. Quito mi marcador y lo pongo en donde corresponde
     @TargetApi(Build.VERSION_CODES.M)
-    void actualizaPosicion() {
-        LatLng position = new LatLng(this.lat, this.lon);
-        miMapa.moveCamera(CameraUpdateFactory.newLatLng(position));
-        miPosicion.position(position);
-        miPosicionMarcador.remove();
-        miPosicionMarcador = miMapa.addMarker(miPosicion);
-        
-        if(!misPolilineas.isEmpty() && pisoActual+1<=misPolilineas.size()){
-            cambiarPolilinea(pisoActual);
+    void actualizaPosicion() throws Exception {
+        try {
+            LatLng position = new LatLng(this.lat, this.lon);
+            miMapa.moveCamera(CameraUpdateFactory.newLatLng(position));
+            miPosicion.position(position);
+            miPosicionMarcador.remove();
+            miPosicionMarcador = miMapa.addMarker(miPosicion);
+
+            if (!misPolilineas.isEmpty() && pisoActual + 1 <= misPolilineas.size()) {
+                cambiarPolilinea(pisoActual);
+            } else if (pisoActual + 1 > misPolilineas.size() && !misPolilineas.isEmpty()) {
+                Toast.makeText(getActivity().getApplicationContext(), "Su objetivo está en un piso inferior", Toast.LENGTH_LONG).show();
+            }
+            if (!misMarcadores.isEmpty() && pisoActual + 1 <= misMarcadores.size()) {
+                cambiarNodos(pisoActual);
+            } else if (pisoActual + 1 > misMarcadores.size() && !misMarcadores.isEmpty()) {
+                Toast.makeText(getActivity().getApplicationContext(), "Su objetivo está en un piso inferior", Toast.LENGTH_LONG).show();
+            }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"actualizaPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw new Exception("Error al actualizar la posición.",null);
         }
-        else if(pisoActual+1 > misPolilineas.size() && !misPolilineas.isEmpty()){
-            Toast.makeText(getActivity().getApplicationContext(),"Su objetivo está en un piso inferior",Toast.LENGTH_LONG).show();
-        }
-        if(!misMarcadores.isEmpty() && pisoActual+1<=misMarcadores.size()){
-            cambiarNodos(pisoActual);
-        }
-        else if(pisoActual+1 > misMarcadores.size() && !misMarcadores.isEmpty()){
-            Toast.makeText(getActivity().getApplicationContext(),"Su objetivo está en un piso inferior",Toast.LENGTH_LONG).show();
-        }
-        
+
     }
 
     //Obtengo mi latitud y longitud en un objeto LatLng
-    public LatLng getPosicion() {
-        return new LatLng(this.lat, this.lon);
+    public LatLng getPosicion() throws Exception {
+        try {
+            return new LatLng(this.lat, this.lon);
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"getPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw new Exception("Error al tratar de obtener la posición.",null);
+        }
+
     }
 
     //Recibo un vector de puntos y creo un polilinea con ellos
     public void dibujaCamino(Vector<Punto> path) {
-        misPolilineas.clear();
-        misMarcadores.clear();
-        marcadoresPiso.clear();
-        cantPisos = 0;
-        Vector<String> edificios = new Vector<>();
-        
-        //Veo cuantos pisos hay
-        for(int i=0;i<path.size();i++){
-            if(path.elementAt(i).getPiso() > cantPisos){
-                cantPisos = path.elementAt(i).getPiso();
+        try {
+            misPolilineas.clear();
+            misMarcadores.clear();
+            marcadoresPiso.clear();
+            cantPisos = 0;
+            Vector<String> edificios = new Vector<>();
+
+            //Veo cuantos pisos hay
+            for (int i = 0; i < path.size(); i++) {
+                if (path.elementAt(i).getPiso() > cantPisos) {
+                    cantPisos = path.elementAt(i).getPiso();
+                }
             }
-        }
 
-        //Creo las polilineas y overlays que voy a usar
-        cantPisos = cantPisos +1;
-        for(int i=0;i<cantPisos;i++){
-            PolylineOptions p = new PolylineOptions().width(5).color(Color.RED);
-            Vector<GroundOverlayOptions> g = new Vector<>();
-            misPolilineas.add(p);
-            misOverlays.add(g);
-        }
+            //Creo las polilineas y overlays que voy a usar
+            cantPisos = cantPisos + 1;
+            for (int i = 0; i < cantPisos; i++) {
+                PolylineOptions p = new PolylineOptions().width(5).color(Color.RED);
+                Vector<GroundOverlayOptions> g = new Vector<>();
+                misPolilineas.add(p);
+                misOverlays.add(g);
+            }
 
-        //Agrego puntos a las polilineas segun piso e identifico por que edificios y pisos pasa mi polilinea
-        for(int i=0;i<path.size();i++) {
-            misPolilineas.elementAt(path.elementAt(i).getPiso()).add(new LatLng(path.elementAt(i).getLatitud(), path.elementAt(i).getLongitud()));
-            for(int j=0;j<cantidad_edificios;j++){
-                //Veo si ese marcador está dentro de algun edificio con el mapa y la funcion dentroDeLimites
-                //Tratar de optimizar esto
-                if(hashMapBounds.containsKey("ed" + j + "_" + path.elementAt(i).getPiso())){
-                    if (dentroDeLimites(new LatLng(path.elementAt(i).getLatitud(), path.elementAt(i).getLongitud()), hashMapBounds.get("ed" + j + "_" + path.elementAt(i).getPiso()))) {
-                        if (!edificios.contains("ed" + j + "_" + path.elementAt(i).getPiso())) {
-                            edificios.add("ed" + j + "_" + path.elementAt(i).getPiso());
+            //Agrego puntos a las polilineas segun piso e identifico por que edificios y pisos pasa mi polilinea
+            for (int i = 0; i < path.size(); i++) {
+                misPolilineas.elementAt(path.elementAt(i).getPiso()).add(new LatLng(path.elementAt(i).getLatitud(), path.elementAt(i).getLongitud()));
+                for (int j = 0; j < cantidad_edificios; j++) {
+                    //Veo si ese marcador está dentro de algun edificio con el mapa y la funcion dentroDeLimites
+                    //Tratar de optimizar esto
+                    if (hashMapBounds.containsKey("ed" + j + "_" + path.elementAt(i).getPiso())) {
+                        if (dentroDeLimites(new LatLng(path.elementAt(i).getLatitud(), path.elementAt(i).getLongitud()), hashMapBounds.get("ed" + j + "_" + path.elementAt(i).getPiso()))) {
+                            if (!edificios.contains("ed" + j + "_" + path.elementAt(i).getPiso())) {
+                                edificios.add("ed" + j + "_" + path.elementAt(i).getPiso());
+                            }
                         }
                     }
                 }
             }
-        }
 
-        //Agrego los overlays a mi vector
-        for(int i=0;i<edificios.size();i++){
-            if(hashMapID.containsKey(edificios.elementAt(i))) {
-                misOverlays.elementAt(Integer.parseInt(edificios.elementAt(i).substring(edificios.elementAt(i).indexOf("_") + 1)))
-                        .add(new GroundOverlayOptions()
-                                .positionFromBounds(hashMapBounds.get(edificios.elementAt(i)))
-                                .image(BitmapDescriptorFactory.fromResource(hashMapID.get(edificios.elementAt(i)))));
+            //Agrego los overlays a mi vector
+            for (int i = 0; i < edificios.size(); i++) {
+                if (hashMapID.containsKey(edificios.elementAt(i))) {
+                    misOverlays.elementAt(Integer.parseInt(edificios.elementAt(i).substring(edificios.elementAt(i).indexOf("_") + 1)))
+                            .add(new GroundOverlayOptions()
+                                    .positionFromBounds(hashMapBounds.get(edificios.elementAt(i)))
+                                    .image(BitmapDescriptorFactory.fromResource(hashMapID.get(edificios.elementAt(i)))));
+                }
             }
-        }
 
-        //Busco cuales marcadores por piso voy a tener
-        marcadoresPiso.add(new MarkerOptions()
-                .position(new LatLng(path.elementAt(0).getLatitud(),path.elementAt(0).getLongitud()))
-                .title(path.elementAt(0).getNombre())
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            //Busco cuales marcadores por piso voy a tener
+            marcadoresPiso.add(new MarkerOptions()
+                    .position(new LatLng(path.elementAt(0).getLatitud(), path.elementAt(0).getLongitud()))
+                    .title(path.elementAt(0).getNombre())
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
-        for(int i=1;i<path.size()-1;i++){
-            if(path.elementAt(i).getPiso() != path.elementAt(i+1).getPiso()){
-                marcadoresPiso.add(new MarkerOptions()
-                        .position(new LatLng(path.elementAt(i).getLatitud(),path.elementAt(i).getLongitud()))
-                        .title(path.elementAt(i).getNombre())
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-                marcadoresPiso.add(new MarkerOptions()
-                        .position(new LatLng(path.elementAt(i+1).getLatitud(),path.elementAt(i+1).getLongitud()))
-                        .title(path.elementAt(i+1).getNombre())
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            for (int i = 1; i < path.size() - 1; i++) {
+                if (path.elementAt(i).getPiso() != path.elementAt(i + 1).getPiso()) {
+                    marcadoresPiso.add(new MarkerOptions()
+                            .position(new LatLng(path.elementAt(i).getLatitud(), path.elementAt(i).getLongitud()))
+                            .title(path.elementAt(i).getNombre())
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                    marcadoresPiso.add(new MarkerOptions()
+                            .position(new LatLng(path.elementAt(i + 1).getLatitud(), path.elementAt(i + 1).getLongitud()))
+                            .title(path.elementAt(i + 1).getNombre())
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                }
             }
+
+            marcadoresPiso.add(new MarkerOptions()
+                    .position(new LatLng(path.elementAt(path.size() - 1).getLatitud(), path.elementAt(path.size() - 1).getLongitud()))
+                    .title(path.elementAt(path.size() - 1).getNombre())
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+
+            //Cargo las imagenes en el map
+            cargarMapaImagnes(path);
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"dibujaCamino",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
-
-        marcadoresPiso.add(new MarkerOptions()
-                .position(new LatLng(path.elementAt(path.size()-1).getLatitud(),path.elementAt(path.size()-1).getLongitud()))
-                .title(path.elementAt(path.size()-1).getNombre())
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-
-        //Cargo las imagenes en el map
-        cargarMapaImagnes(path);
     }
 
     //Recibo un conjunto de puntos y creo marcadores para todos ellos
     public void mostrarNodos(Vector<Punto> nodos) {
-        misMarcadores.clear();
-        misPolilineas.clear();
-        marcadoresPiso.clear();
-        Vector<String> edificios = new Vector<>();
-        cantPisos = 0;
-        for (int i = 0; i < nodos.size(); i++) {
-            String texto;
-            if(nodos.elementAt(i).getPiso() ==0){
-                texto = "Planta Baja";
-            }
-            else{
-                texto = "Piso " + nodos.elementAt(i).getPiso();
-            }
-            //Cuento la cantidad de pisos en donde encontre lo que busco
-            if(nodos.elementAt(i).getPiso() > cantPisos){
-                cantPisos = nodos.elementAt(i).getPiso();
-            }
+        try {
 
-            //Agrego los marcadores
-            misMarcadores.add(new MarkerOptions().position(new LatLng(nodos.elementAt(i).getLatitud(), nodos.elementAt(i).getLongitud())).title(nodos.elementAt(i).getNombre() + " - " + texto).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            for(int j=0;j<cantidad_edificios;j++){
-                //Veo si ese marcador está dentro de algun edificio
-                if(hashMapBounds.containsKey("ed" + j + "_" + nodos.elementAt(i).getPiso())) {
-                    if (dentroDeLimites(new LatLng(nodos.elementAt(i).getLatitud(), nodos.elementAt(i).getLongitud()), hashMapBounds.get("ed" + j + "_" + nodos.elementAt(i).getPiso()))) {
-                        if (!edificios.contains("ed" + j + "_" + nodos.elementAt(i).getPiso())) {
-                            edificios.add("ed" + j + "_" + nodos.elementAt(i).getPiso());
+
+            misMarcadores.clear();
+            misPolilineas.clear();
+            marcadoresPiso.clear();
+            Vector<String> edificios = new Vector<>();
+            cantPisos = 0;
+            for (int i = 0; i < nodos.size(); i++) {
+                String texto;
+                if (nodos.elementAt(i).getPiso() == 0) {
+                    texto = "Planta Baja";
+                } else {
+                    texto = "Piso " + nodos.elementAt(i).getPiso();
+                }
+                //Cuento la cantidad de pisos en donde encontre lo que busco
+                if (nodos.elementAt(i).getPiso() > cantPisos) {
+                    cantPisos = nodos.elementAt(i).getPiso();
+                }
+
+                //Agrego los marcadores
+                misMarcadores.add(new MarkerOptions().position(new LatLng(nodos.elementAt(i).getLatitud(), nodos.elementAt(i).getLongitud())).title(nodos.elementAt(i).getNombre() + " - " + texto).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                for (int j = 0; j < cantidad_edificios; j++) {
+                    //Veo si ese marcador está dentro de algun edificio
+                    if (hashMapBounds.containsKey("ed" + j + "_" + nodos.elementAt(i).getPiso())) {
+                        if (dentroDeLimites(new LatLng(nodos.elementAt(i).getLatitud(), nodos.elementAt(i).getLongitud()), hashMapBounds.get("ed" + j + "_" + nodos.elementAt(i).getPiso()))) {
+                            if (!edificios.contains("ed" + j + "_" + nodos.elementAt(i).getPiso())) {
+                                edificios.add("ed" + j + "_" + nodos.elementAt(i).getPiso());
+                            }
                         }
                     }
                 }
             }
-        }
 
-        //Creo las polilineas y overlays que voy a usar
-        cantPisos = cantPisos +1;
-        for(int i=0;i<cantPisos;i++){
-            Vector<GroundOverlayOptions> g = new Vector<>();
-            misOverlays.add(g);
-        }
-
-        //Agrego los overlays a mi vector
-        for(int i=0;i<edificios.size();i++){
-            if(hashMapID.containsKey(edificios.elementAt(i))) {
-                misOverlays.elementAt(Integer.parseInt(edificios.elementAt(i).substring(edificios.elementAt(i).indexOf("_") + 1)))
-                        .add(new GroundOverlayOptions()
-                                .positionFromBounds(hashMapBounds.get(edificios.elementAt(i)))
-                                .image(BitmapDescriptorFactory.fromResource(hashMapID.get(edificios.elementAt(i)))));
+            //Creo las polilineas y overlays que voy a usar
+            cantPisos = cantPisos + 1;
+            for (int i = 0; i < cantPisos; i++) {
+                Vector<GroundOverlayOptions> g = new Vector<>();
+                misOverlays.add(g);
             }
-        }
 
-        //Cargo imagenes en el map
-        cargarMapaImagnes(nodos);
+            //Agrego los overlays a mi vector
+            for (int i = 0; i < edificios.size(); i++) {
+                if (hashMapID.containsKey(edificios.elementAt(i))) {
+                    misOverlays.elementAt(Integer.parseInt(edificios.elementAt(i).substring(edificios.elementAt(i).indexOf("_") + 1)))
+                            .add(new GroundOverlayOptions()
+                                    .positionFromBounds(hashMapBounds.get(edificios.elementAt(i)))
+                                    .image(BitmapDescriptorFactory.fromResource(hashMapID.get(edificios.elementAt(i)))));
+                }
+            }
+
+            //Cargo imagenes en el map
+            cargarMapaImagnes(nodos);
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"mostrarNodos",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+        }
     }
 
     public void cambiarPolilinea(int piso){
-        miMapa.clear();
-        miMapa.addMarker(miPosicion);
-        miMapa.addPolyline(misPolilineas.elementAt(piso));
-        miMapa.addMarker(marcadoresPiso.elementAt(2*piso));
-        miMapa.addMarker(marcadoresPiso.elementAt(2*piso+1));
+        try {
 
-        //Agrego los overlays
-        if(misOverlays.size() > piso) {
-            for (int i = 0; i < misOverlays.elementAt(piso).size(); i++) {
-                miMapa.addGroundOverlay(misOverlays.elementAt(piso).elementAt(i));
+
+            miMapa.clear();
+            miMapa.addMarker(miPosicion);
+            miMapa.addPolyline(misPolilineas.elementAt(piso));
+            miMapa.addMarker(marcadoresPiso.elementAt(2 * piso));
+            miMapa.addMarker(marcadoresPiso.elementAt(2 * piso + 1));
+
+            //Agrego los overlays
+            if (misOverlays.size() > piso) {
+                for (int i = 0; i < misOverlays.elementAt(piso).size(); i++) {
+                    miMapa.addGroundOverlay(misOverlays.elementAt(piso).elementAt(i));
+                }
             }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cambiarPolilinea",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
+
     }
 
     //Funcion para actualizar los nodos según el piso que se quiera ver
     public void cambiarNodos(int piso){
-        miMapa.clear();
-        miMapa.addMarker(miPosicion);
-        for(int i=0;i<misMarcadores.size();i++){
-            if(piso == 0){
-                if(misMarcadores.elementAt(i).getTitle().contains("Planta Baja")){
-                    miMapa.addMarker(misMarcadores.elementAt(i));
+        try {
+            miMapa.clear();
+            miMapa.addMarker(miPosicion);
+            for (int i = 0; i < misMarcadores.size(); i++) {
+                if (piso == 0) {
+                    if (misMarcadores.elementAt(i).getTitle().contains("Planta Baja")) {
+                        miMapa.addMarker(misMarcadores.elementAt(i));
+                    }
+                } else {
+                    if (misMarcadores.elementAt(i).getTitle().contains("Piso " + piso)) {
+                        miMapa.addMarker(misMarcadores.elementAt(i));
+                    }
                 }
             }
-            else{
-                if(misMarcadores.elementAt(i).getTitle().contains("Piso "+ piso)){
-                    miMapa.addMarker(misMarcadores.elementAt(i));
-                }
-            }
-        }
 
-        //Agrego los overlays
-        if(misOverlays.size() > piso) {
-            for (int i = 0; i < misOverlays.elementAt(piso).size(); i++) {
-                miMapa.addGroundOverlay(misOverlays.elementAt(piso).elementAt(i));
+            //Agrego los overlays
+            if (misOverlays.size() > piso) {
+                for (int i = 0; i < misOverlays.elementAt(piso).size(); i++) {
+                    miMapa.addGroundOverlay(misOverlays.elementAt(piso).elementAt(i));
+                }
             }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cambiarNodos",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
     }
 
     //Funcion para saber si un punto está dentro de ciertos limites
     public boolean dentroDeLimites(LatLng posicion, LatLngBounds bounds){
-        LatLng limiteInfIzquierdo = bounds.southwest;
-        LatLng limiteSupDerecho = bounds.northeast;
-        boolean esta = true;
-        if (posicion.latitude > limiteSupDerecho.latitude || posicion.latitude < limiteInfIzquierdo.latitude || posicion.longitude > limiteSupDerecho.longitude || posicion.longitude < limiteInfIzquierdo.longitude){
-            esta = false;
+        try {
+            LatLng limiteInfIzquierdo = bounds.southwest;
+            LatLng limiteSupDerecho = bounds.northeast;
+            boolean esta = true;
+            if (posicion.latitude > limiteSupDerecho.latitude || posicion.latitude < limiteInfIzquierdo.latitude || posicion.longitude > limiteSupDerecho.longitude || posicion.longitude < limiteInfIzquierdo.longitude) {
+                esta = false;
+            }
+            return esta;
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"dentroDeLimites",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
-        return esta;
     }
 
     //hashMap de Posición de nodo - Imagen del nodod
     public void cargarMapaImagnes(Vector<Punto> puntos){
-        hashMapImagenes.clear();
-        for(int i=0;i<puntos.size();i++){
-            if(puntos.elementAt(i).getImagen() != null) {
-                hashMapImagenes.put(new LatLng(puntos.elementAt(i).getLatitud(), puntos.elementAt(i).getLongitud()), puntos.elementAt(i).getImagen());
+        try {
+            hashMapImagenes.clear();
+            for (int i = 0; i < puntos.size(); i++) {
+                if (puntos.elementAt(i).getImagen() != null) {
+                    hashMapImagenes.put(new LatLng(puntos.elementAt(i).getLatitud(), puntos.elementAt(i).getLongitud()), puntos.elementAt(i).getImagen());
+                }
             }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cargarMapaImagnes",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
     }
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
-        FragmentManager fm = getActivity().getFragmentManager();
-        Fragment fragment = (fm.findFragmentById(R.id.map));
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.remove(fragment);
-        ft.commit();
+        try {
+            super.onDestroyView();
+            FragmentManager fm = getActivity().getFragmentManager();
+            Fragment fragment = (fm.findFragmentById(R.id.map));
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.remove(fragment);
+            ft.commit();
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onDestroyView",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+        }
     }
 }
 
