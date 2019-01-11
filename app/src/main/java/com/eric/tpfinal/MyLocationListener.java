@@ -10,29 +10,41 @@ import android.util.Log;
  */
 public class MyLocationListener implements LocationListener {
 
+    // String utilizado para el tracking de errores
+    private String STRING_MENSAJE = "MyLocationListener/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+
     //mainActivity es el mapFragment
     private MapsFragment mainActivity;
 
     public void setMainActivity(MapsFragment mainActivity) {
-        this.mainActivity = mainActivity;
+        try {
+            this.mainActivity = mainActivity;
+
+        }catch (Exception e){
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setMainActivity",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+        }
     }
 
     @Override
     public void onLocationChanged(Location loc) {
-        mainActivity.setLat(loc.getLatitude());
-        mainActivity.setLon(loc.getLongitude());
+        try {
+            mainActivity.setLat(loc.getLatitude());
+            mainActivity.setLon(loc.getLongitude());
 
-        /*Utilizo esto para actualizar mi marcador en el mapa
-        Si el mapa no está creado, llamo a onMapReady
-        Sino, a actualizaPosicion que solamente mueve el marcador
-        */
-        if(mainActivity.miMapa == null) {
-            mainActivity.onMapReady(mainActivity.miMapa);
-        }
-        else{
-            if(Math.abs(loc.getLatitude() - mainActivity.getLat() + loc.getLongitude() - mainActivity.getLon()) < 0.00025) {   //Revisar esto
-                mainActivity.actualizaPosicion();
+            /*Utilizo esto para actualizar mi marcador en el mapa
+            Si el mapa no está creado, llamo a onMapReady
+            Sino, a actualizaPosicion que solamente mueve el marcador
+            */
+            if (mainActivity.miMapa == null) {
+                mainActivity.onMapReady(mainActivity.miMapa);
+            } else {
+                if (Math.abs(loc.getLatitude() - mainActivity.getLat() + loc.getLongitude() - mainActivity.getLon()) < 0.00025) {   //Revisar esto
+                    mainActivity.actualizaPosicion();
+                }
             }
+        }catch (Exception e){
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onLocationChanged",e.getCause(),e.getMessage(),e.getClass().toString()));
         }
     }
 

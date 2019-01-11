@@ -1,11 +1,17 @@
 package com.eric.tpfinal;
 
+import android.util.Log;
+
 import java.util.Vector;
 
 /**
  * Created by Lautaro on 28/11/2016.
  */
 public class Punto implements Comparable<Punto> {
+
+    // String utilizado para el tracking de errores
+    private String STRING_MENSAJE = "Punto/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+
     private double Latitud;
     private double Longitud;
     private String Edificio;
@@ -20,26 +26,35 @@ public class Punto implements Comparable<Punto> {
 
 
     public Punto(Integer id, double Lat, double Lon, String oEdificio, int piso, String oNombre, Integer oImg){
-        this.Latitud = Lat;
-        this.Longitud = Lon;
-        this.Edificio = oEdificio;
-        this.Piso = piso;
-        this.Nombre = oNombre;
-        Vecinos = new Vector<>();
-        this.costo = 0;
-        Padre = null;
-        if(oImg == -1){
-            oImg = null;
-        }
-        else{
+        try {
+            this.Latitud = Lat;
+            this.Longitud = Lon;
+            this.Edificio = oEdificio;
+            this.Piso = piso;
+            this.Nombre = oNombre;
+            Vecinos = new Vector<>();
+            this.costo = 0;
+            Padre = null;
+            if (oImg == -1) {
+                oImg = null;
+            } else {
+                this.Imagen = oImg;
+            }
             this.Imagen = oImg;
+            this.id = id;
+        }catch (Exception e){
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"Punto",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
-        this.Imagen = oImg;
-        this.id = id;
     }
 
     public void addVecino(Punto P){
-        Vecinos.add(P);
+        try {
+            Vecinos.add(P);
+        }catch (Exception e){
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"addVecino",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+        }
     }
 
     //Setters y getters
@@ -59,18 +74,21 @@ public class Punto implements Comparable<Punto> {
     //Funcion de comparacion para el heap de armaCamino
     @Override
     public int compareTo(Punto punto) {
-        int c = 0;
-        if(this.equals(punto)){
-        }
-        else{
-            if (this.costo > punto.costo){
-                c = 1;
+        try {
+            int c = 0;
+            if (this.equals(punto)) {
+            } else {
+                if (this.costo > punto.costo) {
+                    c = 1;
+                } else {
+                    c = -1;
+                }
             }
-            else{
-                c = -1;
-            }
+            return c;
+        }catch (Exception e){
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"compareTo",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
         }
-        return c;
     }
 
 }
