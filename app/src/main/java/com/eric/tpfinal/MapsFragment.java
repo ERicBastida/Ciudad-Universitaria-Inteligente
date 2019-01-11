@@ -21,6 +21,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
     // String utilizado para el tracking de errores
     private String STRING_MENSAJE = "MapsFragment/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    private final int REQUEST_PERMISSION_PHONE_STATE=1;
 
     public GoogleMap miMapa = null;
     private SensorManager miSensorManager;
@@ -102,30 +104,19 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             MyLocationListener mlocListener = new MyLocationListener();
             mlocListener.setMainActivity(this);
 
-
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                showPhoneStatePermission();
+
+            }else {
                 mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (android.location.LocationListener) mlocListener);
                 //SensorManager
                 SensorManager mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
                 mSensorManager.registerListener((SensorEventListener) this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), 1000000);
                 this.miSensorManager = mSensorManager;
 
-            }else{
-                //Se instancia un objeto AlerteDialog
-                AlertDialog.Builder preAlerta = new AlertDialog.Builder(getActivity());
-                // Se definen sus respectivos datos para mostrar
-                preAlerta.setMessage("Debe dar permisos para utilizar el GPS.").setTitle("Error al buscar proveedor de red.");
-
-                preAlerta.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        getActivity().closeContextMenu();
-                    }
-                });
-                AlertDialog alerta = preAlerta.create();
-                alerta.show();
-
-
             }
+
 
             return rootView;
 
@@ -138,11 +129,58 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
         }
 
-
-
-
     }
 
+    private void showPhoneStatePermission() {
+
+        int permissionCheck_1 = ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+        int permissionCheck_2 = ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
+
+
+
+        if (permissionCheck_1 != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                showExplanation("Permiso necesario", "Este permiso permite la interacción con los mapas y su hubicación", Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+            } else {
+                requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult( int requestCode,  String permissions[],    int[] grantResults) {
+
+        switch (requestCode) {
+            case REQUEST_PERMISSION_PHONE_STATE:
+                if (grantResults.length > 0  && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getActivity(), "Permission Granted!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Permission Denied!", Toast.LENGTH_SHORT).show();
+                }
+        }
+    }
+
+    private void showExplanation(String title,
+                                 String message,
+                                 final String permission,
+                                 final int permissionRequestCode) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        requestPermission(permission, permissionRequestCode);
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void requestPermission(String permissionName, int permissionRequestCode) {
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{permissionName}, permissionRequestCode);
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         try {

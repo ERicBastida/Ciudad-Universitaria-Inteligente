@@ -108,6 +108,8 @@ package com.eric.tpfinal;
  */
 public class IntentIntegrator {
 
+    private String STRING_MENSAJE = "IntentIntegrator/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+
     public static final int REQUEST_CODE = 0x0000c0de; // Only use bottom 16 bits
     private static final String TAG = IntentIntegrator.class.getSimpleName();
 
@@ -152,9 +154,16 @@ public class IntentIntegrator {
      * @param activity {@link Activity} invoking the integration
      */
     public IntentIntegrator(Activity activity) {
-        this.activity = activity;
-        this.fragment = null;
-        initializeConfiguration();
+        try {
+            this.activity = activity;
+            this.fragment = null;
+            initializeConfiguration();
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"IntentIntegrator",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
+        }
     }
 
     /**
@@ -229,10 +238,17 @@ public class IntentIntegrator {
     }
 
     public final void setTargetApplications(List<String> targetApplications) {
-        if (targetApplications.isEmpty()) {
-            throw new IllegalArgumentException("No target applications");
+        try {
+            if (targetApplications.isEmpty()) {
+                throw new IllegalArgumentException("No target applications");
+            }
+            this.targetApplications = targetApplications;
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setTargetApplications",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
-        this.targetApplications = targetApplications;
     }
 
     public void setSingleTargetApplication(String targetApplication) {
@@ -292,37 +308,44 @@ public class IntentIntegrator {
      *   if a prompt was needed, or null otherwise
      */
     public final AlertDialog initiateScan(Collection<String> desiredBarcodeFormats, int cameraId) {
-        Intent intentScan = new Intent(BS_PACKAGE + ".SCAN");
-        intentScan.addCategory(Intent.CATEGORY_DEFAULT);
+        try {
+            Intent intentScan = new Intent(BS_PACKAGE + ".SCAN");
+            intentScan.addCategory(Intent.CATEGORY_DEFAULT);
 
-        // check which types of codes to scan for
-        if (desiredBarcodeFormats != null) {
-            // set the desired barcode types
-            StringBuilder joinedByComma = new StringBuilder();
-            for (String format : desiredBarcodeFormats) {
-                if (joinedByComma.length() > 0) {
-                    joinedByComma.append(',');
+            // check which types of codes to scan for
+            if (desiredBarcodeFormats != null) {
+                // set the desired barcode types
+                StringBuilder joinedByComma = new StringBuilder();
+                for (String format : desiredBarcodeFormats) {
+                    if (joinedByComma.length() > 0) {
+                        joinedByComma.append(',');
+                    }
+                    joinedByComma.append(format);
                 }
-                joinedByComma.append(format);
+                intentScan.putExtra("SCAN_FORMATS", joinedByComma.toString());
             }
-            intentScan.putExtra("SCAN_FORMATS", joinedByComma.toString());
-        }
 
-        // check requested camera ID
-        if (cameraId >= 0) {
-            intentScan.putExtra("SCAN_CAMERA_ID", cameraId);
-        }
+            // check requested camera ID
+            if (cameraId >= 0) {
+                intentScan.putExtra("SCAN_CAMERA_ID", cameraId);
+            }
 
-        String targetAppPackage = findTargetAppPackage(intentScan);
-        if (targetAppPackage == null) {
-            return showDownloadDialog();
+            String targetAppPackage = findTargetAppPackage(intentScan);
+            if (targetAppPackage == null) {
+                return showDownloadDialog();
+            }
+            intentScan.setPackage(targetAppPackage);
+            intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            attachMoreExtras(intentScan);
+            startActivityForResult(intentScan, REQUEST_CODE);
+            return null;
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"initiateScan",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
-        intentScan.setPackage(targetAppPackage);
-        intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        attachMoreExtras(intentScan);
-        startActivityForResult(intentScan, REQUEST_CODE);
-        return null;
     }
 
     /**
@@ -335,67 +358,95 @@ public class IntentIntegrator {
      * @see Fragment#startActivityForResult(Intent, int)
      */
     protected void startActivityForResult(Intent intent, int code) {
-        if (fragment == null) {
-            activity.startActivityForResult(intent, code);
-        } else {
-            fragment.startActivityForResult(intent, code);
+        try {
+            if (fragment == null) {
+                activity.startActivityForResult(intent, code);
+            } else {
+                fragment.startActivityForResult(intent, code);
+            }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"startActivityForResult",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
     }
 
     private String findTargetAppPackage(Intent intent) {
-        PackageManager pm = activity.getPackageManager();
-        List<ResolveInfo> availableApps = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-        if (availableApps != null) {
-            for (String targetApp : targetApplications) {
-                if (contains(availableApps, targetApp)) {
-                    return targetApp;
+        try {
+            PackageManager pm = activity.getPackageManager();
+            List<ResolveInfo> availableApps = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+            if (availableApps != null) {
+                for (String targetApp : targetApplications) {
+                    if (contains(availableApps, targetApp)) {
+                        return targetApp;
+                    }
                 }
             }
+            return null;
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"findTargetAppPackage",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
-        return null;
     }
 
     private static boolean contains(Iterable<ResolveInfo> availableApps, String targetApp) {
-        for (ResolveInfo availableApp : availableApps) {
-            String packageName = availableApp.activityInfo.packageName;
-            if (targetApp.equals(packageName)) {
-                return true;
+        try {
+            for (ResolveInfo availableApp : availableApps) {
+                String packageName = availableApp.activityInfo.packageName;
+                if (targetApp.equals(packageName)) {
+                    return true;
+                }
             }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format("IntentIntegrator/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s","contains",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
         return false;
     }
 
     private AlertDialog showDownloadDialog() {
         AlertDialog.Builder downloadDialog = new AlertDialog.Builder(activity);
-        downloadDialog.setTitle(title);
-        downloadDialog.setMessage(message);
-        downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                String packageName;
-                if (targetApplications.contains(BS_PACKAGE)) {
-                    // Prefer to suggest download of BS if it's anywhere in the list
-                    packageName = BS_PACKAGE;
-                } else {
-                    // Otherwise, first option:
-                    packageName = targetApplications.get(0);
-                }
-                Uri uri = Uri.parse("market://details?id=" + packageName);
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                try {
-                    if (fragment == null) {
-                        activity.startActivity(intent);
+        try {
+            downloadDialog.setTitle(title);
+            downloadDialog.setMessage(message);
+            downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    String packageName;
+                    if (targetApplications.contains(BS_PACKAGE)) {
+                        // Prefer to suggest download of BS if it's anywhere in the list
+                        packageName = BS_PACKAGE;
                     } else {
-                        fragment.startActivity(intent);
+                        // Otherwise, first option:
+                        packageName = targetApplications.get(0);
                     }
-                } catch (ActivityNotFoundException anfe) {
-                    // Hmm, market is not installed
-                    Log.w(TAG, "Google Play is not installed; cannot install " + packageName);
+                    Uri uri = Uri.parse("market://details?id=" + packageName);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    try {
+                        if (fragment == null) {
+                            activity.startActivity(intent);
+                        } else {
+                            fragment.startActivity(intent);
+                        }
+                    } catch (ActivityNotFoundException anfe) {
+                        // Hmm, market is not installed
+                        Log.w(TAG, "Google Play is not installed; cannot install " + packageName);
+                    }
                 }
-            }
-        });
-        downloadDialog.setNegativeButton(buttonNo, null);
-        downloadDialog.setCancelable(true);
+            });
+            downloadDialog.setNegativeButton(buttonNo, null);
+            downloadDialog.setCancelable(true);
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"showDownloadDialog",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
+        }
         return downloadDialog.show();
     }
 
@@ -412,23 +463,31 @@ public class IntentIntegrator {
      *  the fields will be null.
      */
     public static IntentResult parseActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                String contents = intent.getStringExtra("SCAN_RESULT");
-                String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");
-                byte[] rawBytes = intent.getByteArrayExtra("SCAN_RESULT_BYTES");
-                int intentOrientation = intent.getIntExtra("SCAN_RESULT_ORIENTATION", Integer.MIN_VALUE);
-                Integer orientation = intentOrientation == Integer.MIN_VALUE ? null : intentOrientation;
-                String errorCorrectionLevel = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
-                return new IntentResult(contents,
-                        formatName,
-                        rawBytes,
-                        orientation,
-                        errorCorrectionLevel);
+        try {
+            if (requestCode == REQUEST_CODE) {
+                if (resultCode == Activity.RESULT_OK) {
+                    String contents = intent.getStringExtra("SCAN_RESULT");
+                    String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                    byte[] rawBytes = intent.getByteArrayExtra("SCAN_RESULT_BYTES");
+                    int intentOrientation = intent.getIntExtra("SCAN_RESULT_ORIENTATION", Integer.MIN_VALUE);
+                    Integer orientation = intentOrientation == Integer.MIN_VALUE ? null : intentOrientation;
+                    String errorCorrectionLevel = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
+                    return new IntentResult(contents,
+                            formatName,
+                            rawBytes,
+                            orientation,
+                            errorCorrectionLevel);
+                }
+                return new IntentResult();
             }
-            return new IntentResult();
+
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format("IntentIntegrator/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s","findTargetAppPackage",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
-        return null;
+        return new IntentResult();
     }
 
 
@@ -455,22 +514,29 @@ public class IntentIntegrator {
      */
     public final AlertDialog shareText(CharSequence text, CharSequence type) {
         Intent intent = new Intent();
-        intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.setAction(BS_PACKAGE + ".ENCODE");
-        intent.putExtra("ENCODE_TYPE", type);
-        intent.putExtra("ENCODE_DATA", text);
-        String targetAppPackage = findTargetAppPackage(intent);
-        if (targetAppPackage == null) {
-            return showDownloadDialog();
-        }
-        intent.setPackage(targetAppPackage);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        attachMoreExtras(intent);
-        if (fragment == null) {
-            activity.startActivity(intent);
-        } else {
-            fragment.startActivity(intent);
+        try {
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            intent.setAction(BS_PACKAGE + ".ENCODE");
+            intent.putExtra("ENCODE_TYPE", type);
+            intent.putExtra("ENCODE_DATA", text);
+            String targetAppPackage = findTargetAppPackage(intent);
+            if (targetAppPackage == null) {
+                return showDownloadDialog();
+            }
+            intent.setPackage(targetAppPackage);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            attachMoreExtras(intent);
+            if (fragment == null) {
+                activity.startActivity(intent);
+            } else {
+                fragment.startActivity(intent);
+            }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"shareText",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
         return null;
     }
@@ -480,25 +546,32 @@ public class IntentIntegrator {
     }
 
     private void attachMoreExtras(Intent intent) {
-        for (Map.Entry<String,Object> entry : moreExtras.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            // Kind of hacky
-            if (value instanceof Integer) {
-                intent.putExtra(key, (Integer) value);
-            } else if (value instanceof Long) {
-                intent.putExtra(key, (Long) value);
-            } else if (value instanceof Boolean) {
-                intent.putExtra(key, (Boolean) value);
-            } else if (value instanceof Double) {
-                intent.putExtra(key, (Double) value);
-            } else if (value instanceof Float) {
-                intent.putExtra(key, (Float) value);
-            } else if (value instanceof Bundle) {
-                intent.putExtra(key, (Bundle) value);
-            } else {
-                intent.putExtra(key, value.toString());
+        try {
+            for (Map.Entry<String, Object> entry : moreExtras.entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                // Kind of hacky
+                if (value instanceof Integer) {
+                    intent.putExtra(key, (Integer) value);
+                } else if (value instanceof Long) {
+                    intent.putExtra(key, (Long) value);
+                } else if (value instanceof Boolean) {
+                    intent.putExtra(key, (Boolean) value);
+                } else if (value instanceof Double) {
+                    intent.putExtra(key, (Double) value);
+                } else if (value instanceof Float) {
+                    intent.putExtra(key, (Float) value);
+                } else if (value instanceof Bundle) {
+                    intent.putExtra(key, (Bundle) value);
+                } else {
+                    intent.putExtra(key, value.toString());
+                }
             }
+        }catch (Exception e){
+
+            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"attachMoreExtras",e.getCause(),e.getMessage(),e.getClass().toString()));
+            throw e;
+
         }
     }
 

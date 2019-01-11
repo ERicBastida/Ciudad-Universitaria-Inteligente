@@ -1,16 +1,22 @@
 package com.eric.tpfinal;
 
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -50,6 +56,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toolbar.setTitle("Ciudad Inteligente");
             setSupportActionBar(toolbar);
 
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                    PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                            PackageManager.PERMISSION_GRANTED) {
+                // Permission already Granted
+                //Do your work here
+                //Perform operations here only which requires permission
+                Toast.makeText(this,"Tienes permisos",Toast.LENGTH_SHORT).show();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+            }
+
             //Instancio la base de datos
             CUdb = new BaseDatos(getApplicationContext(), "DBCUI", null, 1);
 
@@ -58,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mapsFragment = new MapsFragment();
             ultimasBusquedas = new ultimasBusquedas();
             ultimasBusquedas.setMainActivity(this);
+
 
             //Agrego Nodos a mi vector de nodos en oArmaCamino
             cargaNodos();
@@ -72,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
 
+
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                     this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -84,12 +104,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Cambio el fragment por defecto por mi mapFragment
             fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
 
+
+
+
         }catch (Exception e) {
 
             alert_info("Error al crear la actividad. \n"+ e.getMessage(),"Error");
         }
 
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //Permission Granted
+                //Do your work here
+                //Perform operations here only which requires permission
+                alert_info("Si tengo permisos","jaja");
+
+            }else {
+                alert_info("No tengo permisos","jaja");
+            }
+
+        }else{
+            alert_info("No tengo permisos","jaja");
+        }
+
+    }
+
+
     // Función encargada de gestionar el DialogAlert para informar al usuario un respectivo mensaje.
     private void alert_info(String mensaje, String titulo){
 
