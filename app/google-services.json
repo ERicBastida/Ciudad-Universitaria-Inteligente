@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "241707879764",
+    "firebase_url": "https://tpfinal-3b46f.firebaseio.com",
+    "project_id": "tpfinal-3b46f",
+    "storage_bucket": "tpfinal-3b46f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241707879764:android:73188ee7b71995d5",
+        "android_client_info": {
+          "package_name": "eric.tpfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241707879764-e8sctofgs040sdgfspcsej3jglbl6k1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVm_O0ekKuDkqXYQVE9u_dzrVc2SOyWSo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
