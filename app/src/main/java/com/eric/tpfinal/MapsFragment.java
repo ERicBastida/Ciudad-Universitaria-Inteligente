@@ -51,8 +51,6 @@ import java.util.Vector;
  * Created by Lautaro on 29/11/2016.
  */
 public class MapsFragment extends Fragment implements OnMapReadyCallback, SensorEventListener {
-
-    // String utilizado para el tracking de errores
     private String STRING_MENSAJE = "MapsFragment/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
 
     public GoogleMap miMapa = null;
@@ -251,14 +249,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
     public int getPisoActual(){return pisoActual;}
 
-    public boolean modoPolilinea() throws Exception {
+    public boolean modoPolilinea(){
         try{
             return !misPolilineas.isEmpty();
         }
         catch (Exception e){
 
             Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"modoPolilinea",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error sl consultar el estado de modo polilinea..",null);
+            throw e;
 
         }
 
@@ -310,14 +308,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
         }catch (Exception e){
 
             Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"limpiarMapa",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error al limpiar el mapa.",null);
+            throw e;
         }
 
     }
 
     //Actualizo mi posición si me moví. Quito mi marcador y lo pongo en donde corresponde
     @TargetApi(Build.VERSION_CODES.M)
-    void actualizaPosicion() throws Exception {
+    void actualizaPosicion() {
         try {
             LatLng position = new LatLng(this.lat, this.lon);
             miMapa.moveCamera(CameraUpdateFactory.newLatLng(position));
@@ -338,21 +336,21 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
         }catch (Exception e){
 
             Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"actualizaPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error al actualizar la posición.",null);
+            throw e;
         }
 
     }
 
     //Obtengo mi latitud y longitud en un objeto LatLng
-    public LatLng getPosicion() throws Exception {
+    public LatLng getPosicion() {
         try {
-            return new LatLng(this.lat, this.lon);
+
         }catch (Exception e){
 
             Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"getPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error al tratar de obtener la posición.",null);
+            throw e;
         }
-
+        return new LatLng(this.lat, this.lon);
     }
 
     //Recibo un vector de puntos y creo un polilinea con ellos
