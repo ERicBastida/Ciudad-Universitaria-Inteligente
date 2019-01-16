@@ -188,7 +188,9 @@ public class ArmaCamino{
 
         }catch (Exception e){
 
+
             Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"verAulasPorEdificio",e.getCause(),e.getMessage(),e.getClass().toString()));
+
             throw e;
 
         }

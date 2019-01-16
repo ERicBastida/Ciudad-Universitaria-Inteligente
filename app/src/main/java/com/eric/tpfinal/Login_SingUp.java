@@ -28,3 +28,5 @@ public class Login_SingUp extends AppCompatActivity implements loginFragment.OnF
 
     }
 }
+
+//https://tpfinal-3b46f.firebaseapp.com/__/auth/handler
