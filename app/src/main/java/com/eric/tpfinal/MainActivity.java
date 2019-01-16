@@ -1,8 +1,6 @@
 package com.eric.tpfinal;
 
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
@@ -10,19 +8,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,29 +38,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ultimasBusquedas ultimasBusquedas = null;
     private Menu menu = null;
     private BaseDatos CUdb = null;
+    private boolean inicio = false;
 
+    private int codigo_solicitud_pantalla_inicio = 1;
     /*Funciones*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
+
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
+
+
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             toolbar.setTitle("Ciudad Inteligente");
             setSupportActionBar(toolbar);
 
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
-                    PackageManager.PERMISSION_GRANTED &&
-                    ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                            PackageManager.PERMISSION_GRANTED) {
-                // Permission already Granted
-                //Do your work here
-                //Perform operations here only which requires permission
-                Toast.makeText(this,"Tienes permisos",Toast.LENGTH_SHORT).show();
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-            }
 
             //Instancio la base de datos
             CUdb = new BaseDatos(getApplicationContext(), "DBCUI", null, 1);
@@ -169,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                     else {
                         fm.popBackStack();
-
                         mapsFragment.limpiarMapa();
 
                     }
@@ -353,6 +341,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
+
+
+            switch (requestCode){
+                case 1:
+                    if (resultCode == RESULT_OK){
+                        Toast.makeText(this,"Recibiste estooooooooo",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(this,"No se puede iniciar la apliacion sin los permisos",Toast.LENGTH_SHORT).show();
+                    }
+            }
+
             //Se obtiene el resultado del proceso de scaneo y se parsea
             IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
             if (scanningResult != null) {
@@ -380,6 +379,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         "No se ha recibido datos del scaneo!", Toast.LENGTH_SHORT);
                 toast.show();
             }
+
+
         }catch (Exception e){
             alert_info("Error al obtener los datos del QR","Error");
         }

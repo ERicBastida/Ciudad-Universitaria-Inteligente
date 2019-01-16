@@ -10,6 +10,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -18,8 +19,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -107,8 +110,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                 showPhoneStatePermission();
+                
 
             }else {
+
+                turnGPSOn();
+
                 mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (android.location.LocationListener) mlocListener);
                 //SensorManager
                 SensorManager mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -129,6 +136,33 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
         }
 
+    }
+
+    private void turnGPSOn(){
+
+        String provider = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+        if(!provider.contains("gps")){ //if gps is disabled
+            final Intent poke = new Intent();
+            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+            poke.setData(Uri.parse("3"));
+            getActivity().sendBroadcast(poke);
+        }
+    }
+
+    private void turnGPSOff(){
+        String provider = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+        if(provider.contains("gps")){ //if gps is enabled
+            final Intent poke = new Intent();
+            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+            poke.setData(Uri.parse("3"));
+            getActivity().sendBroadcast(poke);
+
+
+        }
     }
 
     private void showPhoneStatePermission() {
@@ -187,6 +221,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
 
             miMapa = googleMap;
+            if (miMapa == null){
+                Toast.makeText(getActivity(),"No",Toast.LENGTH_SHORT).show();
+            }
 
             //Esto es para armar el grafo, clickeando encima del overlay y viendo la lat y long del punto
             miMapa.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -311,6 +348,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
                 switch (sensorEvent.sensor.getType()) {
                     case Sensor.TYPE_ORIENTATION:
                         float degree = Math.round(sensorEvent.values[0]);
+                        if (miMapa == null){
+                            Toast.makeText(getActivity(),"nooo",Toast.LENGTH_SHORT).show();
+                        }
                         //Si el angulo de rotación con respecto a la rotación de la muestra anterior es mayor a 20
                         //roto la camara, sino no porque sino baila mucho
                         if (Math.abs(degree - angle) > 30) {
@@ -324,6 +364,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
         }catch (Exception e){
 
             Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onSensorChanged",e.getCause(),e.getMessage(),e.getClass().toString()));
+            getActivity().finish();
             throw e;
 
         }

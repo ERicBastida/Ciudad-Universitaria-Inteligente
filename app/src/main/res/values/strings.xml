@@ -5,4 +5,17 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_pantalla_carga">pantalla_carga</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="carreras">
+        <item>Elige una carrera</item>
+        <item>Ingeniería en Agrimensura</item>
+        <item>Ingeniería en Informática</item>
+        <item>Ingeniería en Recursos Hídricos</item>
+        <item>Arquitectura</item>
+
+    </string-array>
 </resources>
