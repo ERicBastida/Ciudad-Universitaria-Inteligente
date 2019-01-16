@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn-rIN\\values-kn-rIN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\103b820d0bac0b8f8cb1a794c60fa965\\res\\values-kn-rIN\\values-kn-rIN.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "297,413,532,640,752,838",
+                        "endColumns": "115,118,107,111,85,93",
+                        "endOffsets": "408,527,635,747,833,927"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,171,290,398,510,596",
+                        "endColumns": "115,118,107,111,85,93",
+                        "endOffsets": "166,285,393,505,591,685"
+                    }
+                }
+            ]
+        }
+    ]
+}

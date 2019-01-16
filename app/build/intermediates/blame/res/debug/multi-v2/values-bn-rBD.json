@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bn-rBD\\values-bn-rBD.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\103b820d0bac0b8f8cb1a794c60fa965\\res\\values-bn-rBD\\values-bn-rBD.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "297,412,535,641,756,843",
+                        "endColumns": "114,122,105,114,86,96",
+                        "endOffsets": "407,530,636,751,838,935"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,170,293,399,514,601",
+                        "endColumns": "114,122,105,114,86,96",
+                        "endOffsets": "165,288,394,509,596,693"
+                    }
+                }
+            ]
+        }
+    ]
+}

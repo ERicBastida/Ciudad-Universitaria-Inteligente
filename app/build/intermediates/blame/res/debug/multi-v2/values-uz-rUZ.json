@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-uz-rUZ\\values-uz-rUZ.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\103b820d0bac0b8f8cb1a794c60fa965\\res\\values-uz-rUZ\\values-uz-rUZ.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "297,411,525,630,730,815",
+                        "endColumns": "113,113,104,99,84,96",
+                        "endOffsets": "406,520,625,725,810,907"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,169,283,388,488,573",
+                        "endColumns": "113,113,104,99,84,96",
+                        "endOffsets": "164,278,383,483,568,665"
+                    }
+                }
+            ]
+        }
+    ]
+}
