@@ -2,21 +2,18 @@ package com.eric.tpfinal;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
-
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Vector;
 
 /**
  * Created by Lautaro on 28/11/2016.
  */
+
 public class ArmaCamino{
 
-    private String STRING_MENSAJE = "ArmaCamino/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    private LogginCUI log = new LogginCUI();
     /*
     Nodos -> Vector de Puntos donde están los nodos y conexiones
     puntoMasCercano -> un objeto de la clase punto que representa el nodo mas cercano a mi posicion
@@ -27,25 +24,25 @@ public class ArmaCamino{
     private String pisoObjetivo = null;
 
     //Constructor
-    public ArmaCamino(Context context){
+    public ArmaCamino(Context context) throws Exception{
         try {
             contexto = context;
             Nodos = new Vector<>();
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"ArmaCamino",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"ArmaCamino",e);
             throw e;
 
         }
     }
 
     //Funcion para agregar nodos al vector
-    public void addNodo(Punto P){
+    public void addNodo(Punto P) throws Exception{
         try {
             Nodos.add(P);
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"addNodo",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"addNodo",e);
             throw e;
 
         }
@@ -54,7 +51,7 @@ public class ArmaCamino{
     public String getPisoObjetivo(){return pisoObjetivo;}
 
     //Funcion para armar el camino mediante algoritmo de Costo Uniforme
-    public Vector<Punto> camino(String oEdificio, String oNombre){
+    public Vector<Punto> camino(String oEdificio, String oNombre) throws Exception{
         Vector<Punto> path = new Vector<>();
         Punto miPosicion = puntoMasCercano;
         Vector<Punto> visitado = new Vector<>();
@@ -107,7 +104,7 @@ public class ArmaCamino{
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"camino",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"camino",e);
             throw e;
 
         }
@@ -115,7 +112,7 @@ public class ArmaCamino{
     }
 
     //Setear el punto mas cercano. Empiezo tomando al primer elemento del vector
-    public void setPuntoMasCercano(LatLng posicion, int pisoActual){
+    public void setPuntoMasCercano(LatLng posicion, int pisoActual) throws Exception{
         try {
             puntoMasCercano = Nodos.elementAt(0); //Por defecto, en la entrada de la Ciudad Universitaria
             //Si estoy dentro de la CU, busco dentro
@@ -130,15 +127,14 @@ public class ArmaCamino{
                 }
             }
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setPuntoMasCercano",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"setPuntoMasCercano",e);
             throw e;
 
         }
     }
 
     //Funcion para saber si estoy dentro de la ciudad universitaria
-    public boolean enCiudadUniversitaria(LatLng posicion){
+    public boolean enCiudadUniversitaria(LatLng posicion) throws Exception{
         try {
             LatLng limiteInfIzquierdo = new LatLng(-31.641034, -60.674534);
             LatLng limiteSupDerecho = new LatLng(-31.639295, -60.670215);
@@ -148,8 +144,7 @@ public class ArmaCamino{
             }
             return esta;
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"enCiudadUniversitaria",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"enCiudadUniversitaria",e);
             throw e;
 
         }
@@ -158,7 +153,7 @@ public class ArmaCamino{
 
     //Funcion que me devuelve un vector con aquellos nodos que contegan Nombre
     //Lo uso para traerme los baños, bares, etc
-    public Vector<Punto> nodosMapa(String Nombre){
+    public Vector<Punto> nodosMapa(String Nombre) throws Exception{
         try {
             Vector<Punto> nodos = new Vector<>();
             for (int i = 0; i < Nodos.size(); i++) {
@@ -168,15 +163,14 @@ public class ArmaCamino{
             }
             return nodos;
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setPuntoMasCercano",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"nodosMapa",e);
             throw e;
 
         }
     }
 
     //Funcion para generar un vector con las aulas por Edifico
-    public Vector<Punto> verAulasPorEdificio(String Edificio){
+    public Vector<Punto> verAulasPorEdificio(String Edificio) throws Exception{
         try{
             Vector<Punto> aulas = new Vector<>();
             for(int i=0;i<Nodos.size();i++){
@@ -187,10 +181,7 @@ public class ArmaCamino{
             return aulas;
 
         }catch (Exception e){
-
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"verAulasPorEdificio",e.getCause(),e.getMessage(),e.getClass().toString()));
-
+            log.registrar(this,"verAulasPorEdificio",e);
             throw e;
 
         }
@@ -201,7 +192,7 @@ public class ArmaCamino{
     public int cantNodos(){return Nodos.size();}
 
     //Distancia entre dos puntos, modulo del vector
-    public float calculaDistancia(LatLng pos1, LatLng pos2){
+    public float calculaDistancia(LatLng pos1, LatLng pos2) throws Exception{
         try {
             float dlat = (float) (pos2.latitude - pos1.latitude);
             float dlon = (float) (pos2.longitude - pos1.longitude);
@@ -209,8 +200,7 @@ public class ArmaCamino{
             String.format("%.2f", dist);
             return dist;
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"calculaDistancia",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"calculaDistancia",e);
             throw e;
 
         }

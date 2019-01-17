@@ -28,6 +28,7 @@ import java.util.Vector;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private String STRING_MENSAJE = "ultimasBusquedas/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    private LogginCUI log = new LogginCUI();
 
     /* Atributos de la clase*/
     private ArmaCamino oArmaCamino = null;
@@ -298,7 +299,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //Funcion que le pasa a oArmaCamino un edificio y devuelve un Vector con todas las aulas de ese edificio
     public Vector<Punto> verAulasPorEdificio(String Edificio) {
-        return oArmaCamino.verAulasPorEdificio(Edificio);
+
+        Vector<Punto> resultado = new Vector<Punto>();
+        try {
+            resultado =  oArmaCamino.verAulasPorEdificio(Edificio);
+        }catch (Exception e){
+            log.registrar(this,"verAulasPorEdificio",e);
+            log.alertar("Ocurrió un error al querer mostrar las aulas.",this);
+        }
+        return  resultado;
     }
 
 

@@ -108,7 +108,7 @@ package com.eric.tpfinal;
  */
 public class IntentIntegrator {
 
-    private String STRING_MENSAJE = "IntentIntegrator/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    private LogginCUI log = new LogginCUI();
 
     public static final int REQUEST_CODE = 0x0000c0de; // Only use bottom 16 bits
     private static final String TAG = IntentIntegrator.class.getSimpleName();
@@ -140,8 +140,8 @@ public class IntentIntegrator {
             // What else supports this intent?
     );
 
-    private final Activity activity;
-    private final Fragment fragment;
+    private Activity activity;
+    private Fragment fragment;
 
     private String title;
     private String message;
@@ -160,8 +160,8 @@ public class IntentIntegrator {
             initializeConfiguration();
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"IntentIntegrator",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"IntentIntegrator",e);
+            log.alertar("Ocurrió un error al momento de cargar el QR.",activity);
 
         }
     }
@@ -245,8 +245,8 @@ public class IntentIntegrator {
             this.targetApplications = targetApplications;
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setTargetApplications",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"setTargetApplications",e);
+            log.alertar("Ocurrió un error al establecer la aplicacion raiz.",activity);
 
         }
     }
@@ -339,13 +339,14 @@ public class IntentIntegrator {
             intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             attachMoreExtras(intentScan);
             startActivityForResult(intentScan, REQUEST_CODE);
-            return null;
+
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"initiateScan",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"initiateScan",e);
+            log.alertar("Ocurrió un error al inicializar la camara.",activity);
 
         }
+        return null;
     }
 
     /**
@@ -366,8 +367,8 @@ public class IntentIntegrator {
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"startActivityForResult",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"startActivityForResult",e);
+            log.alertar("Ocurrió un error al inicializar el Intent " + intent.getDataString(),activity);
 
         }
     }
@@ -383,16 +384,18 @@ public class IntentIntegrator {
                     }
                 }
             }
-            return null;
+
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"findTargetAppPackage",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"findTargetAppPackage",e);
+            log.alertar("Ocurrió un error al inicializar el Intent " + intent.getDataString(),activity);
 
         }
+        return null;
     }
 
-    private static boolean contains(Iterable<ResolveInfo> availableApps, String targetApp) {
+    private boolean contains(Iterable<ResolveInfo> availableApps, String targetApp) {
+
         try {
             for (ResolveInfo availableApp : availableApps) {
                 String packageName = availableApp.activityInfo.packageName;
@@ -402,8 +405,8 @@ public class IntentIntegrator {
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format("IntentIntegrator/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s","contains",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"contains",e);
+            log.alertar("Ocurrió un error al preguntar si se contenia las siguientes aplicaciones :"+ availableApps.toString(),activity);
 
         }
         return false;
@@ -442,9 +445,8 @@ public class IntentIntegrator {
             downloadDialog.setNegativeButton(buttonNo, null);
             downloadDialog.setCancelable(true);
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"showDownloadDialog",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"showDownloadDialog",e);
+            log.alertar("Ocurrió un error al mostrar el dialogo",activity);
 
         }
         return downloadDialog.show();
@@ -534,8 +536,8 @@ public class IntentIntegrator {
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"shareText",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"shareText",e);
+            log.alertar("Ocurrió un error al enviar la siguiente información : " + text,activity);
 
         }
         return null;
@@ -569,8 +571,8 @@ public class IntentIntegrator {
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"attachMoreExtras",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"attachMoreExtras",e);
+            log.alertar("Ocurrió un error al querer adjuntar más información ",activity);
 
         }
     }

@@ -78,14 +78,14 @@ public class PantallaCarga extends AppCompatActivity {
 
 
         while (intentos < max_intentos){
-            Toast.makeText(this,"Intentando avanzar",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this,"Intentando avanzar",Toast.LENGTH_SHORT).show();
             intentos++;
             mWaitHandler.postDelayed(new Runnable() {
 
                 @Override
                 public void run() {
 
-                    Toast.makeText(getApplicationContext(),"Intetoooo",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"Intetoooo",Toast.LENGTH_SHORT).show();
                     comprobar_permisos();
 
 
@@ -131,8 +131,8 @@ public class PantallaCarga extends AppCompatActivity {
             if(habilitados == PERMISOS.size()){
 
                 //Nos vamos a iniciar la actividad encargada del inicio de sesion.
-                Intent intent = new Intent(getApplicationContext(), FirebaseExample.class);
-//                Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
+//                Intent intent = new Intent(getApplicationContext(), FirebaseExample.class);
+                Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
                 startActivity(intent);
 
                 finish();

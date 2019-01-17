@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
 MERGED from [com.google.android.gms:play-services:7.8.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\play-services-7.8.0.aar\dfb6ac0637fde3cfa538b70cb12a07ba\AndroidManifest.xml:16:1-20:12
 MERGED from [com.airbnb.android:lottie:2.7.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\lottie-2.7.0.aar\875c7f55a3e3771b5796337371b9b93b\AndroidManifest.xml:2:1-13:12
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\firebase-ui-auth-4.1.0.aar\9260be7ce8745de6ce01b0dbf1d635af\AndroidManifest.xml:2:1-114:12
@@ -72,9 +72,9 @@ MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\ERic\.gradle\caches
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\b81d85513ce14c28ff4ae9e2fb347f5a\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\99054193c91896fb0cc6cb5f473703b4\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\5be2e959483583f961d8d07a6faea0c2\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:3:5-31
 		INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml
@@ -130,7 +130,7 @@ ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidMa
 	android:name
 		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:14:22-78
 application
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:16:5-40:19
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:16:5-39:19
 MERGED from [com.google.android.gms:play-services:7.8.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\play-services-7.8.0.aar\dfb6ac0637fde3cfa538b70cb12a07ba\AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services:7.8.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\play-services-7.8.0.aar\dfb6ac0637fde3cfa538b70cb12a07ba\AndroidManifest.xml:19:5-20
 MERGED from [com.airbnb.android:lottie:2.7.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\lottie-2.7.0.aar\875c7f55a3e3771b5796337371b9b93b\AndroidManifest.xml:11:5-20
@@ -223,42 +223,38 @@ MERGED from [com.facebook.android:facebook-core:4.39.0] C:\Users\ERic\.gradle\ca
 		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:17:9-35
 	android:theme
 		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:21:9-40
-activity#com.eric.tpfinal.FirebaseExample
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:22:9-62
-	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:22:19-50
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:24:9-26:71
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:23:9-25:71
 	android:value
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:26:13-68
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:25:13-68
 	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:25:13-58
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:24:13-58
 activity#com.eric.tpfinal.PantallaCarga
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:28:9-34:20
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:27:9-33:20
 	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:28:19-48
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:27:19-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:29:13-33:29
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:32:17-77
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:32:27-74
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:31:27-74
 activity#com.eric.tpfinal.MainActivity
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:35:9-38:59
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:34:9-37:59
 	android:label
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:37:13-45
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:36:13-45
 	android:theme
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:38:13-56
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:37:13-56
 	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:36:13-41
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:35:13-41
 activity#com.eric.tpfinal.Login_SingUp
-ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:39:9-50
+ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:38:9-50
 	android:name
-		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:39:19-47
+		ADDED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:38:19-47
 uses-sdk
 INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml
@@ -686,7 +682,7 @@ ADDED from [com.google.android.gms:play-services-maps:7.8.0] C:\Users\ERic\.grad
 	android:name
 		ADDED from [com.google.android.gms:play-services-maps:7.8.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\play-services-maps-7.8.0.aar\2b008a3002bef19311e7d4c26bfa0299\AndroidManifest.xml:22:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-42:12 reason: com.google.android.gms.maps requested WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Users\ERic\Desktop\Practica_Android\TPFINAL\app\src\main\AndroidManifest.xml:2:1-41:12 reason: com.google.android.gms.maps requested WRITE_EXTERNAL_STORAGE
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\ddacfc2704187dc04b5a3ca18c47915d\AndroidManifest.xml:23:9-26:75
 	android:exported

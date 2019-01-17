@@ -54,21 +54,21 @@ public final class R {
     public static final class color {
         private color() {}
 
-        public static final int wallet_bright_foreground_disabled_holo_light = 0x7f060098;
-        public static final int wallet_bright_foreground_holo_dark = 0x7f060099;
-        public static final int wallet_bright_foreground_holo_light = 0x7f06009a;
-        public static final int wallet_dim_foreground_disabled_holo_dark = 0x7f06009b;
-        public static final int wallet_dim_foreground_holo_dark = 0x7f06009c;
-        public static final int wallet_dim_foreground_inverse_disabled_holo_dark = 0x7f06009d;
-        public static final int wallet_dim_foreground_inverse_holo_dark = 0x7f06009e;
-        public static final int wallet_highlighted_text_holo_dark = 0x7f06009f;
-        public static final int wallet_highlighted_text_holo_light = 0x7f0600a0;
-        public static final int wallet_hint_foreground_holo_dark = 0x7f0600a1;
-        public static final int wallet_hint_foreground_holo_light = 0x7f0600a2;
-        public static final int wallet_holo_blue_light = 0x7f0600a3;
-        public static final int wallet_link_text_light = 0x7f0600a4;
-        public static final int wallet_primary_text_holo_light = 0x7f0600a5;
-        public static final int wallet_secondary_text_holo_dark = 0x7f0600a6;
+        public static final int wallet_bright_foreground_disabled_holo_light = 0x7f060099;
+        public static final int wallet_bright_foreground_holo_dark = 0x7f06009a;
+        public static final int wallet_bright_foreground_holo_light = 0x7f06009b;
+        public static final int wallet_dim_foreground_disabled_holo_dark = 0x7f06009c;
+        public static final int wallet_dim_foreground_holo_dark = 0x7f06009d;
+        public static final int wallet_dim_foreground_inverse_disabled_holo_dark = 0x7f06009e;
+        public static final int wallet_dim_foreground_inverse_holo_dark = 0x7f06009f;
+        public static final int wallet_highlighted_text_holo_dark = 0x7f0600a0;
+        public static final int wallet_highlighted_text_holo_light = 0x7f0600a1;
+        public static final int wallet_hint_foreground_holo_dark = 0x7f0600a2;
+        public static final int wallet_hint_foreground_holo_light = 0x7f0600a3;
+        public static final int wallet_holo_blue_light = 0x7f0600a4;
+        public static final int wallet_link_text_light = 0x7f0600a5;
+        public static final int wallet_primary_text_holo_light = 0x7f0600a6;
+        public static final int wallet_secondary_text_holo_dark = 0x7f0600a7;
     }
     public static final class drawable {
         private drawable() {}
@@ -79,12 +79,12 @@ public final class R {
         public static final int cast_ic_notification_connecting = 0x7f08005e;
         public static final int cast_ic_notification_on = 0x7f08005f;
         public static final int common_full_open_on_phone = 0x7f08007c;
-        public static final int ic_plusone_medium_off_client = 0x7f0800c2;
-        public static final int ic_plusone_small_off_client = 0x7f0800c3;
-        public static final int ic_plusone_standard_off_client = 0x7f0800c4;
-        public static final int ic_plusone_tall_off_client = 0x7f0800c5;
-        public static final int powered_by_google_dark = 0x7f0800ed;
-        public static final int powered_by_google_light = 0x7f0800ee;
+        public static final int ic_plusone_medium_off_client = 0x7f0800c4;
+        public static final int ic_plusone_small_off_client = 0x7f0800c5;
+        public static final int ic_plusone_standard_off_client = 0x7f0800c6;
+        public static final int ic_plusone_tall_off_client = 0x7f0800c7;
+        public static final int powered_by_google_dark = 0x7f0800ef;
+        public static final int powered_by_google_light = 0x7f0800f0;
     }
     public static final class id {
         private id() {}
@@ -117,10 +117,10 @@ public final class R {
         public static final int satellite = 0x7f0900f0;
         public static final int selectionDetails = 0x7f090105;
         public static final int slide = 0x7f09010d;
-        public static final int strict_sandbox = 0x7f090120;
-        public static final int terrain = 0x7f090127;
-        public static final int test = 0x7f090128;
-        public static final int wrap_content = 0x7f09015b;
+        public static final int strict_sandbox = 0x7f090121;
+        public static final int terrain = 0x7f090128;
+        public static final int test = 0x7f090129;
+        public static final int wrap_content = 0x7f09015c;
     }
     public static final class integer {
         private integer() {}

@@ -32,8 +32,6 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.eric.tpfinal.FirebaseExample" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBIR6kyfuK6F_rLl7UCpK7DroGMca3L8Dc" />

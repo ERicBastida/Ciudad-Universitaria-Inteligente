@@ -220,10 +220,6 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-messenger-4.39.0.aar\\ae0cdd7eb9953cbfbcc17561d51b684b\\res\\layout\\messenger_button_send_blue_round.xml"
     },
     {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_firebase_example.xml.flat",
-        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\layout\\activity_firebase_example.xml"
-    },
-    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxhdpi-v4\\abc_list_longpressed_holo.9.png"
     },
@@ -658,6 +654,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_unl_logo_shadow.jpg.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\drawable\\unl_logo_shadow.jpg"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
@@ -1584,6 +1584,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_facebook_icon.png.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\drawable\\facebook_icon.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_vector_test.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable\\abc_vector_test.xml"
     },
@@ -2220,6 +2224,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_google_icon.png.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\drawable\\google_icon.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_send_icon_white.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-share-4.39.0.aar\\a72241d528a2495d5de0c308303d611d\\res\\drawable-xhdpi-v4\\com_facebook_button_send_icon_white.png"
     },
@@ -2772,6 +2780,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_triangle_icon.png.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\drawable\\triangle_icon.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
@@ -3128,6 +3140,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\0910dd0075c762ca3780176ea2356b8f\\res\\drawable-xhdpi\\ic_cast_disabled_light.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_twitter_icon.png.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\drawable\\twitter_icon.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_fui_auth_method_picker_layout.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.1.0.aar\\9260be7ce8745de6ce01b0dbf1d635af\\res\\layout-land\\fui_auth_method_picker_layout.xml"
     },
@@ -3302,5 +3318,9 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_default.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\drawable_unl_icon.jpg.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\drawable\\unl_icon.jpg"
     }
 ]

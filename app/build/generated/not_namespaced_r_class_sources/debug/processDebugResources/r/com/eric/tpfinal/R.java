@@ -282,23 +282,16 @@ public final class R {
      */
     public static final int activityChooserViewStyle=0x7f040021;
     /**
-     * The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
-     * MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
-     * &lt;width&gt;x&lt;height&gt;.
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
     public static final int adSize=0x7f040022;
     /**
-     * A comma-separated list of the supported ad sizes. The sizes must be one of
-     * BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
-     * WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
     public static final int adSizes=0x7f040023;
     /**
-     * The ad unit ID.
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
@@ -355,7 +348,6 @@ public final class R {
      */
     public static final int alphabeticModifiers=0x7f04002b;
     /**
-     * Theme to be used for the Wallet selector
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -695,14 +687,13 @@ public final class R {
      */
     public static final int buttonTintMode=0x7f040052;
     /**
-     * The appearance of the buy button
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>classic</td><td>1</td><td>Deprecated values</td></tr>
+     * <tr><td>classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_grayscale</td><td>2</td><td></td></tr>
      * <tr><td>google_wallet_monochrome</td><td>3</td><td></td></tr>
@@ -712,9 +703,6 @@ public final class R {
      */
     public static final int buyButtonAppearance=0x7f040053;
     /**
-     * Height of the buy button. This includes an 8dp padding (4dp on each side) used for
-     * pressed and focused states of the button. The value can be a specific height, e.g.
-     * "48dp", or special values "match_parent" and "wrap_content".
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
      * Available units are: px (pixels), dp (density-independent pixels),
@@ -732,7 +720,6 @@ public final class R {
      */
     public static final int buyButtonHeight=0x7f040054;
     /**
-     * The text on the buy button
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -742,7 +729,7 @@ public final class R {
      * <tr><td>book_now</td><td>3</td><td></td></tr>
      * <tr><td>buy_now</td><td>2</td><td></td></tr>
      * <tr><td>buy_with</td><td>5</td><td></td></tr>
-     * <tr><td>buy_with_google</td><td>1</td><td>Deprecated values</td></tr>
+     * <tr><td>buy_with_google</td><td>1</td><td></td></tr>
      * <tr><td>donate_with</td><td>7</td><td></td></tr>
      * <tr><td>donate_with_google</td><td>4</td><td></td></tr>
      * <tr><td>logo_only</td><td>6</td><td></td></tr>
@@ -750,9 +737,6 @@ public final class R {
      */
     public static final int buyButtonText=0x7f040055;
     /**
-     * Width of the buy button. This includes an 8dp padding (4dp on each side) used for
-     * pressed and focused states of the button. The value can be a specific width, e.g.
-     * "300dp", or special values "match_parent" and "wrap_content".
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
      * Available units are: px (pixels), dp (density-independent pixels),
@@ -1447,7 +1431,6 @@ public final class R {
      */
     public static final int emptyVisibility=0x7f0400b1;
     /**
-     * Google Wallet environment to use
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -1693,7 +1676,6 @@ public final class R {
      */
     public static final int foregroundInsidePadding=0x7f0400d0;
     /**
-     * Fragment mode
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -1706,7 +1688,6 @@ public final class R {
      */
     public static final int fragmentMode=0x7f0400d1;
     /**
-     * A style resource specifing attributes to customize the look and feel of WalletFragment
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -2492,7 +2473,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td>direct, barriers, chains</td></tr>
+     * <tr><td>direct</td><td>1</td><td></td></tr>
      * <tr><td>groups</td><td>20</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>7</td><td></td></tr>
@@ -2703,7 +2684,6 @@ public final class R {
      */
     public static final int mapType=0x7f040146;
     /**
-     * Masked wallet details background
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -2714,7 +2694,6 @@ public final class R {
      */
     public static final int maskedWalletDetailsBackground=0x7f040147;
     /**
-     * "Change" button background in masked wallet details view
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -2725,7 +2704,6 @@ public final class R {
      */
     public static final int maskedWalletDetailsButtonBackground=0x7f040148;
     /**
-     * TextAppearance for the "Change" button in masked wallet details view
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -2733,7 +2711,6 @@ public final class R {
      */
     public static final int maskedWalletDetailsButtonTextAppearance=0x7f040149;
     /**
-     * TextAppearance for headers describing masked wallet details
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -2741,14 +2718,13 @@ public final class R {
      */
     public static final int maskedWalletDetailsHeaderTextAppearance=0x7f04014a;
     /**
-     * Type of the wallet logo image in masked wallet details view
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>classic</td><td>1</td><td>Deprecated values</td></tr>
+     * <tr><td>classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_monochrome</td><td>2</td><td></td></tr>
      * <tr><td>monochrome</td><td>2</td><td></td></tr>
@@ -2756,14 +2732,12 @@ public final class R {
      */
     public static final int maskedWalletDetailsLogoImageType=0x7f04014b;
     /**
-     * Color of the Google Wallet logo text in masked wallet details view
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
     public static final int maskedWalletDetailsLogoTextColor=0x7f04014c;
     /**
-     * TextAppearance for masked wallet details
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
@@ -4128,7 +4102,6 @@ public final class R {
      */
     public static final int windowNoTitle=0x7f0401fd;
     /**
-     * Defines the set of transition to be used between activities
      * <p>Must be one of the following constant values.</p>
      * <table>
      * <colgroup align="left" />
@@ -4292,34 +4265,35 @@ public final class R {
     public static final int qrboton=0x7f060088;
     public static final int ripple_material_dark=0x7f060089;
     public static final int ripple_material_light=0x7f06008a;
-    public static final int secondary_text_default_material_dark=0x7f06008b;
-    public static final int secondary_text_default_material_light=0x7f06008c;
-    public static final int secondary_text_disabled_material_dark=0x7f06008d;
-    public static final int secondary_text_disabled_material_light=0x7f06008e;
-    public static final int switch_thumb_disabled_material_dark=0x7f06008f;
-    public static final int switch_thumb_disabled_material_light=0x7f060090;
-    public static final int switch_thumb_material_dark=0x7f060091;
-    public static final int switch_thumb_material_light=0x7f060092;
-    public static final int switch_thumb_normal_material_dark=0x7f060093;
-    public static final int switch_thumb_normal_material_light=0x7f060094;
-    public static final int tooltip_background_dark=0x7f060095;
-    public static final int tooltip_background_light=0x7f060096;
-    public static final int transparente=0x7f060097;
-    public static final int wallet_bright_foreground_disabled_holo_light=0x7f060098;
-    public static final int wallet_bright_foreground_holo_dark=0x7f060099;
-    public static final int wallet_bright_foreground_holo_light=0x7f06009a;
-    public static final int wallet_dim_foreground_disabled_holo_dark=0x7f06009b;
-    public static final int wallet_dim_foreground_holo_dark=0x7f06009c;
-    public static final int wallet_dim_foreground_inverse_disabled_holo_dark=0x7f06009d;
-    public static final int wallet_dim_foreground_inverse_holo_dark=0x7f06009e;
-    public static final int wallet_highlighted_text_holo_dark=0x7f06009f;
-    public static final int wallet_highlighted_text_holo_light=0x7f0600a0;
-    public static final int wallet_hint_foreground_holo_dark=0x7f0600a1;
-    public static final int wallet_hint_foreground_holo_light=0x7f0600a2;
-    public static final int wallet_holo_blue_light=0x7f0600a3;
-    public static final int wallet_link_text_light=0x7f0600a4;
-    public static final int wallet_primary_text_holo_light=0x7f0600a5;
-    public static final int wallet_secondary_text_holo_dark=0x7f0600a6;
+    public static final int rojo=0x7f06008b;
+    public static final int secondary_text_default_material_dark=0x7f06008c;
+    public static final int secondary_text_default_material_light=0x7f06008d;
+    public static final int secondary_text_disabled_material_dark=0x7f06008e;
+    public static final int secondary_text_disabled_material_light=0x7f06008f;
+    public static final int switch_thumb_disabled_material_dark=0x7f060090;
+    public static final int switch_thumb_disabled_material_light=0x7f060091;
+    public static final int switch_thumb_material_dark=0x7f060092;
+    public static final int switch_thumb_material_light=0x7f060093;
+    public static final int switch_thumb_normal_material_dark=0x7f060094;
+    public static final int switch_thumb_normal_material_light=0x7f060095;
+    public static final int tooltip_background_dark=0x7f060096;
+    public static final int tooltip_background_light=0x7f060097;
+    public static final int transparente=0x7f060098;
+    public static final int wallet_bright_foreground_disabled_holo_light=0x7f060099;
+    public static final int wallet_bright_foreground_holo_dark=0x7f06009a;
+    public static final int wallet_bright_foreground_holo_light=0x7f06009b;
+    public static final int wallet_dim_foreground_disabled_holo_dark=0x7f06009c;
+    public static final int wallet_dim_foreground_holo_dark=0x7f06009d;
+    public static final int wallet_dim_foreground_inverse_disabled_holo_dark=0x7f06009e;
+    public static final int wallet_dim_foreground_inverse_holo_dark=0x7f06009f;
+    public static final int wallet_highlighted_text_holo_dark=0x7f0600a0;
+    public static final int wallet_highlighted_text_holo_light=0x7f0600a1;
+    public static final int wallet_hint_foreground_holo_dark=0x7f0600a2;
+    public static final int wallet_hint_foreground_holo_light=0x7f0600a3;
+    public static final int wallet_holo_blue_light=0x7f0600a4;
+    public static final int wallet_link_text_light=0x7f0600a5;
+    public static final int wallet_primary_text_holo_light=0x7f0600a6;
+    public static final int wallet_secondary_text_holo_dark=0x7f0600a7;
   }
   public static final class dimen {
     public static final int abc_action_bar_content_inset_material=0x7f070000;
@@ -4665,97 +4639,103 @@ public final class R {
     public static final int ed0_1=0x7f080096;
     public static final int ed0_2=0x7f080097;
     public static final int ed0_3=0x7f080098;
-    public static final int fui_ic_facebook_white_22dp=0x7f080099;
-    public static final int fui_ic_github_white_24dp=0x7f08009a;
-    public static final int fui_ic_googleg_color_24dp=0x7f08009b;
-    public static final int fui_ic_mail_white_24dp=0x7f08009c;
-    public static final int fui_ic_phone_white_24dp=0x7f08009d;
-    public static final int fui_ic_twitter_bird_white_24dp=0x7f08009e;
-    public static final int fui_idp_button_background_email=0x7f08009f;
-    public static final int fui_idp_button_background_facebook=0x7f0800a0;
-    public static final int fui_idp_button_background_github=0x7f0800a1;
-    public static final int fui_idp_button_background_google=0x7f0800a2;
-    public static final int fui_idp_button_background_phone=0x7f0800a3;
-    public static final int fui_idp_button_background_twitter=0x7f0800a4;
-    public static final int googleg_disabled_color_18=0x7f0800a5;
-    public static final int googleg_standard_color_18=0x7f0800a6;
-    public static final int header_new_user=0x7f0800a7;
-    public static final int ic_cast_dark=0x7f0800a8;
-    public static final int ic_cast_disabled_light=0x7f0800a9;
-    public static final int ic_cast_light=0x7f0800aa;
-    public static final int ic_cast_off_light=0x7f0800ab;
-    public static final int ic_cast_on_0_light=0x7f0800ac;
-    public static final int ic_cast_on_1_light=0x7f0800ad;
-    public static final int ic_cast_on_2_light=0x7f0800ae;
-    public static final int ic_cast_on_light=0x7f0800af;
-    public static final int ic_media_pause=0x7f0800b0;
-    public static final int ic_media_play=0x7f0800b1;
-    public static final int ic_media_route_disabled_mono_dark=0x7f0800b2;
-    public static final int ic_media_route_off_mono_dark=0x7f0800b3;
-    public static final int ic_media_route_on_0_mono_dark=0x7f0800b4;
-    public static final int ic_media_route_on_1_mono_dark=0x7f0800b5;
-    public static final int ic_media_route_on_2_mono_dark=0x7f0800b6;
-    public static final int ic_media_route_on_mono_dark=0x7f0800b7;
-    public static final int ic_menu_camera=0x7f0800b8;
-    public static final int ic_menu_gallery=0x7f0800b9;
-    public static final int ic_menu_manage=0x7f0800ba;
-    public static final int ic_menu_send=0x7f0800bb;
-    public static final int ic_menu_share=0x7f0800bc;
-    public static final int ic_menu_slideshow=0x7f0800bd;
-    public static final int ic_pause_dark=0x7f0800be;
-    public static final int ic_pause_light=0x7f0800bf;
-    public static final int ic_play_dark=0x7f0800c0;
-    public static final int ic_play_light=0x7f0800c1;
-    public static final int ic_plusone_medium_off_client=0x7f0800c2;
-    public static final int ic_plusone_small_off_client=0x7f0800c3;
-    public static final int ic_plusone_standard_off_client=0x7f0800c4;
-    public static final int ic_plusone_tall_off_client=0x7f0800c5;
-    public static final int ic_setting_dark=0x7f0800c6;
-    public static final int ic_setting_light=0x7f0800c7;
-    public static final int loading_background=0x7f0800c8;
-    public static final int logounl=0x7f0800c9;
-    public static final int messenger_bubble_large_blue=0x7f0800ca;
-    public static final int messenger_bubble_large_white=0x7f0800cb;
-    public static final int messenger_bubble_small_blue=0x7f0800cc;
-    public static final int messenger_bubble_small_white=0x7f0800cd;
-    public static final int messenger_button_blue_bg_round=0x7f0800ce;
-    public static final int messenger_button_blue_bg_selector=0x7f0800cf;
-    public static final int messenger_button_send_round_shadow=0x7f0800d0;
-    public static final int messenger_button_white_bg_round=0x7f0800d1;
-    public static final int messenger_button_white_bg_selector=0x7f0800d2;
-    public static final int mr_ic_audio_vol=0x7f0800d3;
-    public static final int mr_ic_media_route_connecting_mono_dark=0x7f0800d4;
-    public static final int mr_ic_media_route_connecting_mono_light=0x7f0800d5;
-    public static final int mr_ic_media_route_mono_dark=0x7f0800d6;
-    public static final int mr_ic_media_route_mono_light=0x7f0800d7;
-    public static final int mr_ic_pause_dark=0x7f0800d8;
-    public static final int mr_ic_pause_light=0x7f0800d9;
-    public static final int mr_ic_play_dark=0x7f0800da;
-    public static final int mr_ic_play_light=0x7f0800db;
-    public static final int mr_ic_settings_dark=0x7f0800dc;
-    public static final int mr_ic_settings_light=0x7f0800dd;
-    public static final int my_great_logo=0x7f0800de;
-    public static final int navigation_empty_icon=0x7f0800df;
-    public static final int notification_action_background=0x7f0800e0;
-    public static final int notification_bg=0x7f0800e1;
-    public static final int notification_bg_low=0x7f0800e2;
-    public static final int notification_bg_low_normal=0x7f0800e3;
-    public static final int notification_bg_low_pressed=0x7f0800e4;
-    public static final int notification_bg_normal=0x7f0800e5;
-    public static final int notification_bg_normal_pressed=0x7f0800e6;
-    public static final int notification_icon_background=0x7f0800e7;
-    public static final int notification_template_icon_bg=0x7f0800e8;
-    public static final int notification_template_icon_low_bg=0x7f0800e9;
-    public static final int notification_tile_bg=0x7f0800ea;
-    public static final int notify_panel_notification_icon_bg=0x7f0800eb;
-    public static final int porton=0x7f0800ec;
-    public static final int powered_by_google_dark=0x7f0800ed;
-    public static final int powered_by_google_light=0x7f0800ee;
-    public static final int qrfab=0x7f0800ef;
-    public static final int side_nav_bar=0x7f0800f0;
-    public static final int tooltip_frame_dark=0x7f0800f1;
-    public static final int tooltip_frame_light=0x7f0800f2;
-    public static final int unl_logo=0x7f0800f3;
+    public static final int facebook_icon=0x7f080099;
+    public static final int fui_ic_facebook_white_22dp=0x7f08009a;
+    public static final int fui_ic_github_white_24dp=0x7f08009b;
+    public static final int fui_ic_googleg_color_24dp=0x7f08009c;
+    public static final int fui_ic_mail_white_24dp=0x7f08009d;
+    public static final int fui_ic_phone_white_24dp=0x7f08009e;
+    public static final int fui_ic_twitter_bird_white_24dp=0x7f08009f;
+    public static final int fui_idp_button_background_email=0x7f0800a0;
+    public static final int fui_idp_button_background_facebook=0x7f0800a1;
+    public static final int fui_idp_button_background_github=0x7f0800a2;
+    public static final int fui_idp_button_background_google=0x7f0800a3;
+    public static final int fui_idp_button_background_phone=0x7f0800a4;
+    public static final int fui_idp_button_background_twitter=0x7f0800a5;
+    public static final int google_icon=0x7f0800a6;
+    public static final int googleg_disabled_color_18=0x7f0800a7;
+    public static final int googleg_standard_color_18=0x7f0800a8;
+    public static final int header_new_user=0x7f0800a9;
+    public static final int ic_cast_dark=0x7f0800aa;
+    public static final int ic_cast_disabled_light=0x7f0800ab;
+    public static final int ic_cast_light=0x7f0800ac;
+    public static final int ic_cast_off_light=0x7f0800ad;
+    public static final int ic_cast_on_0_light=0x7f0800ae;
+    public static final int ic_cast_on_1_light=0x7f0800af;
+    public static final int ic_cast_on_2_light=0x7f0800b0;
+    public static final int ic_cast_on_light=0x7f0800b1;
+    public static final int ic_media_pause=0x7f0800b2;
+    public static final int ic_media_play=0x7f0800b3;
+    public static final int ic_media_route_disabled_mono_dark=0x7f0800b4;
+    public static final int ic_media_route_off_mono_dark=0x7f0800b5;
+    public static final int ic_media_route_on_0_mono_dark=0x7f0800b6;
+    public static final int ic_media_route_on_1_mono_dark=0x7f0800b7;
+    public static final int ic_media_route_on_2_mono_dark=0x7f0800b8;
+    public static final int ic_media_route_on_mono_dark=0x7f0800b9;
+    public static final int ic_menu_camera=0x7f0800ba;
+    public static final int ic_menu_gallery=0x7f0800bb;
+    public static final int ic_menu_manage=0x7f0800bc;
+    public static final int ic_menu_send=0x7f0800bd;
+    public static final int ic_menu_share=0x7f0800be;
+    public static final int ic_menu_slideshow=0x7f0800bf;
+    public static final int ic_pause_dark=0x7f0800c0;
+    public static final int ic_pause_light=0x7f0800c1;
+    public static final int ic_play_dark=0x7f0800c2;
+    public static final int ic_play_light=0x7f0800c3;
+    public static final int ic_plusone_medium_off_client=0x7f0800c4;
+    public static final int ic_plusone_small_off_client=0x7f0800c5;
+    public static final int ic_plusone_standard_off_client=0x7f0800c6;
+    public static final int ic_plusone_tall_off_client=0x7f0800c7;
+    public static final int ic_setting_dark=0x7f0800c8;
+    public static final int ic_setting_light=0x7f0800c9;
+    public static final int loading_background=0x7f0800ca;
+    public static final int logounl=0x7f0800cb;
+    public static final int messenger_bubble_large_blue=0x7f0800cc;
+    public static final int messenger_bubble_large_white=0x7f0800cd;
+    public static final int messenger_bubble_small_blue=0x7f0800ce;
+    public static final int messenger_bubble_small_white=0x7f0800cf;
+    public static final int messenger_button_blue_bg_round=0x7f0800d0;
+    public static final int messenger_button_blue_bg_selector=0x7f0800d1;
+    public static final int messenger_button_send_round_shadow=0x7f0800d2;
+    public static final int messenger_button_white_bg_round=0x7f0800d3;
+    public static final int messenger_button_white_bg_selector=0x7f0800d4;
+    public static final int mr_ic_audio_vol=0x7f0800d5;
+    public static final int mr_ic_media_route_connecting_mono_dark=0x7f0800d6;
+    public static final int mr_ic_media_route_connecting_mono_light=0x7f0800d7;
+    public static final int mr_ic_media_route_mono_dark=0x7f0800d8;
+    public static final int mr_ic_media_route_mono_light=0x7f0800d9;
+    public static final int mr_ic_pause_dark=0x7f0800da;
+    public static final int mr_ic_pause_light=0x7f0800db;
+    public static final int mr_ic_play_dark=0x7f0800dc;
+    public static final int mr_ic_play_light=0x7f0800dd;
+    public static final int mr_ic_settings_dark=0x7f0800de;
+    public static final int mr_ic_settings_light=0x7f0800df;
+    public static final int my_great_logo=0x7f0800e0;
+    public static final int navigation_empty_icon=0x7f0800e1;
+    public static final int notification_action_background=0x7f0800e2;
+    public static final int notification_bg=0x7f0800e3;
+    public static final int notification_bg_low=0x7f0800e4;
+    public static final int notification_bg_low_normal=0x7f0800e5;
+    public static final int notification_bg_low_pressed=0x7f0800e6;
+    public static final int notification_bg_normal=0x7f0800e7;
+    public static final int notification_bg_normal_pressed=0x7f0800e8;
+    public static final int notification_icon_background=0x7f0800e9;
+    public static final int notification_template_icon_bg=0x7f0800ea;
+    public static final int notification_template_icon_low_bg=0x7f0800eb;
+    public static final int notification_tile_bg=0x7f0800ec;
+    public static final int notify_panel_notification_icon_bg=0x7f0800ed;
+    public static final int porton=0x7f0800ee;
+    public static final int powered_by_google_dark=0x7f0800ef;
+    public static final int powered_by_google_light=0x7f0800f0;
+    public static final int qrfab=0x7f0800f1;
+    public static final int side_nav_bar=0x7f0800f2;
+    public static final int tooltip_frame_dark=0x7f0800f3;
+    public static final int tooltip_frame_light=0x7f0800f4;
+    public static final int triangle_icon=0x7f0800f5;
+    public static final int twitter_icon=0x7f0800f6;
+    public static final int unl_icon=0x7f0800f7;
+    public static final int unl_logo=0x7f0800f8;
+    public static final int unl_logo_shadow=0x7f0800f9;
   }
   public static final class id {
     public static final int ALT=0x7f090000;
@@ -5035,77 +5015,78 @@ public final class R {
     public static final int snap=0x7f090112;
     public static final int spacer=0x7f090113;
     public static final int spinner=0x7f090114;
-    public static final int spinnerTarget=0x7f090115;
-    public static final int split_action_bar=0x7f090116;
-    public static final int spread=0x7f090117;
-    public static final int spread_inside=0x7f090118;
-    public static final int src_atop=0x7f090119;
-    public static final int src_in=0x7f09011a;
-    public static final int src_over=0x7f09011b;
-    public static final int standard=0x7f09011c;
-    public static final int start=0x7f09011d;
-    public static final int status_bar_latest_event_content=0x7f09011e;
-    public static final int stop=0x7f09011f;
-    public static final int strict_sandbox=0x7f090120;
-    public static final int submenuarrow=0x7f090121;
-    public static final int submit_area=0x7f090122;
-    public static final int submit_confirmation_code=0x7f090123;
-    public static final int subtitle=0x7f090124;
-    public static final int tabMode=0x7f090125;
-    public static final int tag_transition_group=0x7f090126;
-    public static final int terrain=0x7f090127;
-    public static final int test=0x7f090128;
-    public static final int text=0x7f090129;
-    public static final int text2=0x7f09012a;
-    public static final int textSpacerNoButtons=0x7f09012b;
-    public static final int textSpacerNoTitle=0x7f09012c;
-    public static final int textView=0x7f09012d;
-    public static final int textView2=0x7f09012e;
-    public static final int text_input_password_toggle=0x7f09012f;
-    public static final int text_wrapper=0x7f090130;
-    public static final int textinput_counter=0x7f090131;
-    public static final int textinput_error=0x7f090132;
-    public static final int ticker=0x7f090133;
-    public static final int time=0x7f090134;
-    public static final int title=0x7f090135;
-    public static final int titleDividerNoCustom=0x7f090136;
-    public static final int title_bar=0x7f090137;
-    public static final int title_template=0x7f090138;
-    public static final int titulo=0x7f090139;
-    public static final int toolbar=0x7f09013a;
-    public static final int top=0x7f09013b;
-    public static final int topPanel=0x7f09013c;
-    public static final int top_progress_bar=0x7f09013d;
-    public static final int touch_outside=0x7f09013e;
-    public static final int transition_current_scene=0x7f09013f;
-    public static final int transition_layout_save=0x7f090140;
-    public static final int transition_position=0x7f090141;
-    public static final int transition_scene_layoutid_cache=0x7f090142;
-    public static final int transition_transform=0x7f090143;
-    public static final int trouble_signing_in=0x7f090144;
-    public static final int tv1=0x7f090145;
-    public static final int tv2=0x7f090146;
-    public static final int txtEmail=0x7f090147;
-    public static final int txtItemSpinner=0x7f090148;
-    public static final int txtLastName=0x7f090149;
-    public static final int txtName=0x7f09014a;
-    public static final int txtPass=0x7f09014b;
-    public static final int txtPass2=0x7f09014c;
-    public static final int txtUser=0x7f09014d;
-    public static final int ultimas=0x7f09014e;
-    public static final int uniform=0x7f09014f;
-    public static final int unknown=0x7f090150;
-    public static final int up=0x7f090151;
-    public static final int useLogo=0x7f090152;
-    public static final int view_offset_helper=0x7f090153;
-    public static final int visible=0x7f090154;
-    public static final int welcome_back_idp_button=0x7f090155;
-    public static final int welcome_back_idp_prompt=0x7f090156;
-    public static final int welcome_back_password_body=0x7f090157;
-    public static final int wide=0x7f090158;
-    public static final int withText=0x7f090159;
-    public static final int wrap=0x7f09015a;
-    public static final int wrap_content=0x7f09015b;
+    public static final int spinner2=0x7f090115;
+    public static final int spinnerTarget=0x7f090116;
+    public static final int split_action_bar=0x7f090117;
+    public static final int spread=0x7f090118;
+    public static final int spread_inside=0x7f090119;
+    public static final int src_atop=0x7f09011a;
+    public static final int src_in=0x7f09011b;
+    public static final int src_over=0x7f09011c;
+    public static final int standard=0x7f09011d;
+    public static final int start=0x7f09011e;
+    public static final int status_bar_latest_event_content=0x7f09011f;
+    public static final int stop=0x7f090120;
+    public static final int strict_sandbox=0x7f090121;
+    public static final int submenuarrow=0x7f090122;
+    public static final int submit_area=0x7f090123;
+    public static final int submit_confirmation_code=0x7f090124;
+    public static final int subtitle=0x7f090125;
+    public static final int tabMode=0x7f090126;
+    public static final int tag_transition_group=0x7f090127;
+    public static final int terrain=0x7f090128;
+    public static final int test=0x7f090129;
+    public static final int text=0x7f09012a;
+    public static final int text2=0x7f09012b;
+    public static final int textSpacerNoButtons=0x7f09012c;
+    public static final int textSpacerNoTitle=0x7f09012d;
+    public static final int textView=0x7f09012e;
+    public static final int textView2=0x7f09012f;
+    public static final int text_input_password_toggle=0x7f090130;
+    public static final int text_wrapper=0x7f090131;
+    public static final int textinput_counter=0x7f090132;
+    public static final int textinput_error=0x7f090133;
+    public static final int ticker=0x7f090134;
+    public static final int time=0x7f090135;
+    public static final int title=0x7f090136;
+    public static final int titleDividerNoCustom=0x7f090137;
+    public static final int title_bar=0x7f090138;
+    public static final int title_template=0x7f090139;
+    public static final int titulo=0x7f09013a;
+    public static final int toolbar=0x7f09013b;
+    public static final int top=0x7f09013c;
+    public static final int topPanel=0x7f09013d;
+    public static final int top_progress_bar=0x7f09013e;
+    public static final int touch_outside=0x7f09013f;
+    public static final int transition_current_scene=0x7f090140;
+    public static final int transition_layout_save=0x7f090141;
+    public static final int transition_position=0x7f090142;
+    public static final int transition_scene_layoutid_cache=0x7f090143;
+    public static final int transition_transform=0x7f090144;
+    public static final int trouble_signing_in=0x7f090145;
+    public static final int tv1=0x7f090146;
+    public static final int tv2=0x7f090147;
+    public static final int txtEmail=0x7f090148;
+    public static final int txtItemSpinner=0x7f090149;
+    public static final int txtLastName=0x7f09014a;
+    public static final int txtName=0x7f09014b;
+    public static final int txtPass=0x7f09014c;
+    public static final int txtPass2=0x7f09014d;
+    public static final int txtUser=0x7f09014e;
+    public static final int ultimas=0x7f09014f;
+    public static final int uniform=0x7f090150;
+    public static final int unknown=0x7f090151;
+    public static final int up=0x7f090152;
+    public static final int useLogo=0x7f090153;
+    public static final int view_offset_helper=0x7f090154;
+    public static final int visible=0x7f090155;
+    public static final int welcome_back_idp_button=0x7f090156;
+    public static final int welcome_back_idp_prompt=0x7f090157;
+    public static final int welcome_back_password_body=0x7f090158;
+    public static final int wide=0x7f090159;
+    public static final int withText=0x7f09015a;
+    public static final int wrap=0x7f09015b;
+    public static final int wrap_content=0x7f09015c;
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f0a0000;
@@ -5149,88 +5130,87 @@ public final class R {
     public static final int abc_search_view=0x7f0b0018;
     public static final int abc_select_dialog_material=0x7f0b0019;
     public static final int abc_tooltip=0x7f0b001a;
-    public static final int activity_firebase_example=0x7f0b001b;
-    public static final int activity_login__sing_up=0x7f0b001c;
-    public static final int activity_main=0x7f0b001d;
-    public static final int activity_pantalla_carga=0x7f0b001e;
-    public static final int app_bar_main=0x7f0b001f;
-    public static final int browser_actions_context_menu_page=0x7f0b0020;
-    public static final int browser_actions_context_menu_row=0x7f0b0021;
-    public static final int busqueda=0x7f0b0022;
-    public static final int com_facebook_activity_layout=0x7f0b0023;
-    public static final int com_facebook_device_auth_dialog_fragment=0x7f0b0024;
-    public static final int com_facebook_login_fragment=0x7f0b0025;
-    public static final int com_facebook_smart_device_dialog_fragment=0x7f0b0026;
-    public static final int com_facebook_tooltip_bubble=0x7f0b0027;
-    public static final int content_main=0x7f0b0028;
-    public static final int custom_infowindow=0x7f0b0029;
-    public static final int design_bottom_navigation_item=0x7f0b002a;
-    public static final int design_bottom_sheet_dialog=0x7f0b002b;
-    public static final int design_layout_snackbar=0x7f0b002c;
-    public static final int design_layout_snackbar_include=0x7f0b002d;
-    public static final int design_layout_tab_icon=0x7f0b002e;
-    public static final int design_layout_tab_text=0x7f0b002f;
-    public static final int design_menu_item_action_area=0x7f0b0030;
-    public static final int design_navigation_item=0x7f0b0031;
-    public static final int design_navigation_item_header=0x7f0b0032;
-    public static final int design_navigation_item_separator=0x7f0b0033;
-    public static final int design_navigation_item_subheader=0x7f0b0034;
-    public static final int design_navigation_menu=0x7f0b0035;
-    public static final int design_navigation_menu_item=0x7f0b0036;
-    public static final int design_text_input_password_icon=0x7f0b0037;
-    public static final int fragment_login=0x7f0b0038;
-    public static final int fragment_map=0x7f0b0039;
-    public static final int fragment_sign_up=0x7f0b003a;
-    public static final int fui_activity_invisible=0x7f0b003b;
-    public static final int fui_activity_register_email=0x7f0b003c;
-    public static final int fui_activity_register_phone=0x7f0b003d;
-    public static final int fui_auth_method_picker_layout=0x7f0b003e;
-    public static final int fui_check_email_layout=0x7f0b003f;
-    public static final int fui_confirmation_code_layout=0x7f0b0040;
-    public static final int fui_dgts_country_row=0x7f0b0041;
-    public static final int fui_forgot_password_layout=0x7f0b0042;
-    public static final int fui_idp_button_facebook=0x7f0b0043;
-    public static final int fui_idp_button_github=0x7f0b0044;
-    public static final int fui_idp_button_google=0x7f0b0045;
-    public static final int fui_idp_button_twitter=0x7f0b0046;
-    public static final int fui_phone_layout=0x7f0b0047;
-    public static final int fui_provider_button_email=0x7f0b0048;
-    public static final int fui_provider_button_phone=0x7f0b0049;
-    public static final int fui_register_email_layout=0x7f0b004a;
-    public static final int fui_welcome_back_idp_prompt_layout=0x7f0b004b;
-    public static final int fui_welcome_back_password_prompt_layout=0x7f0b004c;
-    public static final int messenger_button_send_blue_large=0x7f0b004d;
-    public static final int messenger_button_send_blue_round=0x7f0b004e;
-    public static final int messenger_button_send_blue_small=0x7f0b004f;
-    public static final int messenger_button_send_white_large=0x7f0b0050;
-    public static final int messenger_button_send_white_round=0x7f0b0051;
-    public static final int messenger_button_send_white_small=0x7f0b0052;
-    public static final int mr_media_route_chooser_dialog=0x7f0b0053;
-    public static final int mr_media_route_controller_material_dialog_b=0x7f0b0054;
-    public static final int mr_media_route_list_item=0x7f0b0055;
-    public static final int nav_header_main=0x7f0b0056;
-    public static final int notification_action=0x7f0b0057;
-    public static final int notification_action_tombstone=0x7f0b0058;
-    public static final int notification_media_action=0x7f0b0059;
-    public static final int notification_media_cancel_action=0x7f0b005a;
-    public static final int notification_template_big_media=0x7f0b005b;
-    public static final int notification_template_big_media_custom=0x7f0b005c;
-    public static final int notification_template_big_media_narrow=0x7f0b005d;
-    public static final int notification_template_big_media_narrow_custom=0x7f0b005e;
-    public static final int notification_template_custom_big=0x7f0b005f;
-    public static final int notification_template_icon_group=0x7f0b0060;
-    public static final int notification_template_lines_media=0x7f0b0061;
-    public static final int notification_template_media=0x7f0b0062;
-    public static final int notification_template_media_custom=0x7f0b0063;
-    public static final int notification_template_part_chronometer=0x7f0b0064;
-    public static final int notification_template_part_time=0x7f0b0065;
-    public static final int select_dialog_item_material=0x7f0b0066;
-    public static final int select_dialog_multichoice_material=0x7f0b0067;
-    public static final int select_dialog_singlechoice_material=0x7f0b0068;
-    public static final int spinner_layout=0x7f0b0069;
-    public static final int spinner_layout_signup=0x7f0b006a;
-    public static final int support_simple_spinner_dropdown_item=0x7f0b006b;
-    public static final int ultimas_busquedas=0x7f0b006c;
+    public static final int activity_login__sing_up=0x7f0b001b;
+    public static final int activity_main=0x7f0b001c;
+    public static final int activity_pantalla_carga=0x7f0b001d;
+    public static final int app_bar_main=0x7f0b001e;
+    public static final int browser_actions_context_menu_page=0x7f0b001f;
+    public static final int browser_actions_context_menu_row=0x7f0b0020;
+    public static final int busqueda=0x7f0b0021;
+    public static final int com_facebook_activity_layout=0x7f0b0022;
+    public static final int com_facebook_device_auth_dialog_fragment=0x7f0b0023;
+    public static final int com_facebook_login_fragment=0x7f0b0024;
+    public static final int com_facebook_smart_device_dialog_fragment=0x7f0b0025;
+    public static final int com_facebook_tooltip_bubble=0x7f0b0026;
+    public static final int content_main=0x7f0b0027;
+    public static final int custom_infowindow=0x7f0b0028;
+    public static final int design_bottom_navigation_item=0x7f0b0029;
+    public static final int design_bottom_sheet_dialog=0x7f0b002a;
+    public static final int design_layout_snackbar=0x7f0b002b;
+    public static final int design_layout_snackbar_include=0x7f0b002c;
+    public static final int design_layout_tab_icon=0x7f0b002d;
+    public static final int design_layout_tab_text=0x7f0b002e;
+    public static final int design_menu_item_action_area=0x7f0b002f;
+    public static final int design_navigation_item=0x7f0b0030;
+    public static final int design_navigation_item_header=0x7f0b0031;
+    public static final int design_navigation_item_separator=0x7f0b0032;
+    public static final int design_navigation_item_subheader=0x7f0b0033;
+    public static final int design_navigation_menu=0x7f0b0034;
+    public static final int design_navigation_menu_item=0x7f0b0035;
+    public static final int design_text_input_password_icon=0x7f0b0036;
+    public static final int fragment_login=0x7f0b0037;
+    public static final int fragment_map=0x7f0b0038;
+    public static final int fragment_sign_up=0x7f0b0039;
+    public static final int fui_activity_invisible=0x7f0b003a;
+    public static final int fui_activity_register_email=0x7f0b003b;
+    public static final int fui_activity_register_phone=0x7f0b003c;
+    public static final int fui_auth_method_picker_layout=0x7f0b003d;
+    public static final int fui_check_email_layout=0x7f0b003e;
+    public static final int fui_confirmation_code_layout=0x7f0b003f;
+    public static final int fui_dgts_country_row=0x7f0b0040;
+    public static final int fui_forgot_password_layout=0x7f0b0041;
+    public static final int fui_idp_button_facebook=0x7f0b0042;
+    public static final int fui_idp_button_github=0x7f0b0043;
+    public static final int fui_idp_button_google=0x7f0b0044;
+    public static final int fui_idp_button_twitter=0x7f0b0045;
+    public static final int fui_phone_layout=0x7f0b0046;
+    public static final int fui_provider_button_email=0x7f0b0047;
+    public static final int fui_provider_button_phone=0x7f0b0048;
+    public static final int fui_register_email_layout=0x7f0b0049;
+    public static final int fui_welcome_back_idp_prompt_layout=0x7f0b004a;
+    public static final int fui_welcome_back_password_prompt_layout=0x7f0b004b;
+    public static final int messenger_button_send_blue_large=0x7f0b004c;
+    public static final int messenger_button_send_blue_round=0x7f0b004d;
+    public static final int messenger_button_send_blue_small=0x7f0b004e;
+    public static final int messenger_button_send_white_large=0x7f0b004f;
+    public static final int messenger_button_send_white_round=0x7f0b0050;
+    public static final int messenger_button_send_white_small=0x7f0b0051;
+    public static final int mr_media_route_chooser_dialog=0x7f0b0052;
+    public static final int mr_media_route_controller_material_dialog_b=0x7f0b0053;
+    public static final int mr_media_route_list_item=0x7f0b0054;
+    public static final int nav_header_main=0x7f0b0055;
+    public static final int notification_action=0x7f0b0056;
+    public static final int notification_action_tombstone=0x7f0b0057;
+    public static final int notification_media_action=0x7f0b0058;
+    public static final int notification_media_cancel_action=0x7f0b0059;
+    public static final int notification_template_big_media=0x7f0b005a;
+    public static final int notification_template_big_media_custom=0x7f0b005b;
+    public static final int notification_template_big_media_narrow=0x7f0b005c;
+    public static final int notification_template_big_media_narrow_custom=0x7f0b005d;
+    public static final int notification_template_custom_big=0x7f0b005e;
+    public static final int notification_template_icon_group=0x7f0b005f;
+    public static final int notification_template_lines_media=0x7f0b0060;
+    public static final int notification_template_media=0x7f0b0061;
+    public static final int notification_template_media_custom=0x7f0b0062;
+    public static final int notification_template_part_chronometer=0x7f0b0063;
+    public static final int notification_template_part_time=0x7f0b0064;
+    public static final int select_dialog_item_material=0x7f0b0065;
+    public static final int select_dialog_multichoice_material=0x7f0b0066;
+    public static final int select_dialog_singlechoice_material=0x7f0b0067;
+    public static final int spinner_layout=0x7f0b0068;
+    public static final int spinner_layout_signup=0x7f0b0069;
+    public static final int support_simple_spinner_dropdown_item=0x7f0b006a;
+    public static final int ultimas_busquedas=0x7f0b006b;
   }
   public static final class menu {
     public static final int activity_main_drawer=0x7f0c0000;
@@ -6581,9 +6561,9 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #AdsAttrs_adSize eric.tpfinal:adSize}</code></td><td>The size of the ad.</td></tr>
-     * <tr><td><code>{@link #AdsAttrs_adSizes eric.tpfinal:adSizes}</code></td><td>A comma-separated list of the supported ad sizes.</td></tr>
-     * <tr><td><code>{@link #AdsAttrs_adUnitId eric.tpfinal:adUnitId}</code></td><td>The ad unit ID.</td></tr>
+     * <tr><td><code>{@link #AdsAttrs_adSize eric.tpfinal:adSize}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AdsAttrs_adSizes eric.tpfinal:adSizes}</code></td><td></td></tr>
+     * <tr><td><code>{@link #AdsAttrs_adUnitId eric.tpfinal:adUnitId}</code></td><td></td></tr>
      * </table>
      * @see #AdsAttrs_adSize
      * @see #AdsAttrs_adSizes
@@ -6593,11 +6573,8 @@ public final class R {
       0x7f040022, 0x7f040023, 0x7f040024
     };
     /**
-     * <p>
-     * @attr description
-     * The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
-     * MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
-     * &lt;width&gt;x&lt;height&gt;.
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#adSize}
+     * attribute's value can be found in the {@link #AdsAttrs} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
@@ -6606,11 +6583,8 @@ public final class R {
      */
     public static final int AdsAttrs_adSize=0;
     /**
-     * <p>
-     * @attr description
-     * A comma-separated list of the supported ad sizes. The sizes must be one of
-     * BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
-     * WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#adSizes}
+     * attribute's value can be found in the {@link #AdsAttrs} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
@@ -6619,9 +6593,8 @@ public final class R {
      */
     public static final int AdsAttrs_adSizes=1;
     /**
-     * <p>
-     * @attr description
-     * The ad unit ID.
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#adUnitId}
+     * attribute's value can be found in the {@link #AdsAttrs} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
@@ -10928,7 +10901,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td>direct, barriers, chains</td></tr>
+     * <tr><td>direct</td><td>1</td><td></td></tr>
      * <tr><td>groups</td><td>20</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>7</td><td></td></tr>
@@ -12508,7 +12481,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CustomWalletTheme_windowTransitionStyle eric.tpfinal:windowTransitionStyle}</code></td><td>Defines the set of transition to be used between activities</td></tr>
+     * <tr><td><code>{@link #CustomWalletTheme_windowTransitionStyle eric.tpfinal:windowTransitionStyle}</code></td><td></td></tr>
      * </table>
      * @see #CustomWalletTheme_windowTransitionStyle
      */
@@ -12516,9 +12489,8 @@ public final class R {
       0x7f0401fe
     };
     /**
-     * <p>
-     * @attr description
-     * Defines the set of transition to be used between activities
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#windowTransitionStyle}
+     * attribute's value can be found in the {@link #CustomWalletTheme} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17604,10 +17576,10 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_appTheme eric.tpfinal:appTheme}</code></td><td>Theme to be used for the Wallet selector</td></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_environment eric.tpfinal:environment}</code></td><td>Google Wallet environment to use</td></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_fragmentMode eric.tpfinal:fragmentMode}</code></td><td>Fragment mode</td></tr>
-     * <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle eric.tpfinal:fragmentStyle}</code></td><td>A style resource specifing attributes to customize the look and feel of WalletFragment</td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_appTheme eric.tpfinal:appTheme}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_environment eric.tpfinal:environment}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_fragmentMode eric.tpfinal:fragmentMode}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle eric.tpfinal:fragmentStyle}</code></td><td></td></tr>
      * </table>
      * @see #WalletFragmentOptions_appTheme
      * @see #WalletFragmentOptions_environment
@@ -17618,9 +17590,8 @@ public final class R {
       0x7f04002c, 0x7f0400b2, 0x7f0400d1, 0x7f0400d2
     };
     /**
-     * <p>
-     * @attr description
-     * Theme to be used for the Wallet selector
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#appTheme}
+     * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17636,9 +17607,8 @@ public final class R {
      */
     public static final int WalletFragmentOptions_appTheme=0;
     /**
-     * <p>
-     * @attr description
-     * Google Wallet environment to use
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#environment}
+     * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17656,9 +17626,8 @@ public final class R {
      */
     public static final int WalletFragmentOptions_environment=1;
     /**
-     * <p>
-     * @attr description
-     * Fragment mode
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#fragmentMode}
+     * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17674,9 +17643,8 @@ public final class R {
      */
     public static final int WalletFragmentOptions_fragmentMode=2;
     /**
-     * <p>
-     * @attr description
-     * A style resource specifing attributes to customize the look and feel of WalletFragment
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#fragmentStyle}
+     * attribute's value can be found in the {@link #WalletFragmentOptions} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -17693,17 +17661,17 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance eric.tpfinal:buyButtonAppearance}</code></td><td>The appearance of the buy button</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight eric.tpfinal:buyButtonHeight}</code></td><td>Height of the buy button.</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonText eric.tpfinal:buyButtonText}</code></td><td>The text on the buy button</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth eric.tpfinal:buyButtonWidth}</code></td><td>Width of the buy button.</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground eric.tpfinal:maskedWalletDetailsBackground}</code></td><td>Masked wallet details background</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground eric.tpfinal:maskedWalletDetailsButtonBackground}</code></td><td>"Change" button background in masked wallet details view</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance eric.tpfinal:maskedWalletDetailsButtonTextAppearance}</code></td><td>TextAppearance for the "Change" button in masked wallet details view</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance eric.tpfinal:maskedWalletDetailsHeaderTextAppearance}</code></td><td>TextAppearance for headers describing masked wallet details</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType eric.tpfinal:maskedWalletDetailsLogoImageType}</code></td><td>Type of the wallet logo image in masked wallet details view</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor eric.tpfinal:maskedWalletDetailsLogoTextColor}</code></td><td>Color of the Google Wallet logo text in masked wallet details view</td></tr>
-     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance eric.tpfinal:maskedWalletDetailsTextAppearance}</code></td><td>TextAppearance for masked wallet details</td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance eric.tpfinal:buyButtonAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight eric.tpfinal:buyButtonHeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonText eric.tpfinal:buyButtonText}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth eric.tpfinal:buyButtonWidth}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground eric.tpfinal:maskedWalletDetailsBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground eric.tpfinal:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance eric.tpfinal:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance eric.tpfinal:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType eric.tpfinal:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor eric.tpfinal:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance eric.tpfinal:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
      * </table>
      * @see #WalletFragmentStyle_buyButtonAppearance
      * @see #WalletFragmentStyle_buyButtonHeight
@@ -17723,9 +17691,8 @@ public final class R {
       0x7f04014b, 0x7f04014c, 0x7f04014d
     };
     /**
-     * <p>
-     * @attr description
-     * The appearance of the buy button
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#buyButtonAppearance}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17733,7 +17700,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>classic</td><td>1</td><td>Deprecated values</td></tr>
+     * <tr><td>classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_grayscale</td><td>2</td><td></td></tr>
      * <tr><td>google_wallet_monochrome</td><td>3</td><td></td></tr>
@@ -17745,11 +17712,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_buyButtonAppearance=0;
     /**
-     * <p>
-     * @attr description
-     * Height of the buy button. This includes an 8dp padding (4dp on each side) used for
-     * pressed and focused states of the button. The value can be a specific height, e.g.
-     * "48dp", or special values "match_parent" and "wrap_content".
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#buyButtonHeight}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -17770,9 +17734,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_buyButtonHeight=1;
     /**
-     * <p>
-     * @attr description
-     * The text on the buy button
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#buyButtonText}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17783,7 +17746,7 @@ public final class R {
      * <tr><td>book_now</td><td>3</td><td></td></tr>
      * <tr><td>buy_now</td><td>2</td><td></td></tr>
      * <tr><td>buy_with</td><td>5</td><td></td></tr>
-     * <tr><td>buy_with_google</td><td>1</td><td>Deprecated values</td></tr>
+     * <tr><td>buy_with_google</td><td>1</td><td></td></tr>
      * <tr><td>donate_with</td><td>7</td><td></td></tr>
      * <tr><td>donate_with_google</td><td>4</td><td></td></tr>
      * <tr><td>logo_only</td><td>6</td><td></td></tr>
@@ -17793,11 +17756,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_buyButtonText=2;
     /**
-     * <p>
-     * @attr description
-     * Width of the buy button. This includes an 8dp padding (4dp on each side) used for
-     * pressed and focused states of the button. The value can be a specific width, e.g.
-     * "300dp", or special values "match_parent" and "wrap_content".
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#buyButtonWidth}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -17818,9 +17778,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_buyButtonWidth=3;
     /**
-     * <p>
-     * @attr description
-     * Masked wallet details background
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsBackground}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -17834,9 +17793,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsBackground=4;
     /**
-     * <p>
-     * @attr description
-     * "Change" button background in masked wallet details view
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsButtonBackground}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -17850,9 +17808,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsButtonBackground=5;
     /**
-     * <p>
-     * @attr description
-     * TextAppearance for the "Change" button in masked wallet details view
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsButtonTextAppearance}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -17863,9 +17820,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance=6;
     /**
-     * <p>
-     * @attr description
-     * TextAppearance for headers describing masked wallet details
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsHeaderTextAppearance}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
@@ -17876,9 +17832,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance=7;
     /**
-     * <p>
-     * @attr description
-     * Type of the wallet logo image in masked wallet details view
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsLogoImageType}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -17886,7 +17841,7 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>classic</td><td>1</td><td>Deprecated values</td></tr>
+     * <tr><td>classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_classic</td><td>1</td><td></td></tr>
      * <tr><td>google_wallet_monochrome</td><td>2</td><td></td></tr>
      * <tr><td>monochrome</td><td>2</td><td></td></tr>
@@ -17896,9 +17851,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsLogoImageType=8;
     /**
-     * <p>
-     * @attr description
-     * Color of the Google Wallet logo text in masked wallet details view
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsLogoTextColor}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
@@ -17908,9 +17862,8 @@ public final class R {
      */
     public static final int WalletFragmentStyle_maskedWalletDetailsLogoTextColor=9;
     /**
-     * <p>
-     * @attr description
-     * TextAppearance for masked wallet details
+     * <p>This symbol is the offset where the {@link eric.tpfinal.R.attr#maskedWalletDetailsTextAppearance}
+     * attribute's value can be found in the {@link #WalletFragmentStyle} array.
      *
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme

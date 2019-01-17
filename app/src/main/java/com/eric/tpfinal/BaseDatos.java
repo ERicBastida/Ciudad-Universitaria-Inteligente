@@ -11,7 +11,8 @@ import android.util.Log;
  */
 public class BaseDatos extends SQLiteOpenHelper {
 
-    private String STRING_MENSAJE = "BaseDatos/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+
+    private LogginCUI log = new LogginCUI();
 
     public BaseDatos(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -32,15 +33,13 @@ public class BaseDatos extends SQLiteOpenHelper {
 
             //Se crea la nueva versión de las tablas
             cargaDB(sqLiteDatabase);
+
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onUpgrade",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
-
+            log.registrar(this,"onUpgrade",e);
         }
     }
 
-    public void cargaDB(SQLiteDatabase sqLiteDatabase){
+    public void cargaDB(SQLiteDatabase sqLiteDatabase) {
         try {
             //Creo las tablas
             sqLiteDatabase.execSQL("CREATE TABLE Busquedas (nombre TEXT, edificio TEXT)");
@@ -289,7 +288,7 @@ public class BaseDatos extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL("INSERT INTO Conexiones (idDesde, idHasta) VALUES (" + 38 + "," + 34 + ")");
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cargaDB",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"cargaDB",e);
             throw e;
 
         }

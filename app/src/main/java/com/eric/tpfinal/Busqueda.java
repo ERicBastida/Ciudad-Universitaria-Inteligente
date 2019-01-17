@@ -23,7 +23,7 @@ import java.util.Vector;
  */
 public class Busqueda extends Fragment {
 
-    private String STRING_MENSAJE = "Busqueda/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    LogginCUI log = new LogginCUI();
 
 
     private Spinner spinnerBusqueda = null;
@@ -48,8 +48,11 @@ public class Busqueda extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        final View rootView = inflater.inflate(R.layout.busqueda, container, false);
+
         try {
-            final View rootView = inflater.inflate(R.layout.busqueda, container, false);
+
 
             spinnerBusqueda = (Spinner) rootView.findViewById(R.id.busquedaSpinner);
             botonBusqueda = (Button) rootView.findViewById(R.id.boton_busqueda);
@@ -226,13 +229,13 @@ public class Busqueda extends Fragment {
                     }
                 }
             });
-            return rootView;
-        }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onCreateView",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+        }catch (Exception e){
+            log.registrar(this,"onCreateView",e);
+            log.alertar("Ocurrió un error al momento de cargar el fragment Busqueda.",getActivity());
 
         }
+        return rootView;
 
     }
 

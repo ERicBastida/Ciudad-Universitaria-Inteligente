@@ -18,6 +18,7 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     LayoutInflater inflater;
     Activity actividad;
 
+
     LogginCUI log = new LogginCUI();
 
     public SpinnerAdapter(Activity context, int groupid, int id, ArrayList<ItemData>  list){
@@ -35,11 +36,11 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
         try {
             ImageView imageView = (ImageView) itemView.findViewById(R.id.imgItemSpinner);
             imageView.setImageResource(list.get(position).getImageId());
-            //        TextView textView=(TextView)itemView.findViewById(R.id.txtItemSpinner);
-            TextView textView = (TextView) itemView.findViewById(R.id.adjust_width);
+            TextView textView = (TextView)itemView.findViewById(R.id.txtItemSpinner);
+//      Error hecho a proposito para probar el loggin
+//            TextView textView = (TextView) itemView.findViewById(R.id.adjust_width);
             textView.setText(list.get(position).getText());
         }catch (Exception e){
-
             log.registrar(this,"getView",e);
             log.alertar("Ha ocurrido un error en la funcion getView",actividad);
 

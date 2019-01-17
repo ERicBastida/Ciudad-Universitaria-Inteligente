@@ -12,12 +12,12 @@ import java.util.Map;
  */
 public class HashMaps {
 
-    private String STRING_MENSAJE = "HashMaps/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    private LogginCUI log = new LogginCUI();
 
     private Map<String, LatLngBounds> hashMapBounds = new HashMap<>();  //hashMap con el nombre del edificio y los limites del mismo
     private Map<String, Integer> hashMapID = new HashMap<>(); //hashMap con el nombre del edificio y el plano del mismo
 
-    public HashMaps(){
+    public HashMaps() {
         try {
             //Edificio 0 - FICH/FCBC
             hashMapBounds.put("ed0_0", new LatLngBounds(new LatLng(-31.640064, -60.673090), new LatLng(-31.639671, -60.671973)));
@@ -40,7 +40,7 @@ public class HashMaps {
 
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"HashMaps",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"HashMaps",e);
             throw e;
 
         }

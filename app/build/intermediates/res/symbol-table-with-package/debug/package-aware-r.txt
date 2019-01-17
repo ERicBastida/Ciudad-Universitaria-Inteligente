@@ -674,6 +674,7 @@ color primary_text_disabled_material_light
 color qrboton
 color ripple_material_dark
 color ripple_material_light
+color rojo
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
@@ -1043,6 +1044,7 @@ drawable ed0_0
 drawable ed0_1
 drawable ed0_2
 drawable ed0_3
+drawable facebook_icon
 drawable fui_ic_facebook_white_22dp
 drawable fui_ic_github_white_24dp
 drawable fui_ic_googleg_color_24dp
@@ -1055,6 +1057,7 @@ drawable fui_idp_button_background_github
 drawable fui_idp_button_background_google
 drawable fui_idp_button_background_phone
 drawable fui_idp_button_background_twitter
+drawable google_icon
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable header_new_user
@@ -1133,7 +1136,11 @@ drawable qrfab
 drawable side_nav_bar
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable triangle_icon
+drawable twitter_icon
+drawable unl_icon
 drawable unl_logo
+drawable unl_logo_shadow
 id ALT
 id CTRL
 id FUNCTION
@@ -1411,6 +1418,7 @@ id snackbar_text
 id snap
 id spacer
 id spinner
+id spinner2
 id spinnerTarget
 id split_action_bar
 id spread
@@ -1521,7 +1529,6 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_firebase_example
 layout activity_login__sing_up
 layout activity_main
 layout activity_pantalla_carga
