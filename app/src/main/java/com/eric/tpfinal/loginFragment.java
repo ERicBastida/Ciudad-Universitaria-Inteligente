@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -17,11 +16,23 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
-public class loginFragment extends Fragment  implements AdapterView.OnItemClickListener
+public class loginFragment extends Fragment
 {
 
     private String BD_NAME = "login_bd";
@@ -33,6 +44,8 @@ public class loginFragment extends Fragment  implements AdapterView.OnItemClickL
     private signUpFragment signUp;
     private OnFragmentInteractionListener mListener;
     private LogginCUI log  = new LogginCUI();
+    private static final int RC_SIGN_IN = 123;
+
 
 
 
@@ -42,6 +55,102 @@ public class loginFragment extends Fragment  implements AdapterView.OnItemClickL
         // Required empty public constructor
     }
 
+    public void createSignInIntent() {
+        // [START auth_fui_create_intent]
+        // Choose authentication providers
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+//                new AuthUI.IdpConfig.EmailBuilder().build(),
+//                new AuthUI.IdpConfig.PhoneBuilder().build(),
+//                new AuthUI.IdpConfig.GoogleBuilder().build(),
+                new AuthUI.IdpConfig.FacebookBuilder().build()
+//                new AuthUI.IdpConfig.TwitterBuilder().build());
+        );
+
+        // Create and launch sign-in intent
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .build(),
+                RC_SIGN_IN);
+        // [END auth_fui_create_intent]
+    }
+
+    public void signOut() {
+        // [START auth_fui_signout]
+        AuthUI.getInstance()
+                .signOut(getActivity())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                    }
+                });
+        // [END auth_fui_signout]
+    }
+
+    public void delete() {
+        // [START auth_fui_delete]
+        AuthUI.getInstance()
+                .delete(getActivity())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                    }
+                });
+        // [END auth_fui_delete]
+    }
+
+    public void themeAndLogo() {
+        List<AuthUI.IdpConfig> providers = Collections.emptyList();
+
+        // [START auth_fui_theme_logo]
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .setLogo(R.drawable.my_great_logo)      // Set logo drawable
+                        .setTheme(R.style.MySuperAppTheme)      // Set theme
+                        .build(),
+                RC_SIGN_IN);
+        // [END auth_fui_theme_logo]
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            if (resultCode == getActivity().RESULT_OK) {
+                // Successfully signed in
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Toast.makeText(getActivity(),"Iniciaste sesion " + user.getDisplayName(),Toast.LENGTH_SHORT).show();
+
+                // ...
+            } else {
+                Toast.makeText(getActivity(),"Fallaste",Toast.LENGTH_SHORT).show();
+                // Sign in failed. If response is null the user canceled the
+                // sign-in flow using the back button. Otherwise check
+                // response.getError().getErrorCode() and handle the error.
+                // ...
+            }
+        }
+    }
+    public void privacyAndTerms() {
+        List<AuthUI.IdpConfig> providers = Collections.emptyList();
+        // [START auth_fui_pp_tos]
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .setTosAndPrivacyPolicyUrls(
+                                "https://example.com/terms.html",
+                                "https://example.com/privacy.html")
+                        .build(),
+                RC_SIGN_IN);
+        // [END auth_fui_pp_tos]
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -140,6 +249,11 @@ public class loginFragment extends Fragment  implements AdapterView.OnItemClickL
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     TextView texto = view.findViewById(R.id.txtItemSpinner);
+                    //Iniciar sesion con Facebook
+                    if (position == 1){
+
+                            createSignInIntent();
+                        }
                     Toast.makeText(getActivity(),"Tocaste " + Integer.toString(position) + ": " + texto.getText(),Toast.LENGTH_SHORT).show();
                 }
 
@@ -191,13 +305,11 @@ public class loginFragment extends Fragment  implements AdapterView.OnItemClickL
         super.onDetach();
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(getActivity(),"Tocaste " + Integer.toString(i),Toast.LENGTH_LONG).show();
-    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

@@ -249,6 +249,28 @@
             ]
         },
         {
+            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\values-ml-rIN_values-ml-rIN.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\0910dd0075c762ca3780176ea2356b8f\\res\\values-ml-rIN\\values-ml-rIN.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "297,415,533,652,760,848",
+                        "endColumns": "117,117,118,107,87,95",
+                        "endOffsets": "410,528,647,755,843,939"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,173,291,410,518,606",
+                        "endColumns": "117,117,118,107,87,95",
+                        "endOffsets": "168,286,405,513,601,697"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\values-ml_values-ml.arsc.flat",
             "map": [
                 {
@@ -334,28 +356,6 @@
                         "startOffsets": "1922,2087,2231,2374,2486,2575,2669,2752,2845,2942,3060,3181,3281,3381,3495,3622,3707,3792,3991,4093,4199,4317,4427",
                         "endColumns": "164,143,142,111,88,93,82,92,96,117,120,99,99,113,126,84,84,198,101,105,117,109,178",
                         "endOffsets": "2082,2226,2369,2481,2570,2664,2747,2840,2937,3055,3176,3276,3376,3490,3617,3702,3787,3986,4088,4194,4312,4422,4601"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\res\\merged\\debug\\values-ml-rIN_values-ml-rIN.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\0910dd0075c762ca3780176ea2356b8f\\res\\values-ml-rIN\\values-ml-rIN.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "297,415,533,652,760,848",
-                        "endColumns": "117,117,118,107,87,95",
-                        "endOffsets": "410,528,647,755,843,939"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,173,291,410,518,606",
-                        "endColumns": "117,117,118,107,87,95",
-                        "endOffsets": "168,286,405,513,601,697"
                     }
                 }
             ]

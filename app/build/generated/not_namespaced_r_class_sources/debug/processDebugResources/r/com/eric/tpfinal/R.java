@@ -4731,11 +4731,9 @@ public final class R {
     public static final int side_nav_bar=0x7f0800f2;
     public static final int tooltip_frame_dark=0x7f0800f3;
     public static final int tooltip_frame_light=0x7f0800f4;
-    public static final int triangle_icon=0x7f0800f5;
-    public static final int twitter_icon=0x7f0800f6;
-    public static final int unl_icon=0x7f0800f7;
-    public static final int unl_logo=0x7f0800f8;
-    public static final int unl_logo_shadow=0x7f0800f9;
+    public static final int twitter_icon=0x7f0800f5;
+    public static final int unl_icon=0x7f0800f6;
+    public static final int unl_logo=0x7f0800f7;
   }
   public static final class id {
     public static final int ALT=0x7f090000;

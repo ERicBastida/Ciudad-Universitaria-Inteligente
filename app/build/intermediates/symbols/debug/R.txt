@@ -1135,11 +1135,9 @@ int drawable qrfab 0x7f0800f1
 int drawable side_nav_bar 0x7f0800f2
 int drawable tooltip_frame_dark 0x7f0800f3
 int drawable tooltip_frame_light 0x7f0800f4
-int drawable triangle_icon 0x7f0800f5
-int drawable twitter_icon 0x7f0800f6
-int drawable unl_icon 0x7f0800f7
-int drawable unl_logo 0x7f0800f8
-int drawable unl_logo_shadow 0x7f0800f9
+int drawable twitter_icon 0x7f0800f5
+int drawable unl_icon 0x7f0800f6
+int drawable unl_logo 0x7f0800f7
 int id ALT 0x7f090000
 int id CTRL 0x7f090001
 int id FUNCTION 0x7f090002
