@@ -541,7 +541,7 @@ public class IntentIntegrator {
         return null;
     }
 
-    private static List<String> list(String... values) {
+    static List<String> list(String... values) {
         return Collections.unmodifiableList(Arrays.asList(values));
     }
 

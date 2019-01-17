@@ -39,7 +39,7 @@ public class PantallaCarga extends AppCompatActivity {
 
     private Handler mWaitHandler = new Handler();
 
-    private Collection<String> PERMISOS = list(Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS, Manifest.permission.ACCESS_COARSE_LOCATION);
+    private Collection<String> PERMISOS = (Collection<String>) list(Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS, Manifest.permission.ACCESS_COARSE_LOCATION);
 
 
 
@@ -131,7 +131,8 @@ public class PantallaCarga extends AppCompatActivity {
             if(habilitados == PERMISOS.size()){
 
                 //Nos vamos a iniciar la actividad encargada del inicio de sesion.
-                Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
+                Intent intent = new Intent(getApplicationContext(), FirebaseExample.class);
+//                Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
                 startActivity(intent);
 
                 finish();

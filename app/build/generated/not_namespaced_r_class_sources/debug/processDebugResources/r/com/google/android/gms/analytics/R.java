@@ -83,8 +83,8 @@ public final class R {
         public static final int ic_plusone_small_off_client = 0x7f0800c3;
         public static final int ic_plusone_standard_off_client = 0x7f0800c4;
         public static final int ic_plusone_tall_off_client = 0x7f0800c5;
-        public static final int powered_by_google_dark = 0x7f0800ec;
-        public static final int powered_by_google_light = 0x7f0800ed;
+        public static final int powered_by_google_dark = 0x7f0800ed;
+        public static final int powered_by_google_light = 0x7f0800ee;
     }
     public static final class id {
         private id() {}
@@ -107,20 +107,20 @@ public final class R {
         public static final int holo_dark = 0x7f090096;
         public static final int holo_light = 0x7f090097;
         public static final int hybrid = 0x7f09009b;
-        public static final int logo_only = 0x7f0900b2;
-        public static final int match_parent = 0x7f0900b8;
-        public static final int monochrome = 0x7f0900c2;
-        public static final int none = 0x7f0900cc;
-        public static final int normal = 0x7f0900cd;
-        public static final int production = 0x7f0900e0;
-        public static final int sandbox = 0x7f0900ee;
-        public static final int satellite = 0x7f0900ef;
-        public static final int selectionDetails = 0x7f090104;
-        public static final int slide = 0x7f09010c;
-        public static final int strict_sandbox = 0x7f09011f;
-        public static final int terrain = 0x7f090126;
-        public static final int test = 0x7f090127;
-        public static final int wrap_content = 0x7f090159;
+        public static final int logo_only = 0x7f0900b3;
+        public static final int match_parent = 0x7f0900b9;
+        public static final int monochrome = 0x7f0900c3;
+        public static final int none = 0x7f0900cd;
+        public static final int normal = 0x7f0900ce;
+        public static final int production = 0x7f0900e1;
+        public static final int sandbox = 0x7f0900ef;
+        public static final int satellite = 0x7f0900f0;
+        public static final int selectionDetails = 0x7f090105;
+        public static final int slide = 0x7f09010d;
+        public static final int strict_sandbox = 0x7f090120;
+        public static final int terrain = 0x7f090127;
+        public static final int test = 0x7f090128;
+        public static final int wrap_content = 0x7f09015b;
     }
     public static final class integer {
         private integer() {}
@@ -164,11 +164,11 @@ public final class R {
     public static final class style {
         private style() {}
 
-        public static final int Theme_IAPTheme = 0x7f11015d;
-        public static final int WalletFragmentDefaultButtonTextAppearance = 0x7f110167;
-        public static final int WalletFragmentDefaultDetailsHeaderTextAppearance = 0x7f110168;
-        public static final int WalletFragmentDefaultDetailsTextAppearance = 0x7f110169;
-        public static final int WalletFragmentDefaultStyle = 0x7f11016a;
+        public static final int Theme_IAPTheme = 0x7f11015e;
+        public static final int WalletFragmentDefaultButtonTextAppearance = 0x7f110168;
+        public static final int WalletFragmentDefaultDetailsHeaderTextAppearance = 0x7f110169;
+        public static final int WalletFragmentDefaultDetailsTextAppearance = 0x7f11016a;
+        public static final int WalletFragmentDefaultStyle = 0x7f11016b;
     }
     public static final class styleable {
         private styleable() {}

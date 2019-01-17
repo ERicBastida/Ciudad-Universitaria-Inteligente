@@ -1112,6 +1112,7 @@ drawable mr_ic_play_dark
 drawable mr_ic_play_light
 drawable mr_ic_settings_dark
 drawable mr_ic_settings_light
+drawable my_great_logo
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -1295,6 +1296,7 @@ id icon_only
 id ifRoom
 id image
 id imageView
+id imgItemSpinner
 id info
 id inline
 id invisible
@@ -1460,6 +1462,7 @@ id trouble_signing_in
 id tv1
 id tv2
 id txtEmail
+id txtItemSpinner
 id txtLastName
 id txtName
 id txtPass
@@ -1518,6 +1521,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_firebase_example
 layout activity_login__sing_up
 layout activity_main
 layout activity_pantalla_carga
@@ -1596,6 +1600,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout spinner_layout
+layout spinner_layout_signup
 layout support_simple_spinner_dropdown_item
 layout ultimas_busquedas
 menu activity_main_drawer
@@ -2025,6 +2030,7 @@ style MessengerButtonText_Blue_Small
 style MessengerButtonText_White
 style MessengerButtonText_White_Large
 style MessengerButtonText_White_Small
+style MySuperAppTheme
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_ThemeOverlay_AppCompat
