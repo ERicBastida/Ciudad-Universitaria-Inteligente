@@ -122,6 +122,14 @@ attr chainUseRtl
 attr checkboxStyle
 attr checkedTextViewStyle
 attr circleCrop
+attr civ_background_color
+attr civ_border
+attr civ_border_color
+attr civ_border_width
+attr civ_shadow
+attr civ_shadow_color
+attr civ_shadow_gravity
+attr civ_shadow_radius
 attr closeIcon
 attr closeItemLayout
 attr collapseContentDescription
@@ -1060,6 +1068,7 @@ drawable fui_idp_button_background_twitter
 drawable google_icon
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable gradient_color
 drawable header_new_user
 drawable ic_cast_dark
 drawable ic_cast_disabled_light
@@ -1220,6 +1229,7 @@ id circular
 id classic
 id clip_horizontal
 id clip_vertical
+id close
 id collapseActionView
 id com_facebook_body_frame
 id com_facebook_button_xout
@@ -1276,10 +1286,12 @@ id fill
 id fill_horizontal
 id fill_vertical
 id fixed
+id floatingActionButton2
 id forever
 id fragment_container
 id fragment_phone
 id fragment_register_email
+id frameLayout
 id ghost_view
 id gone
 id google_wallet_classic
@@ -1302,6 +1314,7 @@ id ifRoom
 id image
 id imageView
 id imgItemSpinner
+id imgLogoUNL
 id info
 id inline
 id invisible
@@ -1479,6 +1492,7 @@ id uniform
 id unknown
 id up
 id useLogo
+id usuario
 id view_offset_helper
 id visible
 id welcome_back_idp_button
@@ -1558,6 +1572,7 @@ layout design_text_input_password_icon
 layout fragment_login
 layout fragment_map
 layout fragment_sign_up
+layout fragment_user
 layout fui_activity_invisible
 layout fui_activity_register_email
 layout fui_activity_register_phone
@@ -1804,6 +1819,7 @@ string store_picture_title
 string title_activity_pantalla_carga
 string twitter_consumer_key
 string twitter_consumer_secret
+string universidad
 string wallet_buy_button_place_holder
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -2296,6 +2312,7 @@ styleable BottomSheetBehavior_Layout behavior_hideable behavior_peekHeight behav
 styleable ButtonBarContainerTheme metaButtonBarButtonStyle metaButtonBarStyle
 styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
+styleable CircularImageView civ_background_color civ_border civ_border_color civ_border_width civ_shadow civ_shadow_color civ_shadow_gravity civ_shadow_radius
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha

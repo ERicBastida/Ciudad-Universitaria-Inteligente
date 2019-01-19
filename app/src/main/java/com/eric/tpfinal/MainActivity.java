@@ -27,7 +27,7 @@ import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String STRING_MENSAJE = "ultimasBusquedas/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+
     private LogginCUI log = new LogginCUI();
 
     /* Atributos de la clase*/
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Menu menu = null;
     private BaseDatos CUdb = null;
     private boolean inicio = false;
+    private usuarioFragment usuario = null;
 
     private int codigo_solicitud_pantalla_inicio = 1;
     /*Funciones*/
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mapsFragment = new MapsFragment();
             ultimasBusquedas = new ultimasBusquedas();
             ultimasBusquedas.setMainActivity(this);
+            usuario = new usuarioFragment();
 
 
             //Agrego Nodos a mi vector de nodos en oArmaCamino
@@ -94,12 +96,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Cambio el fragment por defecto por mi mapFragment
             fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
 
+            
+
 
 
 
         }catch (Exception e) {
 
-            alert_info("Error al crear la actividad. \n"+ e.getMessage(),"Error");
+            log.registrar(this,"onCreateView",e);
+            log.alertar("Ocurrió un error al momento de inicializar la actividad principal.",this);
         }
 
     }
@@ -107,19 +112,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 1) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Permission Granted
-                //Do your work here
-                //Perform operations here only which requires permission
-                alert_info("Si tengo permisos","jaja");
+        try {
+            if (requestCode == 1) {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Permission Granted
+                    //Do your work here
+                    //Perform operations here only which requires permission
+                    alert_info("Si tengo permisos", "jaja");
 
-            }else {
-                alert_info("No tengo permisos","jaja");
+                } else {
+                    alert_info("No tengo permisos", "jaja");
+                }
+
+            } else {
+                alert_info("No tengo permisos", "jaja");
             }
-
-        }else{
-            alert_info("No tengo permisos","jaja");
+        }catch (Exception e ){
+            log.registrar(this,"onRequestPermissionsResult",e);
+            log.alertar("Ocurrió un error al momento de consultar los permisos.",this);
         }
 
     }
@@ -165,8 +175,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
-            alert_info("Error al cargar la pantalla anterior.","Error");
+            log.registrar(this,"onBackPressed",e);
+            log.alertar("Ocurrió un error al momento de presionar el botón atrás.",this);
         }
 
     }
@@ -208,7 +218,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         }catch (Exception e){
-            alert_info("Error al cambiar el gráfico.","Error");
+            log.registrar(this,"onOptionsItemSelected",e);
+            log.alertar("Ocurrió un error al momento de seleccionar el item del menú.",this);
         }
 
         return super.onOptionsItemSelected(item);
@@ -218,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        try{
+        try {
             // Handle navigation view item clicks here.
             int id = item.getItemId();
 
@@ -247,13 +258,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     fm.beginTransaction().replace(R.id.fragment_container, ultimasBusquedas).addToBackStack(null).commit();
                 }
 
+            } else if (id == R.id.usuario) {
+                fm.findFragmentById(R.id.fragment_container);
+                qrBoton.hide();
+                menu.clear();
+                fm.popBackStack();
+                fm.beginTransaction().replace(R.id.fragment_container, usuario).addToBackStack(null).commit();
+
+
             }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
         }catch (Exception e){
-            alert_info("Ah ocurrido un error al seleccionar una opción del menú desplegable.","Error");
+            log.registrar(this,"onNavigationItemSelected",e);
+            log.alertar("Ocurrió un error al momento de seleccionar una opción del menú desplegable.",this);
         }
+
 
         return true;
     }
@@ -293,7 +314,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).addToBackStack(null).commit();
             qrBoton.show();
         }catch (Exception e){
-            alert_info("Error al mostrar la búsqueda.","Error");
+            log.registrar(this,"mostrarBusqueda",e);
+            log.alertar("Ocurrió un error al momento de mostrar la búsqueda.",this);
         }
     }
 
@@ -342,7 +364,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             puntos.clear();
             db1.close();
         }catch (Exception e){
-            alert_info("Error al cargar los nodos.","Error");
+            log.registrar(this,"cargaNodos",e);
+            log.alertar("Ocurrió un error al momento de cargar los nodos.",this);
         }
 
 
@@ -391,7 +414,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         }catch (Exception e){
-            alert_info("Error al obtener los datos del QR","Error");
+            log.registrar(this,"onActivityResult",e);
+            log.alertar("Ocurrió un error al momento de obtener el resultado del escaneo del QR..",this);
         }
     }
 }

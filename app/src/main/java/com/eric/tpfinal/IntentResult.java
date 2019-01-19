@@ -25,13 +25,13 @@ import android.util.Log;
  */
 public final class IntentResult {
     // String utilizado para el tracking de errores
-    private String STRING_MENSAJE = "IntentResult/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    private LogginCUI log = new LogginCUI();
 
-    private final String contents;
-    private final String formatName;
-    private final byte[] rawBytes;
-    private final Integer orientation;
-    private final String errorCorrectionLevel;
+    private String contents= null;
+    private  String formatName= null;
+    private  byte[] rawBytes= null;
+    private  Integer orientation= null;
+    private  String errorCorrectionLevel= null;
 
     IntentResult() {
         this(null, null, null, null, null);
@@ -39,6 +39,7 @@ public final class IntentResult {
 
     IntentResult(String contents,  String formatName, byte[] rawBytes, Integer orientation, String errorCorrectionLevel) {
         try {
+
             this.contents = contents;
             this.formatName = formatName;
             this.rawBytes = rawBytes;
@@ -46,8 +47,8 @@ public final class IntentResult {
             this.errorCorrectionLevel = errorCorrectionLevel;
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"IntentResult",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"IntentResult",e);
+//            log.alertar("Ocurrió un error al momento de cargar el fragment Busqueda.",getActivity());
 
         }
     }
@@ -89,19 +90,21 @@ public final class IntentResult {
 
     @Override
     public String toString() {
+        String resultado = "";
         try {
             int rawBytesLength = rawBytes == null ? 0 : rawBytes.length;
-            return "Format: " + formatName + '\n' +
-                    "Contents: " + contents + '\n' +
-                    "Raw bytes: (" + rawBytesLength + " bytes)\n" +
-                    "Orientation: " + orientation + '\n' +
-                    "EC level: " + errorCorrectionLevel + '\n';
+            resultado=  "Format: " + formatName + '\n' +
+                        "Contents: " + contents + '\n' +
+                        "Raw bytes: (" + rawBytesLength + " bytes)\n" +
+                        "Orientation: " + orientation + '\n' +
+                        "EC level: " + errorCorrectionLevel + '\n';
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"toString",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"toString",e);
+
 
         }
+        return resultado;
     }
 
 }

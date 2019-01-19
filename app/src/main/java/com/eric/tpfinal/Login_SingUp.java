@@ -13,21 +13,27 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login_SingUp extends AppCompatActivity implements loginFragment.OnFragmentInteractionListener, signUpFragment.OnFragmentInteractionListener {
 
-
+    LogginCUI log = new LogginCUI();
     private loginFragment login;
     private static final int RC_SIGN_IN = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__sing_up);
+        try {
+            setContentView(R.layout.activity_login__sing_up);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.hide();
 
-        login = new loginFragment();
+            login = new loginFragment();
 
-        getFragmentManager().beginTransaction().add(R.id.fragment_container,login).commit();
+            getFragmentManager().beginTransaction().add(R.id.fragment_container, login).commit();
+        }catch (Exception e){
+            log.registrar(this,"onCreate",e);
+            log.alertar("Ocurrió un error al momento de gestionar el ingreso al usuario.",this);
+        }
+
     }
 
 
@@ -37,5 +43,3 @@ public class Login_SingUp extends AppCompatActivity implements loginFragment.OnF
 
     }
 }
-
-//https://tpfinal-3b46f.firebaseapp.com/__/auth/handler

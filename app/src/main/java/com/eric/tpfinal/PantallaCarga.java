@@ -40,7 +40,7 @@ public class PantallaCarga extends AppCompatActivity {
     private Handler mWaitHandler = new Handler();
 
     private Collection<String> PERMISOS = (Collection<String>) list(Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS, Manifest.permission.ACCESS_COARSE_LOCATION);
-
+    private LogginCUI log = new LogginCUI();
 
 
 
@@ -65,7 +65,9 @@ public class PantallaCarga extends AppCompatActivity {
 
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onCreate",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"onCreateView",e);
+            log.alertar("Ocurrió un error al momento de crear la pantalla de carga.",this);
+
 
 
         }
@@ -75,25 +77,28 @@ public class PantallaCarga extends AppCompatActivity {
     // Funcion encargada de comprobar los permisos y en caso favorable avanzar al siguiente activity
     private void avanzar(){
 
+        try {
+
+            while (intentos < max_intentos) {
+                //            Toast.makeText(this,"Intentando avanzar",Toast.LENGTH_SHORT).show();
+                intentos++;
+                mWaitHandler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        //                    Toast.makeText(getApplicationContext(),"Intetoooo",Toast.LENGTH_SHORT).show();
+                        comprobar_permisos();
 
 
-        while (intentos < max_intentos){
-//            Toast.makeText(this,"Intentando avanzar",Toast.LENGTH_SHORT).show();
-            intentos++;
-            mWaitHandler.postDelayed(new Runnable() {
+                    }
+                }, seconds_waiting * 1000);
 
-                @Override
-                public void run() {
-
-//                    Toast.makeText(getApplicationContext(),"Intetoooo",Toast.LENGTH_SHORT).show();
-                    comprobar_permisos();
-
-
-                }
-            }, seconds_waiting*1000);
-
+            }
+        }catch (Exception e){
+            log.registrar(this,"avanzar",e);
+            log.alertar("Ocurrió un error al momento de comprobar los permisos.",this);
         }
-
 
 
 
@@ -104,7 +109,6 @@ public class PantallaCarga extends AppCompatActivity {
     //Función encargada de mostrar la animación y comprobar los permisos necesarios paara que la aplicación funcione correctamente.
     private void cargar(){
 
-        boolean resultado = false;
         try {
             animationView.setAnimation(nombre_animacion);
             animationView.loop(true);
@@ -113,8 +117,8 @@ public class PantallaCarga extends AppCompatActivity {
 
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cargar",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"cargar",e);
+            log.alertar("Ocurrió un error al momento de cargar la animación.",this);
 
         }
     }
@@ -157,8 +161,8 @@ public class PantallaCarga extends AppCompatActivity {
 
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"comprobar_permisos",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"comprobar_permisos",e);
+            log.alertar("Ocurrió un error al momento de comprobar los permisos..",this);
 
         }
         return true;
@@ -176,8 +180,8 @@ public class PantallaCarga extends AppCompatActivity {
                     });
             builder.create().show();
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"showExplanation",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"showExplanation",e);
+            log.alertar("Ocurrió un error al momento de mostrar la explicación.",this);
 
         }
     }
@@ -188,26 +192,31 @@ public class PantallaCarga extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult( int requestCode,  String permissions[],    int[] grantResults) {
-        switch (requestCode){
-            default:
+        try {
+            switch (requestCode) {
+                default:
 
-                if (grantResults.length > 0  && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    setResult(RESULT_OK);
+                    if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        setResult(RESULT_OK);
 
-                    habilitados++;
-                    Toast.makeText(this, "Permission Granted!", Toast.LENGTH_SHORT).show();
-                } else {
-                    setResult(RESULT_CANCELED);
-                    habilitado = false;
-                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
-                }
+                        habilitados++;
+                        //TODO: cambiar los mensjaes
+                        Toast.makeText(this, "Permission Granted!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        setResult(RESULT_CANCELED);
+                        habilitado = false;
+                        Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                    }
 
 
+            }
+            if (habilitados == PERMISOS.size()) {
+                habilitado = true;
+            }
+        }catch (Exception e){
+            log.registrar(this,"onRequestPermissionsResult",e);
+            log.alertar("Ocurrió un error al momento de interpretar el resultado de los permisos.",this);
         }
-        if (habilitados == PERMISOS.size()){
-            habilitado = true;
-        }
-
 
 
     }

@@ -11,17 +11,18 @@ import android.util.Log;
 public class MyLocationListener implements LocationListener {
 
     // String utilizado para el tracking de errores
-    private String STRING_MENSAJE = "MyLocationListener/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+
+    private LogginCUI log = new LogginCUI();
 
     //mainActivity es el mapFragment
     private MapsFragment mainActivity;
 
-    public void setMainActivity(MapsFragment mainActivity) {
+    public void setMainActivity(MapsFragment mainActivity) throws Exception{
         try {
             this.mainActivity = mainActivity;
 
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setMainActivity",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"setMainActivity",e);
             throw e;
         }
     }
@@ -44,7 +45,7 @@ public class MyLocationListener implements LocationListener {
                 }
             }
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onLocationChanged",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"onCreateView",e);
         }
     }
 

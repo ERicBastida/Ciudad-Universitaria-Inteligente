@@ -1,4 +1,4 @@
-#Thu Jan 17 11:42:33 ART 2019
+#Fri Jan 18 16:19:51 ART 2019
 base.0=C\:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
 path.0=classes.dex
 renamed.0=classes.dex

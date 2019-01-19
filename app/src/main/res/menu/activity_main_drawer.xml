@@ -14,10 +14,10 @@
             android:id="@+id/ultimas"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Últimas Busquedas" />
-        <!--item
-            android:id="@+id/nav_manage"
+        <item
+            android:id="@+id/usuario"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" /> -->
+            android:title="Configuración" />
     </group>
 
     <item android:title="Communicate">
@@ -30,6 +30,10 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
+            <item
+                android:id="@+id/close"
+                android:icon="@drawable/ic_cast_dark"
+                android:title="Cerrar sesion" />
         </menu>
     </item>
 

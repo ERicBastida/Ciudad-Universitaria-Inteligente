@@ -42,7 +42,7 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
             textView.setText(list.get(position).getText());
         }catch (Exception e){
             log.registrar(this,"getView",e);
-            log.alertar("Ha ocurrido un error en la funcion getView",actividad);
+            log.alertar("Ha ocurrido un error en la función getView.",actividad);
 
         }
         return itemView;

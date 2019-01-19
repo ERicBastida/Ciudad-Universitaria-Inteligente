@@ -10,8 +10,8 @@ import java.util.Vector;
 public class Punto implements Comparable<Punto> {
 
     // String utilizado para el tracking de errores
-    private String STRING_MENSAJE = "Punto/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
 
+    private LogginCUI log = new LogginCUI();
     private double Latitud;
     private double Longitud;
     private String Edificio;
@@ -43,16 +43,15 @@ public class Punto implements Comparable<Punto> {
             this.Imagen = oImg;
             this.id = id;
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"Punto",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"Punto",e);
         }
     }
 
-    public void addVecino(Punto P){
+    public void addVecino(Punto P) throws Exception{
         try {
             Vecinos.add(P);
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"addVecino",e.getCause(),e.getMessage(),e.getClass().toString()));
+            log.registrar(this,"onCreateView",e);
             throw e;
         }
     }
@@ -72,10 +71,10 @@ public class Punto implements Comparable<Punto> {
 
 
     //Funcion de comparacion para el heap de armaCamino
-    @Override
-    public int compareTo(Punto punto) {
+    public int compareTo(Punto punto){
+        int c = 0;
         try {
-            int c = 0;
+
             if (this.equals(punto)) {
             } else {
                 if (this.costo > punto.costo) {
@@ -84,11 +83,12 @@ public class Punto implements Comparable<Punto> {
                     c = -1;
                 }
             }
-            return c;
+
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"compareTo",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"compareTo",e);
+
         }
+        return c;
     }
 
 }

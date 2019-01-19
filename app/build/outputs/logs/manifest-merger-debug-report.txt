@@ -8,6 +8,7 @@ MERGED from [com.google.android.gms:play-services:7.8.0] C:\Users\ERic\.gradle\c
 MERGED from [com.airbnb.android:lottie:2.7.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\lottie-2.7.0.aar\875c7f55a3e3771b5796337371b9b93b\AndroidManifest.xml:2:1-13:12
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\firebase-ui-auth-4.1.0.aar\9260be7ce8745de6ce01b0dbf1d635af\AndroidManifest.xml:2:1-114:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.39.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.39.0.aar\57fc814911f45709265a36aee375c3c6\AndroidManifest.xml:21:1-31:12
+MERGED from [com.mikhaellopez:circularimageview:3.2.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\circularimageview-3.2.0.aar\2deafd599e20432fbacb34aee751ae98\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:design:27.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\db45db93986048ab16275110d1f9d0a0\AndroidManifest.xml:17:1-22:12
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\library-1.4.2.aar\f0590986a4b107e19011021a17c251d1\AndroidManifest.xml:6:1-16:12
 MERGED from [com.facebook.android:facebook-login:4.39.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\facebook-login-4.39.0.aar\0484a676efaf8ce553222c31bcd85325\AndroidManifest.xml:21:1-31:12
@@ -267,6 +268,8 @@ MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\ERic\.gradle\caches
 MERGED from [com.firebaseui:firebase-ui-auth:4.1.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\firebase-ui-auth-4.1.0.aar\9260be7ce8745de6ce01b0dbf1d635af\AndroidManifest.xml:8:5-10:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.39.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.39.0.aar\57fc814911f45709265a36aee375c3c6\AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.39.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.39.0.aar\57fc814911f45709265a36aee375c3c6\AndroidManifest.xml:24:5-26:41
+MERGED from [com.mikhaellopez:circularimageview:3.2.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\circularimageview-3.2.0.aar\2deafd599e20432fbacb34aee751ae98\AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikhaellopez:circularimageview:3.2.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\circularimageview-3.2.0.aar\2deafd599e20432fbacb34aee751ae98\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:design:27.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\db45db93986048ab16275110d1f9d0a0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:27.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\db45db93986048ab16275110d1f9d0a0\AndroidManifest.xml:20:5-44
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\library-1.4.2.aar\f0590986a4b107e19011021a17c251d1\AndroidManifest.xml:12:5-14:41

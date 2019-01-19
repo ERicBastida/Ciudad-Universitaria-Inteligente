@@ -17,17 +17,18 @@ import android.widget.ListView;
  * Created by Lautaro on 08/12/2016.
  */
 public class ultimasBusquedas extends Fragment {
-    // String utilizado para el tracking de errores
-    private String STRING_MENSAJE = "ultimasBusquedas/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
 
+    private  LogginCUI log = new LogginCUI();
     private BaseDatos CUdb = null;
     private MainActivity oMainActivity = null;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Inflo mi listView
+        final View rootView = inflater.inflate(R.layout.ultimas_busquedas, container, false);
+
         try {
-            //Inflo mi listView
-            final View rootView = inflater.inflate(R.layout.ultimas_busquedas, container, false);
+
 
             //Abro la base de datos
             CUdb = new BaseDatos(getActivity(), "DBBusquedas", null, 1);
@@ -73,19 +74,20 @@ public class ultimasBusquedas extends Fragment {
                 listView.setAdapter(adapter);
             }
 
-            return rootView;
+
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onCreateView",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"onCreateView",e);
+            log.alertar("Ocurrió un error al momento de gestionar las últimas busquedas.",getActivity());
         }
+        return rootView;
     }
 
     public void setMainActivity(MainActivity oMA){
         try {
             this.oMainActivity = oMA;
         }catch (Exception e){
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"setMainActivity",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"setMainActivity",e);
+            log.alertar("Ocurrió un error al momento de asignar la actividad.",getActivity());
         }
     }
 

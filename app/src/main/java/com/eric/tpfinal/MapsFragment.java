@@ -57,7 +57,8 @@ import java.util.Vector;
 public class MapsFragment extends Fragment implements OnMapReadyCallback, SensorEventListener {
 
     // String utilizado para el tracking de errores
-    private String STRING_MENSAJE = "MapsFragment/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
+    LogginCUI log = new LogginCUI();
+
     private final int REQUEST_PERMISSION_PHONE_STATE=1;
 
     public GoogleMap miMapa = null;
@@ -95,9 +96,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
         try {
 
-            View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
 
             MapFragment fragment = (MapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
             fragment.getMapAsync(this);
@@ -124,97 +127,131 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
             }
 
-
-            return rootView;
-
-
-
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onCreateView",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
-
+            log.registrar(this,"onCreateView",e);
+            log.alertar("Ocurrió un error al inicializar los mapas.",getActivity());
         }
+        return rootView;
 
     }
 
     private void turnGPSOn(){
+        try {
 
-        String provider = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            String provider = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
 
-        if(!provider.contains("gps")){ //if gps is disabled
-            final Intent poke = new Intent();
-            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
-            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            poke.setData(Uri.parse("3"));
-            getActivity().sendBroadcast(poke);
+            if (!provider.contains("gps")) { //if gps is disabled
+                final Intent poke = new Intent();
+                poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+                poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+                poke.setData(Uri.parse("3"));
+                getActivity().sendBroadcast(poke);
+            }
+        }catch (Exception e){
+            log.registrar(this,"turnGPSOn",e);
+            log.alertar("Ocurrió un error al momento de encender el GPS.",getActivity());
         }
     }
 
     private void turnGPSOff(){
-        String provider = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+        try{
+            String provider = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
 
-        if(provider.contains("gps")){ //if gps is enabled
-            final Intent poke = new Intent();
-            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
-            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            poke.setData(Uri.parse("3"));
-            getActivity().sendBroadcast(poke);
+            if(provider.contains("gps")){ //if gps is enabled
+                final Intent poke = new Intent();
+                poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+                poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+                poke.setData(Uri.parse("3"));
+                getActivity().sendBroadcast(poke);
 
 
+            }
+        }catch (Exception e){
+            log.registrar(this,"turnGPSOff",e);
+            log.alertar("Ocurrió un error al momento de apagar el GPS.",getActivity());
         }
     }
-
+    //TODO: esta función esta mal, debe recorrer todos los permisos predefinidos
     private void showPhoneStatePermission() {
+        try {
+            int permissionCheck_1 = ContextCompat.checkSelfPermission(
+                    getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+            int permissionCheck_2 = ContextCompat.checkSelfPermission(
+                    getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
 
-        int permissionCheck_1 = ContextCompat.checkSelfPermission(
-                getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
-        int permissionCheck_2 = ContextCompat.checkSelfPermission(
-                getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
 
-
-
-        if (permissionCheck_1 != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
-                showExplanation("Permiso necesario", "Este permiso permite la interacción con los mapas y su hubicación", Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
-            } else {
-                requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+            if (permissionCheck_1 != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    showExplanation("Permiso necesario", "Este permiso permite la interacción con los mapas y su hubicación", Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+                } else {
+                    requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+                }
             }
+
+            if (permissionCheck_2 != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                    showExplanation("Permiso necesario", "Este permiso permite la interacción con los mapas y su hubicación", Manifest.permission.ACCESS_COARSE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+                } else {
+                    requestPermission(Manifest.permission.ACCESS_COARSE_LOCATION, REQUEST_PERMISSION_PHONE_STATE);
+                }
+            }
+
+        }catch (Exception e){
+            log.registrar(this,"showPhoneStatePermission",e);
+            log.alertar("Ocurrió un error al momento de mostrar el dialogo de los permisos.",getActivity());
         }
+
+
     }
 
     @Override
     public void onRequestPermissionsResult( int requestCode,  String permissions[],    int[] grantResults) {
+        try{
+            switch (requestCode) {
+                case REQUEST_PERMISSION_PHONE_STATE:
+                    if (grantResults.length > 0  && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getActivity(), "Permission Granted!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Permission Denied!", Toast.LENGTH_SHORT).show();
+                    }
+            }
 
-        switch (requestCode) {
-            case REQUEST_PERMISSION_PHONE_STATE:
-                if (grantResults.length > 0  && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getActivity(), "Permission Granted!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Permission Denied!", Toast.LENGTH_SHORT).show();
-                }
+        }catch (Exception e){
+            log.registrar(this,"onRequestPermissionsResult",e);
+            log.alertar("Ocurrió un error al momento de mostrar el resultado del pedido del permiso.",getActivity());
+
         }
     }
 
-    private void showExplanation(String title,
-                                 String message,
-                                 final String permission,
-                                 final int permissionRequestCode) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(title)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        requestPermission(permission, permissionRequestCode);
-                    }
-                });
-        builder.create().show();
+    private void showExplanation(String title,String message,  final String permission, final int permissionRequestCode) {
+        try{
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            requestPermission(permission, permissionRequestCode);
+                        }
+                    });
+            builder.create().show();
+        }catch (Exception e){
+            log.registrar(this,"showExplanation",e);
+            log.alertar("Ocurrió un error al momento de mostrar la explicación.",getActivity());
+
+        }
     }
 
     private void requestPermission(String permissionName, int permissionRequestCode) {
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[]{permissionName}, permissionRequestCode);
+        try {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{permissionName}, permissionRequestCode);
+        } catch (Exception e) {
+            log.registrar(this, "requestPermission", e);
+            log.alertar("Ocurrió un error al momento de solicitar el permiso "+ permissionName, getActivity());
+
+        }
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         try {
@@ -294,9 +331,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
 
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onMapReady",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"onMapReady",e);
+            log.alertar("Ocurrió un error al momento cargar el mapa.",getActivity());
 
         }
     }
@@ -327,15 +363,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
     public int getPisoActual(){return pisoActual;}
 
     public boolean modoPolilinea() throws Exception {
+        boolean resultado = false;
         try{
-            return !misPolilineas.isEmpty();
+            resultado =  !misPolilineas.isEmpty();
         }
         catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"modoPolilinea",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error sl consultar el estado de modo polilinea..",null);
+            log.registrar(this,"modoPolilinea",e);
+            log.alertar("Error sl consultar el estado de modo polilinea.",getActivity());
+
 
         }
+        return resultado;
 
     }
 
@@ -363,9 +402,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onSensorChanged",e.getCause(),e.getMessage(),e.getClass().toString()));
-            getActivity().finish();
-            throw e;
+            log.registrar(this,"onSensorChanged",e);
+            log.alertar("Ocurrió un error al momento de gestionar la información ocacionada por el cambio de valores del sensor GPS.",getActivity());
 
         }
     }
@@ -376,7 +414,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
     }
 
     //Limpio el mapa de polilineas, marcadores, etc
-    public void limpiarMapa() throws Exception {
+    public void limpiarMapa() {
         try{
             miPosicionMarcador.remove();
             misPolilineas.clear();
@@ -387,16 +425,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             setPisoActual(0);
 
         }catch (Exception e){
+            log.registrar(this,"limpiarMapa",e);
+            log.alertar("Error al limpiar el mapa.",getActivity());
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"limpiarMapa",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error al limpiar el mapa.",null);
         }
 
     }
 
     //Actualizo mi posición si me moví. Quito mi marcador y lo pongo en donde corresponde
     @TargetApi(Build.VERSION_CODES.M)
-    void actualizaPosicion() throws Exception {
+    void actualizaPosicion() {
         try {
             LatLng position = new LatLng(this.lat, this.lon);
             miMapa.moveCamera(CameraUpdateFactory.newLatLng(position));
@@ -416,21 +454,24 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"actualizaPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error al actualizar la posición.",null);
+            log.registrar(this,"actualizaPosicion",e);
+            log.alertar("Error al actualizar la posición.",getActivity());
+
         }
 
     }
 
     //Obtengo mi latitud y longitud en un objeto LatLng
-    public LatLng getPosicion() throws Exception {
+    public LatLng getPosicion()  {
+        LatLng resultado = null;
         try {
-            return new LatLng(this.lat, this.lon);
+            resultado =  new LatLng(this.lat, this.lon);
         }catch (Exception e){
+            log.registrar(this,"getPosicion",e);
+            log.alertar("Error al tratar de obtener la posición.",getActivity());
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"getPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw new Exception("Error al tratar de obtener la posición.",null);
         }
+        return resultado;
 
     }
 
@@ -513,8 +554,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             cargarMapaImagnes(path);
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"dibujaCamino",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+
+            log.registrar(this,"dibujaCamino",e);
+            log.alertar("Ocurrió un error al momento de dibujar el camino.",getActivity());
+
         }
     }
 
@@ -575,8 +618,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             cargarMapaImagnes(nodos);
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"mostrarNodos",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+
+            log.registrar(this,"mostrarNodos",e);
+            log.alertar("Ocurrió un error al momento de mostrar los nodos.",getActivity());
         }
     }
 
@@ -598,8 +642,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cambiarPolilinea",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"cambiarPolilinea",e);
+            log.alertar("Ocurrió un error al momento de cambiar la polilinea.",getActivity());
         }
 
     }
@@ -629,26 +673,27 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cambiarNodos",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"cambiarNodos",e);
+            log.alertar("Ocurrió un error al momento de cambiar los nodos.",getActivity());
         }
     }
 
     //Funcion para saber si un punto está dentro de ciertos limites
     public boolean dentroDeLimites(LatLng posicion, LatLngBounds bounds){
+        boolean resultado = true;
         try {
             LatLng limiteInfIzquierdo = bounds.southwest;
             LatLng limiteSupDerecho = bounds.northeast;
-            boolean esta = true;
-            if (posicion.latitude > limiteSupDerecho.latitude || posicion.latitude < limiteInfIzquierdo.latitude || posicion.longitude > limiteSupDerecho.longitude || posicion.longitude < limiteInfIzquierdo.longitude) {
-                esta = false;
-            }
-            return esta;
-        }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"dentroDeLimites",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            if (posicion.latitude > limiteSupDerecho.latitude || posicion.latitude < limiteInfIzquierdo.latitude || posicion.longitude > limiteSupDerecho.longitude || posicion.longitude < limiteInfIzquierdo.longitude) {
+                resultado = false;
+            }
+
+        }catch (Exception e){
+            log.registrar(this,"dentroDeLimites",e);
+            log.alertar("Ocurrió un error al momento establecer los limites de la aplicación.",getActivity());
         }
+        return resultado;
     }
 
     //hashMap de Posición de nodo - Imagen del nodod
@@ -662,8 +707,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             }
         }catch (Exception e){
 
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"cargarMapaImagnes",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"cargarMapaImagnes",e);
+            log.alertar("Ocurrió un error al momento de cargar las imagenes al mapa.",getActivity());
         }
     }
 
@@ -677,9 +722,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             ft.remove(fragment);
             ft.commit();
         }catch (Exception e){
-
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"onDestroyView",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
+            log.registrar(this,"onDestroyView",e);
+            log.alertar("Ocurrió un error al momento de destruir la vista del mapa.",getActivity());
         }
     }
 }
