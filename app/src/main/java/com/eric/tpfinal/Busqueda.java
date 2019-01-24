@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.Vector;
 
@@ -72,7 +69,7 @@ public class Busqueda extends Fragment {
 
             //Adaptar para las posibles opciones de busqueda, uso uno propio porque queda mejor esteticamente
             String[] itemsSB1 = {" --- ", "Edificios", "Aulas", "Baños", "Bares"};
-            ArrayAdapter<String> arraySB1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_layout, itemsSB1);
+            ArrayAdapter<String> arraySB1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item_layout, itemsSB1);
             spinnerBusqueda.setAdapter(arraySB1);
 
             //OnItemSelectedListener para el spinnerBusqueda, depende que selecciono, habilito o deshabilito los otros spinners
@@ -94,7 +91,7 @@ public class Busqueda extends Fragment {
                             //Lista de edificios que hay cargados. Debería hacer una función en ArmaCamino que me devuelva esta lista
                             //para no tener que actualiarlo si agrego un nodo en un edificio nuevo
                             String[] itemsSB2 = {"Todos", "FICH", "FCBC", "FCM", "FADU", "FHUC", "ISM", "Cubo"};
-                            ArrayAdapter<String> arraySB2 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_layout, itemsSB2);
+                            ArrayAdapter<String> arraySB2 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item_layout, itemsSB2);
                             spinnerBusqueda2.setAdapter(arraySB2);
 
                             tv2.setVisibility(View.VISIBLE);
@@ -104,7 +101,7 @@ public class Busqueda extends Fragment {
                         case "Aulas":
 
                             String[] itemsSB2a = {" --- ", "FICH"};
-                            ArrayAdapter<String> arraySB2a = new ArrayAdapter<String>(getActivity(), R.layout.spinner_layout, itemsSB2a);
+                            ArrayAdapter<String> arraySB2a = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item_layout, itemsSB2a);
                             spinnerBusqueda2.setAdapter(arraySB2a);
 
                             tv2.setVisibility(View.VISIBLE);
@@ -155,7 +152,7 @@ public class Busqueda extends Fragment {
                                 for (int j = 0; j < sAulas.length; j++) {
                                     sAulas[j] = puntoAulas.elementAt(j).getNombre();
                                 }
-                                ArrayAdapter<String> arraySB3 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_layout, sAulas);
+                                ArrayAdapter<String> arraySB3 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item_layout, sAulas);
                                 spinnerBusqueda3.setAdapter(arraySB3);
 
                                 spinnerBusqueda3.setVisibility(View.VISIBLE);

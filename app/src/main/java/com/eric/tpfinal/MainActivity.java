@@ -96,6 +96,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Cambio el fragment por defecto por mi mapFragment
             fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
 
+            // Compruebo que se haya iniciado sesión
+
+            Intent i = getIntent();
+            if(i.getBooleanExtra("usuario",false)){
+                Toast.makeText(this,"Vas a iniciar con usuario",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this,"Vas en modo normal iniciar con usuario",Toast.LENGTH_SHORT).show();
+            }
+
             
 
 
@@ -374,7 +383,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
 
-
+            Toast.makeText(this,"Soy la actividad Main y recibi este código : "+ Integer.toString(requestCode) + " , "+ Integer.toString(resultCode),Toast.LENGTH_SHORT).show();
             switch (requestCode){
                 case 1:
                     if (resultCode == RESULT_OK){

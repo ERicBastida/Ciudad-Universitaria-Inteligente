@@ -122,14 +122,10 @@ attr chainUseRtl
 attr checkboxStyle
 attr checkedTextViewStyle
 attr circleCrop
-attr civ_background_color
-attr civ_border
 attr civ_border_color
+attr civ_border_overlay
 attr civ_border_width
-attr civ_shadow
-attr civ_shadow_color
-attr civ_shadow_gravity
-attr civ_shadow_radius
+attr civ_circle_background_color
 attr closeIcon
 attr closeItemLayout
 attr collapseContentDescription
@@ -1124,7 +1120,6 @@ drawable mr_ic_play_dark
 drawable mr_ic_play_light
 drawable mr_ic_settings_dark
 drawable mr_ic_settings_light
-drawable my_great_logo
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -1141,6 +1136,7 @@ drawable notify_panel_notification_icon_bg
 drawable porton
 drawable powered_by_google_dark
 drawable powered_by_google_light
+drawable profile_example
 drawable qrfab
 drawable side_nav_bar
 drawable tooltip_frame_dark
@@ -1200,7 +1196,7 @@ id browser_actions_menu_view
 id btnGoToSignUp
 id btnIngresante
 id btnIniciar
-id btnRegistrar
+id btnUsuario
 id btn_holder
 id buscar
 id busquedaSpinner
@@ -1286,7 +1282,6 @@ id fill
 id fill_horizontal
 id fill_vertical
 id fixed
-id floatingActionButton2
 id forever
 id fragment_container
 id fragment_phone
@@ -1327,6 +1322,7 @@ id left
 id light
 id line1
 id line3
+id linearLayout
 id listMode
 id listView
 id list_item
@@ -1378,6 +1374,7 @@ id phone_number
 id pin
 id play_pause
 id production
+id profile_image
 id progress_bar
 id progress_circular
 id progress_horizontal
@@ -1428,9 +1425,9 @@ id snackbar_action
 id snackbar_text
 id snap
 id spacer
-id spinner
 id spinner2
 id spinnerTarget
+id spinner_carreras
 id split_action_bar
 id spread
 id spread_inside
@@ -1456,6 +1453,8 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textView
 id textView2
+id textView3
+id textView4
 id text_input_password_toggle
 id text_wrapper
 id textinput_counter
@@ -1480,6 +1479,7 @@ id transition_transform
 id trouble_signing_in
 id tv1
 id tv2
+id txtCarrera
 id txtEmail
 id txtItemSpinner
 id txtLastName
@@ -1569,10 +1569,10 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout fragment_borrame
 layout fragment_login
 layout fragment_map
-layout fragment_sign_up
-layout fragment_user
+layout fragment_usuario
 layout fui_activity_invisible
 layout fui_activity_register_email
 layout fui_activity_register_phone
@@ -1619,7 +1619,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
-layout spinner_layout
+layout spinner_item_layout
 layout spinner_layout_signup
 layout support_simple_spinner_dropdown_item
 layout ultimas_busquedas
@@ -2312,7 +2312,7 @@ styleable BottomSheetBehavior_Layout behavior_hideable behavior_peekHeight behav
 styleable ButtonBarContainerTheme metaButtonBarButtonStyle metaButtonBarStyle
 styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
-styleable CircularImageView civ_background_color civ_border civ_border_color civ_border_width civ_shadow civ_shadow_color civ_shadow_gravity civ_shadow_radius
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha

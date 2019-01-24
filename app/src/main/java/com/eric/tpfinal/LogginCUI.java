@@ -66,7 +66,9 @@ public class LogginCUI {
                 public void onClick(DialogInterface dialog, int id) {
 
                     Toast.makeText(actividad.getApplicationContext(), "La aplicación se cerrará.", Toast.LENGTH_SHORT).show();
+                    //TODO: averiguar como cerrar la aplicación y no solo la actividad.
                     activity.finish();
+
                 }
             });
 

@@ -17,11 +17,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
 import java.util.ArrayList;
-import android.content.Intent;
-import android.os.Bundle;
+
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,17 +34,18 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class loginFragment extends Fragment
+public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
 {
     private ImageView imgLogoUNL;
-    private String BD_NAME = "login_bd";
+
+    private AdminDB baseDatos;
     private Button btnIniciar;
     private Button btnGoToSignUp;
     private Button btnIngresante;
     private TextView txtUser;
     private TextView txtPass;
-    private signUpFragment signUp;
-    private signUpFragment.OnFragmentInteractionListener mListener;
+    private usuarioFragment signUp;
+    private usuarioFragment.OnFragmentInteractionListener mListener;
     private LogginCUI log  = new LogginCUI();
     private static final int RC_SIGN_IN = 123;
     private int id_proveedor = 0;
@@ -67,7 +69,7 @@ public class loginFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        final AdminSQLite adminSQL = new AdminSQLite(getActivity(),BD_NAME,null,1);
+//        final AdminSQLite adminSQL = new AdminSQLite(getActivity(),BD_NAME,null,1);
 
 
         btnIniciar =  view.findViewById(R.id.btnIniciar);
@@ -82,40 +84,39 @@ public class loginFragment extends Fragment
 
             btnIniciar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    //El usuario debe ser el nombre del correo sin @servidor.com
                     String user = txtUser.getText().toString();
                     String pass = txtPass.getText().toString();
 
-                    switch (id_proveedor) {
-                        //Se ingresa con cuenta de UNL, es decir, cuenta local.
-                        case 0:
-                            if (user.isEmpty() && pass.isEmpty()) {
-                                Toast.makeText(getActivity(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
-                            }else {
-
-                                //Aca debo conectarme a la base de datos de Firebase...
-                                SQLiteDatabase BaseDeDatos = adminSQL.getWritableDatabase();
-
-                                Cursor fila = BaseDeDatos.rawQuery("SELECT * FROM person where email = '" + user + "'", null);
-
-                                if (fila.moveToFirst()) {
-
-                                    Toast.makeText(getActivity(), "Tu contraseña es: "+fila.getString(fila.getColumnIndex("pass")), Toast.LENGTH_SHORT).show();
-
-
-                                } else {
-                                    Toast.makeText(getActivity(), "No existe el usuario", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getActivity(), "Registrese.", Toast.LENGTH_SHORT).show();
-
-
-                                }
-                                BaseDeDatos.close();
-                            }
-                            break;
-
-                        default:
-                            createSignInIntent();
-
-                    }
+                    createSignInIntent();
+//                    switch (id_proveedor) {
+//
+//                        //Se ingresa con cuenta de UNL, es decir, cuenta local.
+//                        case 0:
+//                            if (user.isEmpty() && pass.isEmpty()) {
+//                                Toast.makeText(getActivity(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
+//                            }else {
+//
+//                                //Aca debo conectarme a la base de datos de Firebase...
+//
+//                                baseDatos = new AdminDB(getActivity());
+//                                baseDatos.consultarUsuario(new AdminDB.OnDB_Listener(){
+//
+//                                    @Override
+//                                    public void result(int codigo, Usuario usuario, boolean resultado) {
+//                                        resultado_BD(codigo,usuario,resultado);
+//                                    }
+//
+//                                },user);
+//
+////
+//                            }
+//                            break;
+//
+//                        default:
+//                            createSignInIntent();
+//
+//                    }
 
                 }
 
@@ -125,7 +126,7 @@ public class loginFragment extends Fragment
             btnGoToSignUp.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     //TODO: ver si lo dejo en el stack
-                    signUp = new signUpFragment();
+                    signUp = new usuarioFragment();
                     FragmentTransaction fragmentManager = getActivity().getFragmentManager().beginTransaction();
                     fragmentManager.replace(R.id.fragment_container, signUp);
                     fragmentManager.addToBackStack(null);
@@ -164,7 +165,7 @@ public class loginFragment extends Fragment
 
                     asignarServicio(position);
 
-                    Toast.makeText(getActivity(),"Asignaste " + Integer.toString(position) + ": " + texto.getText(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),"Asignaste " + Integer.toString(position) + ": " + texto.getText(),Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -193,6 +194,10 @@ public class loginFragment extends Fragment
 
             switch (id_red_social) {
 
+                case 0:
+
+                    proveedor = Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build());
+                    break;
                 case 1: //Facebook
                     proveedor = Arrays.asList(new AuthUI.IdpConfig.FacebookBuilder().build());
                     break;
@@ -276,7 +281,7 @@ public class loginFragment extends Fragment
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
-                        .setLogo(R.drawable.my_great_logo)      // Set logo drawable
+//                        .setLogo(R.drawable.my_great_logo)      // Set logo drawable
                         .setTheme(R.style.MySuperAppTheme)      // Set theme
                         .build(),
                 RC_SIGN_IN);
@@ -294,7 +299,9 @@ public class loginFragment extends Fragment
                     // Successfully signed in
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     Toast.makeText(getActivity(), "Iniciaste sesion " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                    ir_a_CUI(user);
+                    Usuario usuario_red_social = new Usuario();
+                    usuario_red_social.copy(user);
+                    ir_a_CUI(usuario_red_social);
 
                 } else {
                     Toast.makeText(getActivity(), "No se ha podido iniciar sesión.", Toast.LENGTH_SHORT).show();
@@ -334,14 +341,21 @@ public class loginFragment extends Fragment
 
 
 
-    private void ir_a_CUI(FirebaseUser user){
+    private void ir_a_CUI(Usuario user){
         try{
             Intent gotoCUI = new Intent(getActivity(),MainActivity.class);
-            gotoCUI.putExtra("user",user);
+            if (user == null){
+                gotoCUI.putExtra("usuario", true);
+            }else{
+                gotoCUI.putExtra("usuario", false);
+            }
+
             startActivity(gotoCUI);
+
             getActivity().finish();
         }catch (Exception e ){
-            log.registrar(this,"ir_a_CUI",e);
+            log.registrar(this,
+                    "ir_a_CUI",e);
             log.alertar("Ocurrió un error al momento de intentar ir a CUI.",getActivity());
 
     }
@@ -351,7 +365,7 @@ public class loginFragment extends Fragment
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-
+        Toast.makeText(getActivity(),"Tocaste el boton",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -363,6 +377,31 @@ public class loginFragment extends Fragment
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void result(int codigo, Usuario usuario, boolean resultado) {
+
+    }
+
+    public void resultado_BD(int codigo, Usuario usuario, boolean resultado) {
+
+        if (AdminDB.COD_USUARIO_EXISTE == codigo){
+            String mensaje = "";
+
+            if (resultado){
+                mensaje = "(IR A LA APLICACION) Tu contraseña -> " + usuario.getPass();
+                //TODO: ir a la aplicación
+                ir_a_CUI(usuario);
+
+            }else{
+                mensaje = "No existe el usuario. Por favor registrese o ingrese por alguna red social.";
+            }
+
+            Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
 
