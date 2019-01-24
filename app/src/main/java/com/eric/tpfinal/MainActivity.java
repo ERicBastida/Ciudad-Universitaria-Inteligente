@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Menu menu = null;
     private BaseDatos CUdb = null;
     private boolean inicio = false;
-    private usuarioFragment usuario = null;
+    //ERROR GOOGLE
+//    private usuarioFragment usuario = null;
 
     private int codigo_solicitud_pantalla_inicio = 1;
     /*Funciones*/
@@ -67,7 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mapsFragment = new MapsFragment();
             ultimasBusquedas = new ultimasBusquedas();
             ultimasBusquedas.setMainActivity(this);
-            usuario = new usuarioFragment();
+            //ERROR GOOGLE
+//            usuario = new usuarioFragment();
 
 
             //Agrego Nodos a mi vector de nodos en oArmaCamino
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 qrBoton.hide();
                 menu.clear();
                 fm.popBackStack();
-                fm.beginTransaction().replace(R.id.fragment_container, usuario).addToBackStack(null).commit();
+//                fm.beginTransaction().replace(R.id.fragment_container, usuario).addToBackStack(null).commit();
 
 
             }

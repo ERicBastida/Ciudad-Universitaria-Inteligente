@@ -136,7 +136,8 @@ public class PantallaCarga extends AppCompatActivity {
 
                 //Nos vamos a iniciar la actividad encargada del inicio de sesion.
 //                Intent intent = new Intent(getApplicationContext(), FirebaseExample.class);
-                Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
+//                Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
 
                 finish();

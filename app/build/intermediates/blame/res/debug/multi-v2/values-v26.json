@@ -4,25 +4,6 @@
             "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.1.0.aar\\9260be7ce8745de6ce01b0dbf1d635af\\res\\values-v26\\values-v26.xml",
-                    "from": {
-                        "startLines": "2,6,10,14",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,253,438,631",
-                        "endLines": "5,9,13,17",
-                        "endColumns": "12,12,12,12",
-                        "endOffsets": "248,433,626,806"
-                    },
-                    "to": {
-                        "startLines": "22,26,30,34",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "1330,1528,1713,1906",
-                        "endLines": "25,29,33,37",
-                        "endColumns": "12,12,12,12",
-                        "endOffsets": "1523,1708,1901,2081"
-                    }
-                },
-                {
                     "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\db45db93986048ab16275110d1f9d0a0\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,6",
