@@ -1,7 +1,11 @@
 #Internal package file, do not edit.
-#Thu Jan 24 13:41:56 ART 2019
+#Fri Jan 25 00:43:38 ART 2019
+1.base=C\:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 0.baseType=DIRECTORY
-0.base=C\:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+1.baseType=DIRECTORY
+count=2
+1.set=ASSET
 0.path=loading_screen.json
 0.set=ASSET
-count=1
+0.base=C\:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+1.path=crashlytics-build.properties

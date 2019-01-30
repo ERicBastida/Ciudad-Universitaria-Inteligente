@@ -4,8 +4,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "eric.tpfinal"
-        minSdkVersion 21
+        applicationId "com.eric.ciudaduniversitariainteligente"
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -22,18 +22,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.google.android.gms:play-services:12.0.1'
+//    implementation 'com.google.android.gms:play-services:9.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
 
     //Librería para la utilización de animaciones y efectos
     implementation "com.airbnb.android:lottie:2.7.0"
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    //Firebase: Librerias para la autenticación y bases de datos.
+    implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
+    implementation 'com.twitter.sdk.android:twitter-core:3.3.0@aa'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
+    implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 
-    //Firebase: Libreria para la autenticación y bases de datos.
-//    implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
-//    implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
-//    implementation 'com.twitter.sdk.android:twitter-core:3.3.0@aa'
-//    implementation 'com.google.firebase:firebase-database:16.0.1'
 
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.1'

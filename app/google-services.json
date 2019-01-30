@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "241707879764",
-    "firebase_url": "https://tpfinal-3b46f.firebaseio.com",
-    "project_id": "tpfinal-3b46f",
-    "storage_bucket": "tpfinal-3b46f.appspot.com"
+    "project_number": "242590571008",
+    "firebase_url": "https://ciudaduniversita-1548350202167.firebaseio.com",
+    "project_id": "ciudaduniversita-1548350202167",
+    "storage_bucket": "ciudaduniversita-1548350202167.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241707879764:android:73188ee7b71995d5",
+        "mobilesdk_app_id": "1:242590571008:android:d304ca58ade70154",
         "android_client_info": {
-          "package_name": "eric.tpfinal"
+          "package_name": "com.eric.ciudaduniversitariainteligente"
         }
       },
       "oauth_client": [
         {
-          "client_id": "241707879764-pja6ddo8jqef79idc8hobep0urenl669.apps.googleusercontent.com",
+          "client_id": "242590571008-ofm0mg51cm0mog1au1n2cid4f3io5b0c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "eric.tpfinal",
+            "package_name": "com.eric.ciudaduniversitariainteligente",
             "certificate_hash": "4b4422aefe5d57603e74fc32f75b5f0ed6838748"
           }
         },
         {
-          "client_id": "241707879764-e8sctofgs040sdgfspcsej3jglbl6k1m.apps.googleusercontent.com",
+          "client_id": "242590571008-8khslsef2bj9m6tj1j5athai17b0fe9q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCVm_O0ekKuDkqXYQVE9u_dzrVc2SOyWSo"
+          "current_key": "AIzaSyAWMoWPsPY8h4SNaS_BpCaq8-FErJ5bufs"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "241707879764-e8sctofgs040sdgfspcsej3jglbl6k1m.apps.googleusercontent.com",
+              "client_id": "242590571008-8khslsef2bj9m6tj1j5athai17b0fe9q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.eric.tpfinal"
+    package="com.eric.ciudaduniversitariainteligente"
     android:versionCode="1"
     android:versionName="1.0">
     <!-- Con esto  (versionCode y versionName) solucionamos el problema provider network access -->
@@ -23,9 +23,11 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBIR6kyfuK6F_rLl7UCpK7DroGMca3L8Dc" />
+            android:value="AIzaSyC8pET2tJ31JKLBNoQ4wLtIuP7zxrahwKI" />
 
-        <activity android:name=".PantallaCarga">
+
+
+        <activity android:name="com.eric.ciudaduniversitariainteligente.PantallaCarga">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.eric.ciudaduniversitariainteligente.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Login_SingUp" />

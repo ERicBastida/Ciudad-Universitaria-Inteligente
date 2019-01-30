@@ -1,7 +1,4 @@
-#Thu Jan 24 13:42:23 ART 2019
-base.0=C\:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
-path.1=classes2.dex
-renamed.1=classes2.dex
+#Mon Jan 28 13:38:36 ART 2019
+base.0=C\:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=C\:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10

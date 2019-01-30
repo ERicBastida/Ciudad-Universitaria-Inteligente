@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_id" translatable="false">241707879764-e8sctofgs040sdgfspcsej3jglbl6k1m.apps.googleusercontent.com</string>
-    <string name="firebase_database_url" translatable="false">https://tpfinal-3b46f.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">241707879764</string>
-    <string name="google_api_key" translatable="false">AIzaSyCVm_O0ekKuDkqXYQVE9u_dzrVc2SOyWSo</string>
-    <string name="google_app_id" translatable="false">1:241707879764:android:73188ee7b71995d5</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCVm_O0ekKuDkqXYQVE9u_dzrVc2SOyWSo</string>
-    <string name="google_storage_bucket" translatable="false">tpfinal-3b46f.appspot.com</string>
-    <string name="project_id" translatable="false">tpfinal-3b46f</string>
+    <string name="default_web_client_id" translatable="false">242590571008-8khslsef2bj9m6tj1j5athai17b0fe9q.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://ciudaduniversita-1548350202167.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">242590571008</string>
+    <string name="google_api_key" translatable="false">AIzaSyAWMoWPsPY8h4SNaS_BpCaq8-FErJ5bufs</string>
+    <string name="google_app_id" translatable="false">1:242590571008:android:d304ca58ade70154</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAWMoWPsPY8h4SNaS_BpCaq8-FErJ5bufs</string>
+    <string name="google_storage_bucket" translatable="false">ciudaduniversita-1548350202167.appspot.com</string>
+    <string name="project_id" translatable="false">ciudaduniversita-1548350202167</string>
 </resources>

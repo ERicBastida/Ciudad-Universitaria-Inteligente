@@ -21,11 +21,10 @@
     <!--Firebase requirements-->
 
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-    <string name="facebook_application_id" translatable="false">276949516299216</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb276949516299216</string>
+    <string name="facebook_application_id" translatable="false">519807988528963</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb519807988528963</string>
     <!--&lt;!&ndash; Twitter consumer key and secret &ndash;&gt;-->
-    <!--<string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>-->
-    <!--<string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>-->
-
+    <string name="twitter_consumer_key" translatable="false">NzOcdq6EDmHVVuNq2zeICBPkZ</string>
+    <string name="twitter_consumer_secret" translatable="false">JLtKNLmgvCHSVE0nwq8xgrgNEJkOYZZmRltaO54aGt5S06HHcx</string>
 
 </resources>

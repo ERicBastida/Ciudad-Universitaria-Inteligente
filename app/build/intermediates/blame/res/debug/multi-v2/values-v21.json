@@ -1,8 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "313"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "354",
+                        "endLines": "11",
+                        "endColumns": "12",
+                        "endOffsets": "650"
+                    }
+                },
                 {
                     "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\values-v21\\values-v21.xml",
                     "from": {
@@ -52,31 +71,12 @@
                         "endOffsets": "154,218,285,349,465,591,717,845,1017,1355"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,273,274,281,285,291,294",
+                        "startLines": "2,3,4,5,273,274,281,285,289,292",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,159,223,290,19871,19987,20444,20738,21163,21335",
-                        "endLines": "2,3,4,5,273,274,281,285,293,298",
+                        "startOffsets": "55,159,223,290,19871,19987,20444,20738,21033,21205",
+                        "endLines": "2,3,4,5,273,274,281,285,291,296",
                         "endColumns": "103,63,66,63,115,125,125,127,12,12",
-                        "endOffsets": "154,218,285,349,19982,20108,20565,20861,21330,21668"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\src\\main\\res\\values-v21\\styles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endLines": "7",
-                        "endColumns": "12",
-                        "endOffsets": "313"
-                    },
-                    "to": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "354",
-                        "endLines": "11",
-                        "endColumns": "12",
-                        "endOffsets": "650"
+                        "endOffsets": "154,218,285,349,19982,20108,20565,20861,21200,21538"
                     }
                 },
                 {
@@ -96,25 +96,6 @@
                         "endLines": "172,234",
                         "endColumns": "12,96",
                         "endOffsets": "13081,17517"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-appinvite-12.0.1.aar\\b098d0270b0df6af2d1dd86278114f8e\\res\\values-v21\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "172",
-                        "endLines": "5",
-                        "endColumns": "8",
-                        "endOffsets": "297"
-                    },
-                    "to": {
-                        "startLines": "289",
-                        "startColumns": "4",
-                        "startOffsets": "21033",
-                        "endLines": "290",
-                        "endColumns": "8",
-                        "endOffsets": "21158"
                     }
                 }
             ]

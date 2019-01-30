@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/loading_background"
 
-    tools:context="com.eric.tpfinal.PantallaCarga">
+    tools:context="com.eric.ciudaduniversitariainteligente.PantallaCarga">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
