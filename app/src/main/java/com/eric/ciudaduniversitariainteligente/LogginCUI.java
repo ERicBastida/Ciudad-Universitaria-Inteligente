@@ -26,6 +26,7 @@ public class LogginCUI {
     }
 
     final public String ETIQUETA_ERROR = "ERROR-CUI";
+    final public String ETIQUETA_INFO = "INFO-CUI";
     final public String TITULO_ERROR = "Error en Ciudad Universitaria Inteligente";
 
 
@@ -37,6 +38,11 @@ public class LogginCUI {
     private Activity actividad;
     private boolean registrado = false;
 
+
+    public void registrar_info(Object clase , String nombre_funcion, String  info){
+
+        Log.d(ETIQUETA_INFO,String.format(STRING_MENSAJE,clase.getClass().getName(), nombre_funcion, info));
+    }
 
     public void registrar(Object clase , String nombre_funcion, Exception e){
 

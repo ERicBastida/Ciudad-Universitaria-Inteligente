@@ -4,6 +4,23 @@
             "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\values-nb\\values-nb.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    },
+                    "to": {
+                        "startLines": "124",
+                        "startColumns": "4",
+                        "startOffsets": "12442",
+                        "endColumns": "66",
+                        "endOffsets": "12504"
+                    }
+                },
+                {
                     "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\0057d4d641d8bf960a1fa86467612d00\\res\\values-nb\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",

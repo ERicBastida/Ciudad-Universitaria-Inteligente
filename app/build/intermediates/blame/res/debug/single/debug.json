@@ -36,24 +36,24 @@
         "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\google_icon.png"
     },
     {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_36dp.png"
-    },
-    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edit_icon.png.flat",
         "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\edit_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_messenger_button_send_white_round.xml.flat",
-        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-messenger-4.39.0.aar\\ae0cdd7eb9953cbfbcc17561d51b684b\\res\\layout\\messenger_button_send_white_round.xml"
-    },
-    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_twitter.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.1.0.aar\\9260be7ce8745de6ce01b0dbf1d635af\\res\\drawable-v21\\fui_idp_button_background_twitter.xml"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_messenger_button_send_white_round.xml.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-messenger-4.39.0.aar\\ae0cdd7eb9953cbfbcc17561d51b684b\\res\\layout\\messenger_button_send_white_round.xml"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -68,20 +68,20 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
-        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.39.0.aar\\0484a676efaf8ce553222c31bcd85325\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_topnub.png"
-    },
-    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\0057d4d641d8bf960a1fa86467612d00\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.39.0.aar\\0484a676efaf8ce553222c31bcd85325\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_blue_topnub.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-mdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_idp_button_background_google.xml.flat",
@@ -164,6 +164,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_tw__ic_logo_default.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable-xxhdpi-v4\\tw__ic_logo_default.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_design_password_eye.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\db45db93986048ab16275110d1f9d0a0\\res\\drawable\\design_password_eye.xml"
     },
@@ -190,6 +194,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_dialog_material_background.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tw__login_btn_default.xml.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable\\tw__login_btn_default.xml"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -860,6 +868,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tw__login_btn_disabled.xml.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable\\tw__login_btn_disabled.xml"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\0057d4d641d8bf960a1fa86467612d00\\res\\drawable\\common_google_signin_btn_icon_light.xml"
     },
@@ -890,6 +902,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_github.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.1.0.aar\\9260be7ce8745de6ce01b0dbf1d635af\\res\\drawable-v21\\fui_idp_button_background_github.xml"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_tw__activity_oauth.xml.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\layout\\tw__activity_oauth.xml"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_support_simple_spinner_dropdown_item.xml.flat",
@@ -1424,6 +1440,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\db45db93986048ab16275110d1f9d0a0\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tw__login_btn_pressed.xml.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable\\tw__login_btn_pressed.xml"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_share.xml.flat",
         "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable-v21\\ic_menu_share.xml"
     },
@@ -1490,6 +1510,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.39.0.aar\\0484a676efaf8ce553222c31bcd85325\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_background.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_toggle_pass.xml.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\toggle_pass.xml"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -1586,6 +1610,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_action_bar_item_background_material.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tw__login_btn.xml.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable\\tw__login_btn.xml"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -1780,12 +1808,12 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
-        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
-    },
-    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient_color2.xml.flat",
         "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\gradient_color2.xml"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
@@ -2052,6 +2080,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_listview.xml.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\layout\\item_listview.xml"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_fui_auth_method_picker_layout.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.1.0.aar\\9260be7ce8745de6ce01b0dbf1d635af\\res\\layout-land\\fui_auth_method_picker_layout.xml"
     },
@@ -2120,6 +2152,10 @@
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xhdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_tw__ic_logo_default.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable-hdpi-v4\\tw__ic_logo_default.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_disabled.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\0057d4d641d8bf960a1fa86467612d00\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
     },
@@ -2146,6 +2182,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_transparente.png.flat",
         "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\mipmap-hdpi\\transparente.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_tw__ic_logo_default.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable-xhdpi-v4\\tw__ic_logo_default.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_popup_menu_header_item_layout.xml.flat",
@@ -2272,6 +2312,10 @@
         "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\mipmap-xxxhdpi\\transparente_round.png"
     },
     {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_tw__ic_logo_default.png.flat",
+        "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\drawable-mdpi-v4\\tw__ic_logo_default.png"
+    },
+    {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_tooltip.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\layout\\abc_tooltip.xml"
     },
@@ -2358,6 +2402,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_visibility_black_24dp.png.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\ic_visibility_black_24dp.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_login_silver_background.xml.flat",
@@ -2494,10 +2542,6 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_design_password_eye.xml.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\db45db93986048ab16275110d1f9d0a0\\res\\drawable-v21\\design_password_eye.xml"
-    },
-    {
-        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_header_new_user.jpg.flat",
-        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\header_new_user.jpg"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -2742,6 +2786,10 @@
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_visibility_off_black_24dp.png.flat",
+        "source": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\src\\main\\res\\drawable\\ic_visibility_off_black_24dp.png"
     },
     {
         "merged": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",

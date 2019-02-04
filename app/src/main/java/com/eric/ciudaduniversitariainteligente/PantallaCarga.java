@@ -176,16 +176,37 @@ public class PantallaCarga extends AppCompatActivity {
     // Función  encargada de avanzar a la próxima activity
     private void avanzar(){
         try{
+//            Usuario usuario_con_sesion = new Usuario();
 
-            //Nos vamos a iniciar la actividad encargada del inicio de sesion.
-            Intent intent = new Intent(getApplicationContext(), Login_SingUp.class);
-            startActivity(intent);
+            Intent irSiguienteActivity = null;
+//            boolean usuario_act = usuario_con_sesion.esta_activo();
+//            if (usuario_act){
+//                irSiguienteActivity = new Intent(this,MainActivity.class);
+//
+////                Usuario user = usuario_con_sesion.getUsuarioActivo();
+////                irSiguienteActivity.putExtra("existe_usuario", user != null);
+////                irSiguienteActivity.putExtra("usuario",user.toBundle());
+////                Toast.makeText(this,"Usuario activo :  " + user.getNombre() ,Toast.LENGTH_SHORT).show();
+//
+//
+//
+//            }else{
+//                //Nos vamos a iniciar la actividad encargada del inicio de sesion.
+//
+//                irSiguienteActivity = new Intent(getApplicationContext(), Login_SingUp.class);
+//
+//
+//            }
+            irSiguienteActivity = new Intent(getApplicationContext(), Login_SingUp.class);
+            startActivity(irSiguienteActivity);
             finish();
+
 
         }catch (Exception e){
 
-            log.registrar(this,"comprobar_permisos",e);
+            log.registrar(this,"Al intentar cargar la siguiente pantalla.",e);
             log.alertar("Ocurrió un error al momento de comprobar los permisos..",this);
+
 
         }
 

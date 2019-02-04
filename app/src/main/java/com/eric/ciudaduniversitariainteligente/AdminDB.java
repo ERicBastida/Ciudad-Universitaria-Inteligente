@@ -93,9 +93,9 @@ public class AdminDB {
 
     }
 
-    public boolean modificarUsuario(final Usuario usuario) {
+    public void modificarUsuario(final OnDB_Listener escuchador,final Usuario usuario) {
 
-        final boolean[] resultado = {false};
+
 
         final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(usuario.getKey());
 
@@ -104,14 +104,12 @@ public class AdminDB {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     usuariosRef.child(usuario.getKey()).setValue(usuario);
-//                    Toast.makeText(actividad, "Se ha realizado la actualización de manera exitosa para el usuario : " + usuario.getKey(), Toast.LENGTH_SHORT).show();
+                    escuchador.result(COD_USUARIO_MODIFICADO,usuario,true);
 
-                    resultado[0] = true;
                 } else {
 
+                    escuchador.result(COD_USUARIO_MODIFICADO,usuario,false);
 
-//                    Toast.makeText(actividad, "Ya se ha registrado el usuario  : " + usuario.getKey() + " de manera exitosa.", Toast.LENGTH_SHORT).show();
-                    resultado[0] = false;
 
 
                 }
@@ -124,8 +122,6 @@ public class AdminDB {
         };
 
         usuariosRef.addListenerForSingleValueEvent(eventListener);
-
-        return resultado[0];
 
     }
 

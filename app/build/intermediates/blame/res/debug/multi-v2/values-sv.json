@@ -104,6 +104,23 @@
                         "endColumns": "100",
                         "endOffsets": "12536"
                     }
+                },
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\values-sv\\values-sv.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    },
+                    "to": {
+                        "startLines": "125",
+                        "startColumns": "4",
+                        "startOffsets": "12541",
+                        "endColumns": "66",
+                        "endOffsets": "12603"
+                    }
                 }
             ]
         }

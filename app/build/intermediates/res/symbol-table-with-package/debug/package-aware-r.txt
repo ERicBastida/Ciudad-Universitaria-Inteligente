@@ -672,6 +672,10 @@ color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
 color transparente
+color tw__blue_default
+color tw__blue_pressed
+color tw__light_gray
+color tw__solid_white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -865,6 +869,12 @@ dimen tooltip_precise_anchor_threshold
 dimen tooltip_vertical_padding
 dimen tooltip_y_offset_non_touch
 dimen tooltip_y_offset_touch
+dimen tw__login_btn_drawable_padding
+dimen tw__login_btn_height
+dimen tw__login_btn_left_padding
+dimen tw__login_btn_radius
+dimen tw__login_btn_right_padding
+dimen tw__login_btn_text_size
 drawable abc_ab_share_pack_mtrl_alpha
 drawable abc_action_bar_item_background_material
 drawable abc_btn_borderless_material
@@ -1030,7 +1040,6 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gradient_color
 drawable gradient_color2
-drawable header_new_user
 drawable ic_launcher
 drawable ic_menu_camera
 drawable ic_menu_gallery
@@ -1038,6 +1047,8 @@ drawable ic_menu_manage
 drawable ic_menu_send
 drawable ic_menu_share
 drawable ic_menu_slideshow
+drawable ic_visibility_black_24dp
+drawable ic_visibility_off_black_24dp
 drawable loading_background
 drawable logounl
 drawable mapa_icon
@@ -1069,8 +1080,14 @@ drawable profile_example2
 drawable qrfab
 drawable save_icon
 drawable side_nav_bar
+drawable toggle_pass
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable tw__ic_logo_default
+drawable tw__login_btn
+drawable tw__login_btn_default
+drawable tw__login_btn_disabled
+drawable tw__login_btn_pressed
 drawable twitter_icon
 drawable ultimas_icon
 drawable unl_icon
@@ -1238,6 +1255,7 @@ id light
 id line1
 id line3
 id linearLayout
+id linearLayout2
 id listMode
 id listView
 id list_item
@@ -1372,6 +1390,8 @@ id transition_transform
 id trouble_signing_in
 id tv1
 id tv2
+id tw__spinner
+id tw__web_view
 id txtCarrera
 id txtEmail
 id txtItemSpinner
@@ -1483,6 +1503,7 @@ layout fui_provider_button_phone
 layout fui_register_email_layout
 layout fui_welcome_back_idp_prompt_layout
 layout fui_welcome_back_password_prompt_layout
+layout item_listview
 layout messenger_button_send_blue_large
 layout messenger_button_send_blue_round
 layout messenger_button_send_blue_small
@@ -1511,6 +1532,7 @@ layout select_dialog_singlechoice_material
 layout spinner_item_layout
 layout spinner_layout_signup
 layout support_simple_spinner_dropdown_item
+layout tw__activity_oauth
 layout ultimas_busquedas
 menu activity_main_drawer
 menu main
@@ -1689,6 +1711,7 @@ string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
 string title_activity_pantalla_carga
+string tw__login_btn_txt
 string twitter_consumer_key
 string twitter_consumer_secret
 string universidad

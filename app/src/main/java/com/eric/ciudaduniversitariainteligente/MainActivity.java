@@ -1,11 +1,8 @@
 package com.eric.ciudaduniversitariainteligente;
 
 
-import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ClipData;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -24,7 +21,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import java.util.Vector;
 
 
@@ -32,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private String CORREO_SOPORTE_TECNICO = "eribastida@gmail.com";
-
+    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
     /* Atributos de la clase*/
     private LogginCUI log = new LogginCUI();
     private ArmaCamino oArmaCamino = null;
@@ -49,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private usuarioFragment usuario = null;
     private Bundle usuario_bundle = null;
     private Usuario usuario_app = null;
+    Busqueda busqueda ;
 
-    private int codigo_solicitud_pantalla_inicio = 1;
 
 
     /*Funciones*/
@@ -77,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mapsFragment = new MapsFragment();
             ultimasBusquedas = new ultimasBusquedas();
             ultimasBusquedas.setMainActivity(this);
+            busqueda = new Busqueda();
 
 
 
@@ -105,7 +102,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setNavigationItemSelectedListener(this);
 
             //Cambio el fragment por defecto por mi mapFragment
-            fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
+            fm.beginTransaction().replace(R.id.fragment_container, busqueda).addToBackStack(BACK_STACK_ROOT_TAG).commit();
+//            fm.beginTransaction().replace(R.id.fragment_container, busqueda).commit();
 
             // Compruebo que se haya iniciado sesión
 
@@ -164,23 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    // Función encargada de gestionar el DialogAlert para informar al usuario un respectivo mensaje.
-    private void alert_info(String mensaje, String titulo){
 
-            //Se instancia un objeto AlerteDialog
-            AlertDialog.Builder preAlerta = new AlertDialog.Builder(this);
-            // Se definen sus respectivos datos para mostrar
-            preAlerta.setMessage(mensaje).setTitle(titulo);
-
-            preAlerta.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    closeContextMenu();
-                }
-            });
-            AlertDialog alerta = preAlerta.create();
-            alerta.show();
-
-    }
 
     // Función encargada de ocultar las caracteristicas extras que tiene la app si ingresaría con una cuenta
     public void modoInvitado(boolean visible){
@@ -201,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
             } else {
+                super.onBackPressed();
                 if(fm.getBackStackEntryCount() == 0){
                     super.onBackPressed();
                 }
@@ -209,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         finish();
                     }
                     else {
-                        fm.popBackStack();
+//                        fm.popBackStack();
                         mapsFragment.limpiarMapa();
 
                     }
@@ -278,27 +261,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             if (id == R.id.buscar) {
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof Busqueda)) {
-                    qrBoton.hide();
+//                    qrBoton.hide();
                     menu.clear();
                     Busqueda busqueda = new Busqueda();
-                    fm.popBackStack();
-                    fm.beginTransaction().replace(R.id.fragment_container, busqueda).addToBackStack(null).commit();
+//                    fm.popBackStackImmediate();
+                    fm.beginTransaction().replace(R.id.fragment_container, busqueda).commit();
                 }
 
             } else if (id == R.id.mapa_completo) {
                 mapsFragment.limpiarMapa();
                 menu.clear();
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof MapsFragment)) {
-                    qrBoton.show();
+//                    qrBoton.show();
                     fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
                 }
 
             } else if (id == R.id.ultimas) {
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof ultimasBusquedas)) {
-                    qrBoton.hide();
+//                    qrBoton.hide();
                     menu.clear();
-                    fm.popBackStack();
-                    fm.beginTransaction().replace(R.id.fragment_container, ultimasBusquedas).addToBackStack(null).commit();
+//                    fm.popBackStack("home",0);
+                    fm.beginTransaction().replace(R.id.fragment_container, ultimasBusquedas).commit();
                 }
 
             } else if (id == R.id.usuario) {
@@ -311,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                fm.popBackStack();
                 FragmentTransaction transacion = fm.beginTransaction();
                 transacion.replace(R.id.fragment_container, new usuarioFragment().newInstance(usuario_bundle));
-//                transacion.addToBackStack("");
+//                transacion.addToBackStack(BACK_STACK_ROOT_TAG);
                 transacion.commit();
 
             }else if (id == R.id.informar_error) {
@@ -319,11 +302,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }else if (id == R.id.creditos) {
 
-
                 Toast.makeText(this,"Función no implementada. Consultar al autor del proyecto. ",Toast.LENGTH_SHORT).show();
 
             }else if (id == R.id.cerrar) {
-                //TODO: cerrar sesion del usuario
+//                usuario_app = new Usuario();
+//                usuario_app.cerrar_sesion();
 
                 Toast.makeText(this,"Cerrar sesion.",Toast.LENGTH_SHORT).show();
                 finishActivity(0);
@@ -331,7 +314,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
 
             }
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            DrawerLayout drawer =  findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
 
         }catch (Exception e){
@@ -375,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String texto = "Su objetivo está en " + oArmaCamino.getPisoObjetivo();
                 Toast.makeText(getApplicationContext(), texto, Toast.LENGTH_LONG).show();
             }
-            fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).addToBackStack(null).commit();
+            fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
             qrBoton.show();
         }catch (Exception e){
             log.registrar(this,"mostrarBusqueda",e);

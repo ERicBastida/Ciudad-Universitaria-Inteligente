@@ -2,22 +2,33 @@ package com.eric.ciudaduniversitariainteligente;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
+import android.support.v7.widget.AppCompatEditText;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -30,15 +41,21 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
     private FloatingActionButton btnUsuario;
     private TextView txtName;
     private TextView txtLastName;
-    private TextView txtEmail;
-    private TextView txtPass;
-    private TextView txtPass2;
+    private AppCompatEditText txtEmail;
+    private AppCompatEditText txtPass;
+    private AppCompatEditText txtPass2;
+
     private TextView txtCarrera;
     private Spinner spinner_carreras;
     private loginFragment login;
     private LogginCUI log = new LogginCUI();
     private OnFragmentInteractionListener mListener;
+    private Usuario usuario_modificado;
+
     private boolean MODO_EDICION = true;
+    private boolean MODO_EDICION_2 = false;
+
+    private String[] carreras;
 
     private CircleImageView imagen_perfil;
 
@@ -69,20 +86,20 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
             txtCarrera = view.findViewById(R.id.txtCarrera);
             spinner_carreras =  view.findViewById(R.id.spinner_carreras);
             imagen_perfil = view.findViewById(R.id.profile_image);
+            carreras = getResources().getStringArray(R.array.carreras);
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getActivity(),
-                    R.layout.spinner_item_layout, getResources().getStringArray(R.array.carreras));
+                    R.layout.spinner_item_layout, carreras);
             spinner_carreras.setAdapter(adapter);
 
             txtCarrera.setText(spinner_carreras.getSelectedItem().toString());
 
             // Si tengo información que mostrar, inhabilito los campos y seteo la información recibida.
-            Bundle info_usuario = getArguments();
+            final Bundle info_usuario = getArguments();
 
             if (info_usuario != null){
-                Toast.makeText(getActivity(),"Me enviaste un usuario",Toast.LENGTH_SHORT).show();
-                String texto = "Texto de ejemplo";
+
                 MODO_EDICION = false;
 
                 txtName.setText(info_usuario.getString("nombre"));
@@ -90,20 +107,21 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
                 txtEmail.setText(info_usuario.getString("key")+info_usuario.getString("correo"));
                 txtPass.setText(info_usuario.getString("pass"));
                 txtPass2.setText(info_usuario.getString("pass"));
-                spinner_carreras.setSelection(0);
+                spinner_carreras.setSelection(info_usuario.getInt("carrera"));
                 String uri_image = info_usuario.getString("imagen");
-                if (!uri_image.isEmpty() && uri_image != null) {
-                    imagen_perfil.setImageURI(Uri.parse(uri_image));
-
+                if (uri_image == null) {
+                    imagen_perfil.setImageResource(R.drawable.profile_example);
                 }else{
-                    imagen_perfil.setImageResource(R.drawable.profile_example2);
+
+                    new DescargarImagenPerfil((CircleImageView) view.findViewById(R.id.profile_image)).execute(uri_image);
+
+                    Toast.makeText(getActivity(),uri_image,Toast.LENGTH_SHORT).show();
+
                 }
+
 
                 habilitar_campos(false);
                 btnUsuario.setImageResource(R.drawable.edit_icon);
-//                txtCarrera.setText(info_usuario.getString("carrera"));
-
-
 
 
             }
@@ -115,6 +133,8 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
                         btnUsuario.setImageResource(R.drawable.save_icon);
                         habilitar_campos(true);
                         MODO_EDICION = !MODO_EDICION;
+                        MODO_EDICION_2 = true;
+
                     }else{
                         String name = txtName.getText().toString();
                         String lastName = txtLastName.getText().toString();
@@ -124,26 +144,47 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
 
 
                         if (hay_conexion()){
-                            //TODO: ver si lo dejo en el stack
+
                             if (!name.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !pass.isEmpty() && !pass2.isEmpty()) {
-                                if (!spinner_carreras.getSelectedItem().toString().equals("Elige una carrera")){
-                                    String carrera = spinner_carreras.getSelectedItem().toString();
+
+                                if (spinner_carreras.getSelectedItemPosition() > 0){
+
+
+                                    int carrera = spinner_carreras.getSelectedItemPosition();
+
                                     if (pass.equals(pass2)) {
                                         BaseDatos = new AdminDB(getActivity());
                                         String[] correo;
                                         correo  =    email.split("@");
                                         String usuario_key = correo[0];
                                         String server_correo = "@"+correo[1];
-                                        Usuario nuevo_usuario = new Usuario(usuario_key,name,lastName,server_correo,pass,carrera);
-                                        BaseDatos.agregarUsuario(new AdminDB.OnDB_Listener(){
 
-                                                                     @Override
-                                                                     public void result(int codigo, Usuario usuario, boolean resultado) {
-                                                                         resultado_BD(codigo,usuario,resultado);
-                                                                     }
+                                        //En este caso quire decir que se inicio el fragment con datos y el usuario desea modificarlo.
+                                        if (MODO_EDICION_2){
 
-                                                                 },
-                                                nuevo_usuario);
+                                            usuario_modificado = new Usuario(usuario_key,name,lastName,server_correo,pass,carrera,info_usuario.getString("imagen"));
+                                            BaseDatos.modificarUsuario(new AdminDB.OnDB_Listener(){
+                                                                           @Override
+                                                                           public void result(int codigo, Usuario usuario, boolean resultado) {
+                                                                               resultado_BD(codigo,usuario,resultado);
+                                                                           }
+                                                                       }
+                                                    ,usuario_modificado);
+                                        }else {
+
+                                            Usuario nuevo_usuario = new Usuario(usuario_key,name,lastName,server_correo,pass,carrera,info_usuario.getString("imagen"));
+                                            BaseDatos.agregarUsuario(new AdminDB.OnDB_Listener(){
+
+                                                                         @Override
+                                                                         public void result(int codigo, Usuario usuario, boolean resultado) {
+                                                                             resultado_BD(codigo,usuario,resultado);
+                                                                         }
+
+                                                                     },
+                                                    nuevo_usuario);
+                                        }
+
+
 
                                     } else {
                                         Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
@@ -173,10 +214,8 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Bundle bundle = new Bundle();
                     bundle.putString("datos", "datos que necesito");
-
-
                     txtCarrera.setText(spinner_carreras.getSelectedItem().toString());
-                    Toast.makeText(getActivity(),"Asignaste " + Integer.toString(position),Toast.LENGTH_SHORT).show();
+
                 }
 
                 @Override
@@ -228,13 +267,14 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
     }
 
     public void siguiente_pantalla(){
-
-        login = new loginFragment();
-
-        FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, login);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        //Si dentro de CUI, no hace falta ir a algún lado
+        if (!MODO_EDICION_2) {
+            login = new loginFragment();
+            FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, login);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
 
 
     }
@@ -244,21 +284,54 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
     }
 
     public void resultado_BD(int codigo, Usuario usuario, boolean resultado) {
+        try{
+            String mensaje ="";
 
-        if (AdminDB.COD_USUARIO_AGREGADO == codigo){
-            String mensaje = "";
+            switch (codigo){
+                case AdminDB.COD_USUARIO_AGREGADO:
 
-            if (resultado){
-                mensaje = "Se ha agregado exitosamente el usuario : " + usuario.getNombre();
-                resetear_campos();
-                siguiente_pantalla();
-            }else{
-                mensaje = "Ya existe un usuario asocidado con el correo : " + usuario.getKey() + usuario.getCorreo();
+                    if (resultado){
+                        mensaje = "Se ha agregado exitosamente el usuario : " + usuario.getNombre();
+                        resetear_campos();
+                        siguiente_pantalla();
+                    }else{
+                        mensaje = "Ya existe un usuario asocidado con el correo : " + usuario.getKey() + usuario.getCorreo();
+                    }
+                    Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+                    break;
+                case AdminDB.COD_USUARIO_MODIFICADO:
+
+                    if (resultado){
+                        mensaje = "Se ha modificado exitosamente el usuario : " + usuario.getNombre();
+                        resetear_campos();
+                        siguiente_pantalla();
+                    }else{
+                        if (MODO_EDICION_2 == true){
+                            BaseDatos.agregarUsuario(new AdminDB.OnDB_Listener(){
+
+                                                         @Override
+                                                         public void result(int codigo, Usuario usuario, boolean resultado) {
+                                                             resultado_BD(codigo,usuario,resultado);
+                                                         }
+
+                                                     },
+                                    usuario_modificado);
+                            mensaje = "Te has registrado a la aplicación, desde ahora ya puedes ingresar con tu correo a la app.";
+                        }else{
+                            mensaje = "No se ha podido modificar el usuario.";
+                        }
+
+                    }
+                    Toast.makeText(getActivity(), mensaje, Toast.LENGTH_LONG).show();
+                    break;
+
             }
-
-            Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            log.registrar(this,"resultado_BD",e);
+            log.alertar("Ocurrió un error al momento de gestionar el resultado de la base de datos. ",getActivity());
 
         }
+
 
     }
 
@@ -305,6 +378,32 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
 
     public usuarioFragment(){
 
+    }
+
+    private class DescargarImagenPerfil extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DescargarImagenPerfil(CircleImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 
 

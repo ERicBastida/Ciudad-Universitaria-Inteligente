@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Created by Lautaro on 08/12/2016.
@@ -46,15 +47,17 @@ public class ultimasBusquedas extends Fragment {
                     t++;
                 } while (c.moveToNext());
 
-                ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, array);
+                ListAdapter adapter = new ArrayAdapter<String>(getActivity(), R.layout.item_listview, array);
 
                 final ListView listView = (ListView) rootView.findViewById(R.id.listView);
+
 
                 //ItemClickListener para los elementos del listView, para hacer una busqueda desde aquí
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         String itemClick = listView.getItemAtPosition(i).toString();
+                        TextView texto = view.findViewById(android.R.id.text1);
                         String Nombre = itemClick.substring(0, (itemClick.indexOf(',')));
                         String Edificio = itemClick.substring((itemClick.indexOf(',') + 2), itemClick.length());
                         oMainActivity.mostrarBusqueda(Edificio, Nombre);
@@ -68,7 +71,7 @@ public class ultimasBusquedas extends Fragment {
             //Si todavia no se han hecho busquedas
             else {
                 String[] array = {"Aun no se registran busquedas"};
-                ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, array);
+                ListAdapter adapter = new ArrayAdapter<String>(getActivity(), R.layout.item_listview, array);
                 final ListView listView = (ListView) rootView.findViewById(R.id.listView);
                 listView.setAdapter(adapter);
             }

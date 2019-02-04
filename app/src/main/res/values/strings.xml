@@ -18,13 +18,13 @@
         <item> Arquitectura     </item>
 
     </string-array>
-    <!--Firebase requirements-->
+    <!--Firebase requirements-->hConfig authConfig = new TwitterAuthConfig("Insert Consumer key here(CONSUMER KEY (API KEY)) ",Insert consumer secret key here(CO
 
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_application_id" translatable="false">519807988528963</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb519807988528963</string>
     <!--&lt;!&ndash; Twitter consumer key and secret &ndash;&gt;-->
     <string name="twitter_consumer_key" translatable="false">NzOcdq6EDmHVVuNq2zeICBPkZ</string>
-    <string name="twitter_consumer_secret" translatable="false">JLtKNLmgvCHSVE0nwq8xgrgNEJkOYZZmRltaO54aGt5S06HHcx</string>
+    <string name="twitter_consumer_secret" translatable="false">JLtKNLmgvCHSVE0nwq8xgrgNEJkOYZZmRltaO54aGt5S06HHc</string>
 
 </resources>

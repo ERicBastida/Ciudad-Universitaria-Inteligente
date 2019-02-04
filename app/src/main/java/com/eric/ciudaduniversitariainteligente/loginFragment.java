@@ -8,7 +8,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +20,6 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -108,6 +105,7 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
                                         }
 
                                     },user);
+
 //
                                 }
                                 break;
@@ -139,7 +137,7 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
 
             btnIngresante.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(),"Te vas a la puta", Toast.LENGTH_SHORT).show();
+
                     ir_a_CUI(null);
 
                 }
@@ -263,18 +261,20 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
                 if (resultCode == getActivity().RESULT_OK) {
                     // Successfully signed in
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    Toast.makeText(getActivity(), "Iniciaste sesion " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                     Usuario usuario_red_social = new Usuario();
                     usuario_red_social.copy(user);
-                    Toast.makeText(getActivity(), "Bien! ingresaste con una red social : " + usuario_red_social.getNombre(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Ingresaste con una red social : " + usuario_red_social.getNombre(), Toast.LENGTH_SHORT).show();
                     ir_a_CUI(usuario_red_social);
 
                 } else {
-                    Toast.makeText(getActivity(), "No se ha podido iniciar sesión.", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getActivity(), "No se ha podido iniciar sesión." + response.toString(), Toast.LENGTH_SHORT).show();
+                    throw new Exception(response.getError());
+//                    Toast.makeText(getActivity(), "No se ha podido iniciar sesión." + response.toString(), Toast.LENGTH_SHORT).show();
+//                    log.registrar_info(this,"onActivityResult", response.toString());
                 }
             }
         }catch (Exception e ){
+
             log.registrar(this,"onActivityResult",e);
             log.alertar("Ocurrió un error al momento de gestionar el inicio de sesión.",getActivity());
 
@@ -316,7 +316,7 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
                 gotoCUI.putExtra("existe_usuario", false);
                 mensaje = "sin usuario.";
             }
-            Toast.makeText(getActivity(),"me voy a CUI "+ mensaje, Toast.LENGTH_SHORT).show();
+
             startActivity(gotoCUI);
             getActivity().finish();
 
@@ -357,15 +357,16 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
             String mensaje = "";
 
             if (resultado){
-                mensaje = "(IR A LA APLICACION) Tu contraseña -> " + usuario.getPass();
-                //TODO: ir a la aplicación
+
+
                 ir_a_CUI(usuario);
 
             }else{
                 mensaje = "No existe el usuario. Por favor registrese o ingrese por alguna red social.";
+                Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
             }
 
-            Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+
 
         }
 

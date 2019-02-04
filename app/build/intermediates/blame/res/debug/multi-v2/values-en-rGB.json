@@ -104,6 +104,23 @@
                         "endColumns": "103,99,107,83,99,114,76,75,81,102,103,98,104,102,103,155,99,81",
                         "endOffsets": "497,597,705,789,889,1004,1081,1157,1239,1342,1446,1545,1650,1753,1857,2013,2113,10241"
                     }
+                },
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\values-en-rGB\\values-en-rGB.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    },
+                    "to": {
+                        "startLines": "106",
+                        "startColumns": "4",
+                        "startOffsets": "10347",
+                        "endColumns": "65",
+                        "endOffsets": "10408"
+                    }
                 }
             ]
         }

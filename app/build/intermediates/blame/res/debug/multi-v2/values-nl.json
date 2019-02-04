@@ -89,6 +89,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\twitter-core-3.1.1.aar\\855831f8190dd1afe583429a6d5f1e5e\\res\\values-nl\\values-nl.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    },
+                    "to": {
+                        "startLines": "125",
+                        "startColumns": "4",
+                        "startOffsets": "12921",
+                        "endColumns": "66",
+                        "endOffsets": "12983"
+                    }
+                },
+                {
                     "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\0f9ea0dbaf141e4193112b9ed4c06a0e\\res\\values-nl\\values-nl.xml",
                     "from": {
                         "startLines": "2",
