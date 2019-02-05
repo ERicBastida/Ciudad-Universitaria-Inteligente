@@ -1047,8 +1047,6 @@ drawable ic_menu_manage
 drawable ic_menu_send
 drawable ic_menu_share
 drawable ic_menu_slideshow
-drawable ic_visibility_black_24dp
-drawable ic_visibility_off_black_24dp
 drawable loading_background
 drawable logounl
 drawable mapa_icon
@@ -1076,11 +1074,9 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable porton
 drawable profile_example
-drawable profile_example2
 drawable qrfab
 drawable save_icon
 drawable side_nav_bar
-drawable toggle_pass
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable tw__ic_logo_default

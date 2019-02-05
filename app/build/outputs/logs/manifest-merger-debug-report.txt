@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
+ADDED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [com.google.android.gms:play-services-maps:16.0.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\play-services-maps-16.0.0.aar\bde5b9d11c2c4c4a69e52a37705ec7a3\AndroidManifest.xml:17:1-32:12
 MERGED from [com.airbnb.android:lottie:2.7.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\lottie-2.7.0.aar\875c7f55a3e3771b5796337371b9b93b\AndroidManifest.xml:2:1-13:12
 MERGED from [de.hdodenhof:circleimageview:3.0.0] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\circleimageview-3.0.0.aar\baf04ef101ebbd186c245528ae8db96b\AndroidManifest.xml:2:1-11:12
@@ -52,9 +52,9 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\ERic\.gradle\c
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\99054193c91896fb0cc6cb5f473703b4\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\5be2e959483583f961d8d07a6faea0c2\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-database-collection:16.0.1] C:\Users\ERic\.gradle\caches\transforms-1\files-1.1\firebase-database-collection-16.0.1.aar\6d77d3d8fb8f763ef712155ee75a1e33\AndroidManifest.xml:2:1-7:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
-INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml:3:5-54
 		INJECTED from C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\AndroidManifest.xml

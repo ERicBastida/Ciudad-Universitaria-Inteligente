@@ -1,6 +1,7 @@
 package com.eric.ciudaduniversitariainteligente;
 
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private String CORREO_SOPORTE_TECNICO = "eribastida@gmail.com";
     private static final String BACK_STACK_ROOT_TAG = "root_fragment";
+
     /* Atributos de la clase*/
     private LogginCUI log = new LogginCUI();
     private ArmaCamino oArmaCamino = null;
@@ -76,8 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             busqueda = new Busqueda();
 
 
-
-
             //Agrego Nodos a mi vector de nodos en oArmaCamino
             cargaNodos();
 
@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
-            //Cambio el fragment por defecto por mi mapFragment
-            fm.beginTransaction().replace(R.id.fragment_container, busqueda).addToBackStack(BACK_STACK_ROOT_TAG).commit();
-//            fm.beginTransaction().replace(R.id.fragment_container, busqueda).commit();
 
             // Compruebo que se haya iniciado sesión
 
@@ -122,8 +119,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this,"MODO INVITADO",Toast.LENGTH_SHORT).show();
             }
 
-            
 
+
+            //Inicializo el primer fragment por defecto
+            agregarFragment(busqueda,false,BACK_STACK_ROOT_TAG);
 
 
 
@@ -134,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -161,19 +159,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
-
-
     // Función encargada de ocultar las caracteristicas extras que tiene la app si ingresaría con una cuenta
     public void modoInvitado(boolean visible){
 
-
         navigationView.getMenu().findItem(R.id.usuario).setVisible(visible);
         navigationView.getMenu().findItem(R.id.cerrar).setVisible(visible);
-
-
-
-
 
     }
     @Override
@@ -211,7 +201,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.activity_main_drawer,menu);
         this.menu = menu;
 
-        return true;
+
+        return false;
     }
 
     @Override
@@ -261,27 +252,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             if (id == R.id.buscar) {
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof Busqueda)) {
-//                    qrBoton.hide();
-                    menu.clear();
-                    Busqueda busqueda = new Busqueda();
-//                    fm.popBackStackImmediate();
-                    fm.beginTransaction().replace(R.id.fragment_container, busqueda).commit();
+                    fm.popBackStack();
+                    agregarFragment(busqueda,false,BACK_STACK_ROOT_TAG);
                 }
 
             } else if (id == R.id.mapa_completo) {
-                mapsFragment.limpiarMapa();
+//                mapsFragment.limpiarMapa();
                 menu.clear();
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof MapsFragment)) {
-//                    qrBoton.show();
-                    fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
+                    agregarFragment(mapsFragment,false,BACK_STACK_ROOT_TAG);
                 }
 
             } else if (id == R.id.ultimas) {
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof ultimasBusquedas)) {
 //                    qrBoton.hide();
-                    menu.clear();
-//                    fm.popBackStack("home",0);
-                    fm.beginTransaction().replace(R.id.fragment_container, ultimasBusquedas).commit();
+//                    menu.clear();
+                    agregarFragment(ultimasBusquedas,false,BACK_STACK_ROOT_TAG);
+
                 }
 
             } else if (id == R.id.usuario) {
@@ -289,13 +276,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 qrBoton.hide();
                 menu.clear();
-//
-//                usuario =  usuarioFragment.newInstance(usuario_bundle);
-//                fm.popBackStack();
-                FragmentTransaction transacion = fm.beginTransaction();
-                transacion.replace(R.id.fragment_container, new usuarioFragment().newInstance(usuario_bundle));
-//                transacion.addToBackStack(BACK_STACK_ROOT_TAG);
-                transacion.commit();
+                agregarFragment(usuario,false,BACK_STACK_ROOT_TAG);
 
             }else if (id == R.id.informar_error) {
                 informarError();
@@ -305,6 +286,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this,"Función no implementada. Consultar al autor del proyecto. ",Toast.LENGTH_SHORT).show();
 
             }else if (id == R.id.cerrar) {
+
 //                usuario_app = new Usuario();
 //                usuario_app.cerrar_sesion();
 
@@ -326,6 +308,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    public void agregarFragment(Fragment fragment, boolean addToBackStack, String tag) {
+
+
+        Toast.makeText(this,"YA EXISTE EL FRAGMENT " + fm.findFragmentById(fragment.getId()).toString(),Toast.LENGTH_LONG).show();
+
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+
+        if (addToBackStack) {
+            fragmentTransaction.addToBackStack(tag);
+        }
+        fragmentTransaction.replace(R.id.fragment_container, fragment, tag);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
     /*
     Mostrar busqueda llama a las funciones del mapFragment que:
     -muestran un conjunto de puntos en el mapa
@@ -481,6 +476,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
     @Override
     public void onFragmentInteraction(Uri uri) {
 

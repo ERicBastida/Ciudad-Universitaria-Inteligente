@@ -63,32 +63,32 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
     private Marker miPosicionMarcador = null;
     private int cantPisos = 0;
     private int pisoActual = 0;
-    private int cantidad_edificios = 2;           //Cantidad de edificios relevados
-
-    private Vector<PolylineOptions> misPolilineas = new Vector<>(); //Vector de polilineas, cada elemento será una polilinea para un piso
-    private Vector<MarkerOptions> marcadoresPiso = new Vector<>(); //Vector de marcadores por piso, dos marcadores por polilinea por piso
+    //Cantidad de edificios relevados
+    private int cantidad_edificios = 2;
+    //Vector de polilineas, cada elemento será una polilinea para un piso
+    private Vector<PolylineOptions> misPolilineas = new Vector<>();
+    //Vector de marcadores por piso, dos marcadores por polilinea por piso
+    private Vector<MarkerOptions> marcadoresPiso = new Vector<>();
     //uno en cada extremo
 
-
-    private Vector<MarkerOptions> misMarcadores = new Vector<>();  //Vector de nodos para mostrar nodos sueltos (baños, bares, oficinas, etc)
-
-    private Vector<Vector<GroundOverlayOptions>> misOverlays = new Vector<>(); //Vector de overLays, los planos de cada edificio
+    //Vector de nodos para mostrar nodos sueltos (baños, bares, oficinas, etc)
+    private Vector<MarkerOptions> misMarcadores = new Vector<>();
+    //Vector de overLays, los planos de cada edificio
+    private Vector<Vector<GroundOverlayOptions>> misOverlays = new Vector<>();
     //El vector de afuera es para los pisos, cada elemento es un piso
     //Cada elemento es un vector que tiene overlays de 1 o mas edificios
     //Una polilinea puede pasar por mas de un edificio en un piso
 
     private HashMaps miHashMaps = new HashMaps();
-
     private Map<String, LatLngBounds> hashMapBounds = miHashMaps.getHashMapsBound();
     private Map<String, Integer> hashMapID = miHashMaps.getHashMapID();
-
     private Map<LatLng, Integer> hashMapImagenes = new HashMap<>();
-
-
     private float angle = 0;
     private double lat;
     private double lon;
 
+    public MapsFragment(){
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -107,9 +107,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             mlocListener.setMainActivity(this);
 
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
                 showPhoneStatePermission();
-                
 
             }else {
 
@@ -167,7 +165,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             log.alertar("Ocurrió un error al momento de apagar el GPS.",getActivity());
         }
     }
-    //TODO: esta función esta mal, debe recorrer todos los permisos predefinidos
+
     private void showPhoneStatePermission() {
         try {
             int permissionCheck_1 = ContextCompat.checkSelfPermission(
@@ -718,5 +716,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             log.alertar("Ocurrió un error al momento de destruir la vista del mapa.",getActivity());
         }
     }
+
+
 }
 
