@@ -22,6 +22,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.MapsInitializer;
+
 import java.util.Vector;
 
 
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Instancio los objetos para ArmaCamino y el MapFragment
             oArmaCamino = new ArmaCamino(this);
             mapsFragment = new MapsFragment();
+            MapsInitializer.initialize(getApplicationContext());
             ultimasBusquedas = new ultimasBusquedas();
             ultimasBusquedas.setMainActivity(this);
             busqueda = new Busqueda();
@@ -252,7 +256,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             if (id == R.id.buscar) {
                 if (!(fm.findFragmentById(R.id.fragment_container) instanceof Busqueda)) {
-                    fm.popBackStack();
                     agregarFragment(busqueda,false,BACK_STACK_ROOT_TAG);
                 }
 
@@ -309,9 +312,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void agregarFragment(Fragment fragment, boolean addToBackStack, String tag) {
+        try{
 
-
-        Toast.makeText(this,"YA EXISTE EL FRAGMENT " + fm.findFragmentById(fragment.getId()).toString(),Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,"YA EXISTE EL FRAGMENT " + fm.findFragmentById(fragment.getId()).toString(),Toast.LENGTH_LONG).show();
 
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
 
@@ -320,6 +323,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         fragmentTransaction.replace(R.id.fragment_container, fragment, tag);
         fragmentTransaction.commitAllowingStateLoss();
+        }catch (Exception e){
+            log.registrar(this,"agregarFragment",e);
+            log.alertar("Ocurrió un error al momento cargar una pantalla fragment.",this);
+        }
+
     }
     /*
     Mostrar busqueda llama a las funciones del mapFragment que:
@@ -330,31 +338,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     */
     public void mostrarBusqueda(String Edificio, String Nombre) {
         try {
-            mapsFragment.setPisoActual(0);
-            if (Edificio.equals("*")) {
-                mapsFragment.mostrarNodos(oArmaCamino.nodosMapa(Nombre));
-                menu.clear();
-                menu.add("Planta Baja");
-                for (int i = 1; i < mapsFragment.getCantPisos(); i++) {
-                    menu.add("Piso " + i);
+            if (mapsFragment!=null) {
+                mapsFragment.setPisoActual(0);
+                if (Edificio.equals("*")) {
+                    Vector<Punto> puntos  = oArmaCamino.nodosMapa(Nombre);
+                    mapsFragment.mostrarNodos(puntos);
+                    menu.clear();
+                    menu.add("Planta Baja");
+                    for (int i = 1; i < mapsFragment.getCantPisos(); i++) {
+                        menu.add("Piso " + i);
+                    }
+                    menu.getItem(mapsFragment.getPisoActual()).setTitle("*" + menu.getItem(mapsFragment.getPisoActual()).getTitle());
+                    getMenuInflater().inflate(R.menu.main, menu);
+                } else {
+                    oArmaCamino.setPuntoMasCercano(mapsFragment.getPosicion(), mapsFragment.getPisoActual());
+                    mapsFragment.dibujaCamino(oArmaCamino.camino(Edificio, Nombre));
+                    menu.clear();
+                    menu.add("Planta Baja");
+                    for (int i = 1; i < mapsFragment.getCantPisos(); i++) {
+                        menu.add("Piso " + i);
+                    }
+                    menu.getItem(mapsFragment.getPisoActual()).setTitle("*" + menu.getItem(mapsFragment.getPisoActual()).getTitle());
+                    getMenuInflater().inflate(R.menu.main, menu);
+                    String texto = "Su objetivo está en " + oArmaCamino.getPisoObjetivo();
+                    Toast.makeText(getApplicationContext(), texto, Toast.LENGTH_LONG).show();
                 }
-                menu.getItem(mapsFragment.getPisoActual()).setTitle("*" + menu.getItem(mapsFragment.getPisoActual()).getTitle());
-                getMenuInflater().inflate(R.menu.main, menu);
-            } else {
-                oArmaCamino.setPuntoMasCercano(mapsFragment.getPosicion(), mapsFragment.getPisoActual());
-                mapsFragment.dibujaCamino(oArmaCamino.camino(Edificio, Nombre));
-                menu.clear();
-                menu.add("Planta Baja");
-                for (int i = 1; i < mapsFragment.getCantPisos(); i++) {
-                    menu.add("Piso " + i);
-                }
-                menu.getItem(mapsFragment.getPisoActual()).setTitle("*" + menu.getItem(mapsFragment.getPisoActual()).getTitle());
-                getMenuInflater().inflate(R.menu.main, menu);
-                String texto = "Su objetivo está en " + oArmaCamino.getPisoObjetivo();
-                Toast.makeText(getApplicationContext(), texto, Toast.LENGTH_LONG).show();
+                agregarFragment(mapsFragment,false,BACK_STACK_ROOT_TAG);
+                qrBoton.show();
+            }else{
+                Toast.makeText(this,"Por favor ingrese a la pestaña del mapa.",Toast.LENGTH_SHORT).show();
             }
-            fm.beginTransaction().replace(R.id.fragment_container, mapsFragment).commit();
-            qrBoton.show();
         }catch (Exception e){
             log.registrar(this,"mostrarBusqueda",e);
             log.alertar("Ocurrió un error al momento de mostrar la búsqueda.",this);

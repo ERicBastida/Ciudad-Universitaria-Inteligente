@@ -1,5 +1,15 @@
 package com.eric.ciudaduniversitariainteligente;
 
+/**
+ * Description:
+ * Fragment encargado del inicio de sesion del usuario
+ * y proporcionar las redes sociales en caso de querer ingresar de manera espontanea
+ * -------------------------------------
+ * Created by ERic Bastida <eribastida@gmail.com>
+ * on 15-Jan-19.
+ * -------------------------------------
+ */
+
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -123,7 +133,7 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
             // Inflate the layout for this fragmen
             btnGoToSignUp.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    //TODO: ver si lo dejo en el stack
+
                     signUp = new usuarioFragment();
                     FragmentTransaction fragmentManager = getActivity().getFragmentManager().beginTransaction();
                     fragmentManager.replace(R.id.fragment_container, signUp);
@@ -158,12 +168,9 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                    TextView texto = view.findViewById(R.id.txtItemSpinner);
-
 
                     asignarServicio(position);
 
-//                    Toast.makeText(getActivity(),"Asignaste " + Integer.toString(position) + ": " + texto.getText(),Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -194,8 +201,6 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
     private void asignarServicio(int id_red_social) {
 
         try {
-            AuthUI.IdpConfig prov = null;
-
 
             switch (id_red_social) {
 
@@ -263,14 +268,13 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     Usuario usuario_red_social = new Usuario();
                     usuario_red_social.copy(user);
-                    Toast.makeText(getActivity(), "Ingresaste con una red social : " + usuario_red_social.getNombre(), Toast.LENGTH_SHORT).show();
+
                     ir_a_CUI(usuario_red_social);
 
                 } else {
                     Toast.makeText(getActivity(), "No se ha podido iniciar sesión." + response.toString(), Toast.LENGTH_SHORT).show();
                     throw new Exception(response.getError());
-//                    Toast.makeText(getActivity(), "No se ha podido iniciar sesión." + response.toString(), Toast.LENGTH_SHORT).show();
-//                    log.registrar_info(this,"onActivityResult", response.toString());
+
                 }
             }
         }catch (Exception e ){
@@ -321,8 +325,7 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
             getActivity().finish();
 
         }catch (Exception e ){
-            log.registrar(this,
-                    "ir_a_CUI",e);
+            log.registrar(this,                  "ir_a_CUI",e);
             log.alertar("Ocurrió un error al momento de intentar ir a CUI.",getActivity());
 
     }
@@ -332,7 +335,7 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        Toast.makeText(getActivity(),"Tocaste el boton",Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -352,21 +355,26 @@ public class loginFragment extends Fragment implements AdminDB.OnDB_Listener
     }
 
     public void resultado_BD(int codigo, Usuario usuario, boolean resultado) {
+        try{
+            if (AdminDB.COD_USUARIO_EXISTE == codigo){
+                String mensaje = "";
 
-        if (AdminDB.COD_USUARIO_EXISTE == codigo){
-            String mensaje = "";
-
-            if (resultado){
+                if (resultado){
 
 
-                ir_a_CUI(usuario);
+                    ir_a_CUI(usuario);
 
-            }else{
-                mensaje = "No existe el usuario. Por favor registrese o ingrese por alguna red social.";
-                Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+                }else{
+                    mensaje = "No existe el usuario. Por favor registrese o ingrese por alguna red social.";
+                    Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+                }
+
+
+
             }
-
-
+        }catch (Exception e ){
+            log.registrar(this,"resultado_BD",e);
+            log.alertar("Ocurrió un error al momento recibir el resultado de la base de datos",getActivity());
 
         }
 

@@ -1,5 +1,11 @@
 package com.eric.ciudaduniversitariainteligente;
 
+/**
+ * Clase encargada de gestionar la base de datos (FIREBASE)
+ *
+ * @author ERic Bastida <eribastida@gmail.com>
+ */
+
 import android.app.Activity;
 import android.util.Log;
 import com.google.android.gms.tasks.Task;
@@ -15,7 +21,8 @@ public class AdminDB {
     private String NOMBRE_RAIZ_USUARIOS = "usuarios";
     private DatabaseReference usuariosRef;
     private String TAG = "AlojaFireBase";
-    private boolean existe_usuario = false;
+    private LogginCUI log = new LogginCUI();
+    private Activity actividad;
 
     private AdminDB.OnDB_Listener mListener;
 
@@ -27,31 +34,21 @@ public class AdminDB {
 
 
     public AdminDB(Activity actividad)  {
+        try{
+            this.actividad = actividad;
 
-        database = FirebaseDatabase.getInstance().getReference();
-        usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS);
-
-        //----------------------------------------------------------
+            database = FirebaseDatabase.getInstance().getReference();
+            usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS);
 
 
-        database.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                Usuario value = dataSnapshot.getValue(Usuario.class);
+        }catch (Exception e ){
 
-                Log.d(TAG, "Value is: " + value.toString());
-            }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
+            log.registrar(this,"AdminDB",e);
+            log.alertar("Ocurrió un error al momento de crear el administrador de bases de datos Firebase.",actividad);
 
-        });
-        // [END read_message]
+        }
+
     }
     public interface OnDB_Listener {
 
@@ -61,33 +58,41 @@ public class AdminDB {
 
 
     public void agregarUsuario(final OnDB_Listener escuchador, final Usuario usuario) {
+        try{
 
 
-        final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(usuario.getKey());
+            final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(usuario.getKey());
 
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
 
-                    escuchador.result(COD_USUARIO_AGREGADO,usuario,false);
+                        escuchador.result(COD_USUARIO_AGREGADO,usuario,false);
 
 
-                } else {
+                    } else {
 
-                    usuariosRef.setValue(usuario);
-                    escuchador.result(COD_USUARIO_AGREGADO,usuario,true);
+                        usuariosRef.setValue(usuario);
+                        escuchador.result(COD_USUARIO_AGREGADO,usuario,true);
 
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
-            }
-        };
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
+                }
+            };
 
-        usuariosRef.addListenerForSingleValueEvent(eventListener);
+            usuariosRef.addListenerForSingleValueEvent(eventListener);
+        }catch (Exception e ){
+
+            log.registrar(this,"agregarUsuario",e);
+            log.alertar("Ocurrió un error al momento de agregar un usuario a la base de datos.",actividad);
+
+        }
+
 
 
 
@@ -95,33 +100,41 @@ public class AdminDB {
 
     public void modificarUsuario(final OnDB_Listener escuchador,final Usuario usuario) {
 
+        try{
+
+            final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(usuario.getKey());
+
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+
+                        usuariosRef.setValue(usuario);
+                        escuchador.result(COD_USUARIO_MODIFICADO,usuario,true);
+
+                    } else {
+
+                        escuchador.result(COD_USUARIO_MODIFICADO,usuario,false);
 
 
-        final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(usuario.getKey());
 
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    usuariosRef.child(usuario.getKey()).setValue(usuario);
-                    escuchador.result(COD_USUARIO_MODIFICADO,usuario,true);
-
-                } else {
-
-                    escuchador.result(COD_USUARIO_MODIFICADO,usuario,false);
-
-
-
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
-            }
-        };
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
+                }
+            };
 
-        usuariosRef.addListenerForSingleValueEvent(eventListener);
+            usuariosRef.addListenerForSingleValueEvent(eventListener);
+        }catch (Exception e ){
+
+            log.registrar(this,"modificarUsuario",e);
+            log.alertar("Ocurrió un error al momento de modificar un usuario en la base de datos.",actividad);
+
+        }
+
 
     }
 
@@ -132,36 +145,44 @@ public class AdminDB {
     }
 
     public void consultarUsuario(final OnDB_Listener escuchador, String key) {
+        try{
+            final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(key);
 
-        final DatabaseReference usuariosRef = database.child(NOMBRE_RAIZ_USUARIOS).child(key);
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
 
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
+                        Usuario usuario_consultado = dataSnapshot.getValue(Usuario.class);
 
-                    Usuario usuario_consultado = dataSnapshot.getValue(Usuario.class);
-
-                    escuchador.result(COD_USUARIO_EXISTE,usuario_consultado,true);
-
-
-                } else {
+                        escuchador.result(COD_USUARIO_EXISTE,usuario_consultado,true);
 
 
-                    escuchador.result(COD_USUARIO_EXISTE,null,false);
+                    } else {
 
+
+                        escuchador.result(COD_USUARIO_EXISTE,null,false);
+
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
-            }
-        };
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
+                }
+            };
 
-        usuariosRef.addListenerForSingleValueEvent(eventListener);
+            usuariosRef.addListenerForSingleValueEvent(eventListener);
 
-    }
+        }catch (Exception e ){
+
+            log.registrar(this,"consultarUsuario",e);
+            log.alertar("Ocurrió un error al momento de consultar un usuario en la base de datos.",actividad);
+
+        }
+
+
+}
 
 
 

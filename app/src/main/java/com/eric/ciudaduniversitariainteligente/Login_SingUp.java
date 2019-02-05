@@ -2,12 +2,18 @@ package com.eric.ciudaduniversitariainteligente;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+
+/**
+ * Description:
+ * Actividad encargada del inicio y registro de los usuarios a la aplicacion
+ * -------------------------------------
+ * Created by ERic Bastida <eribastida@gmail.com>
+ * on 15-Jan-19.
+ * -------------------------------------
+ */
 
 public class Login_SingUp extends AppCompatActivity implements loginFragment.OnFragmentInteractionListener, usuarioFragment.OnFragmentInteractionListener {
 
@@ -34,30 +40,12 @@ public class Login_SingUp extends AppCompatActivity implements loginFragment.OnF
 
     }
 
-
-
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        Toast.makeText(this,"Soy la actividad Login/Sing y recibi este código : "+ Integer.toString(requestCode) + " , "+ Integer.toString(resultCode),Toast.LENGTH_SHORT).show();
-//        Toast.makeText(this,"Soy la actividad Login/Sing y recibi este código : "+ Integer.toString(requestCode),Toast.LENGTH_SHORT).show();
+
     }
-
-
-    public void puto_el_que_lee(String text){
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-
-        Toast.makeText(this,"Puto conchudo" + text,Toast.LENGTH_SHORT).show();
-    }
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        Toast.makeText(this,"GUARDAA comunicaste algo al Activity!"+uri.toString(),Toast.LENGTH_SHORT).show();
 
     }
 

@@ -1,6 +1,14 @@
 package com.eric.ciudaduniversitariainteligente;
 
-//Clase desarrollada simplemente para insertarlo dentro de un spinner item.
+
+/**
+ * Description:
+ * Clase desarrollada simplemente para insertarlo dentro de un spinner item.
+ * -------------------------------------
+ * Created by ERic Bastida <eribastida@gmail.com>
+ * on 05-Jan-19.
+ * -------------------------------------
+ */
 
 public class ItemData {
 

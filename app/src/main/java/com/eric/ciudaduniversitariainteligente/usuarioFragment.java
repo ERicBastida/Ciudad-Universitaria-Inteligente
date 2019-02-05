@@ -162,7 +162,11 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
                                         //En este caso quire decir que se inicio el fragment con datos y el usuario desea modificarlo.
                                         if (MODO_EDICION_2){
 
-                                            usuario_modificado = new Usuario(usuario_key,name,lastName,server_correo,pass,carrera,info_usuario.getString("imagen"));
+                                            usuario_modificado = new Usuario(getActivity(),usuario_key,name,lastName,server_correo,pass,carrera);
+                                            if (usuario_modificado != null) {
+                                                usuario_modificado.setImagen(info_usuario.getString("imagen", null));
+
+                                            }
                                             BaseDatos.modificarUsuario(new AdminDB.OnDB_Listener(){
                                                                            @Override
                                                                            public void result(int codigo, Usuario usuario, boolean resultado) {
@@ -171,8 +175,11 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
                                                                        }
                                                     ,usuario_modificado);
                                         }else {
+                                            Usuario nuevo_usuario = new Usuario(getActivity(), usuario_key, name, lastName, server_correo, pass, carrera);
+                                            if (info_usuario != null) {
+                                                nuevo_usuario.setImagen(info_usuario.getString("imagen", null));
 
-                                            Usuario nuevo_usuario = new Usuario(usuario_key,name,lastName,server_correo,pass,carrera,info_usuario.getString("imagen"));
+                                            }
                                             BaseDatos.agregarUsuario(new AdminDB.OnDB_Listener(){
 
                                                                          @Override
@@ -234,53 +241,77 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
 
 
     }
+    private void funcion_boton_usuario(View view){
 
+    }
     //Función encargada de comprobar la conexión a Internet
     private boolean hay_conexion() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        boolean resultado = false;
+        try{
+            ConnectivityManager connectivityManager
+                    = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            resultado = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }catch (Exception e){
+            log.registrar(this,"hay_conexion",e);
+            log.alertar("Ocurrió un error al momento de comprobar la conexión a internet.",getActivity());
+        }
+        return resultado;
     }
 
     public void habilitar_campos( boolean is_enable){
-
-        txtName.setEnabled(is_enable);
-        txtLastName.setEnabled(is_enable);
-        txtEmail.setEnabled(is_enable);
-        txtPass.setEnabled(is_enable);
-        txtPass2.setEnabled(is_enable);
-        txtCarrera.setEnabled(is_enable);
-        spinner_carreras.setEnabled(is_enable);
+        try{
+            txtName.setEnabled(is_enable);
+            txtLastName.setEnabled(is_enable);
+            txtEmail.setEnabled(is_enable);
+            txtPass.setEnabled(is_enable);
+            txtPass2.setEnabled(is_enable);
+            txtCarrera.setEnabled(is_enable);
+            spinner_carreras.setEnabled(is_enable);
+        }catch (Exception e){
+            log.registrar(this,"habilitar_campos",e);
+            log.alertar("Ocurrió un error al momento de habilitar/deshabilitar los campos de datos.",getActivity());
+        }
 
 
 
     }
     public void resetear_campos(){
+        try {
 
-        txtName.clearComposingText();
-        txtLastName.clearComposingText();
-        txtEmail.clearComposingText();
-        txtPass.clearComposingText();
-        txtPass2.clearComposingText();
+            txtName.clearComposingText();
+            txtLastName.clearComposingText();
+            txtEmail.clearComposingText();
+            txtPass.clearComposingText();
+            txtPass2.clearComposingText();
+        }catch (Exception e){
+            log.registrar(this,"resetear_campos",e);
+            log.alertar("Ocurrió un error al momento de limpiar los campos de datos.",getActivity());
+        }
 
-    }
+
+}
 
     public void siguiente_pantalla(){
-        //Si dentro de CUI, no hace falta ir a algún lado
-        if (!MODO_EDICION_2) {
-            login = new loginFragment();
-            FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, login);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+        try{
+            //Si dentro de CUI, no hace falta ir a algún lado
+            if (!MODO_EDICION_2) {
+                login = new loginFragment();
+                FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, login);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        }catch (Exception e){
+            log.registrar(this,"siguiente_pantalla",e);
+            log.alertar("Ocurrió un error al momento de proceder a cargar la pantalla siguiente.",getActivity());
         }
 
 
     }
 
     public void result(int codigo, Usuario usuario, boolean resultado) {
-        Toast.makeText(getActivity(),"Me llego estooooo : " + usuario, Toast.LENGTH_SHORT).show();
+
     }
 
     public void resultado_BD(int codigo, Usuario usuario, boolean resultado) {
@@ -388,6 +419,7 @@ public class usuarioFragment extends Fragment implements AdminDB.OnDB_Listener{
         }
 
         protected Bitmap doInBackground(String... urls) {
+
             String urldisplay = urls[0];
             Bitmap mIcon11 = null;
             try {

@@ -1,6 +1,10 @@
 package com.eric.ciudaduniversitariainteligente;
 
-
+/**
+ * Clase SpinnerAdapter que se encargará de mostrar una lista de iconos y sus respectivos nombres2
+ *
+ * @author ERic Bastida <eribastida@gmail.com>
+ */
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

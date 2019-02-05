@@ -93,14 +93,13 @@ public class PantallaCarga extends AppCompatActivity {
         try {
 
             while (intentos < max_intentos) {
-                //            Toast.makeText(this,"Intentando avanzar",Toast.LENGTH_SHORT).show();
+
                 intentos++;
                 mWaitHandler.postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
 
-                        //                    Toast.makeText(getApplicationContext(),"Intetoooo",Toast.LENGTH_SHORT).show();
                         comprobar_permisos();
 
 
@@ -176,27 +175,9 @@ public class PantallaCarga extends AppCompatActivity {
     // Función  encargada de avanzar a la próxima activity
     private void avanzar(){
         try{
-//            Usuario usuario_con_sesion = new Usuario();
 
             Intent irSiguienteActivity = null;
-//            boolean usuario_act = usuario_con_sesion.esta_activo();
-//            if (usuario_act){
-//                irSiguienteActivity = new Intent(this,MainActivity.class);
-//
-////                Usuario user = usuario_con_sesion.getUsuarioActivo();
-////                irSiguienteActivity.putExtra("existe_usuario", user != null);
-////                irSiguienteActivity.putExtra("usuario",user.toBundle());
-////                Toast.makeText(this,"Usuario activo :  " + user.getNombre() ,Toast.LENGTH_SHORT).show();
-//
-//
-//
-//            }else{
-//                //Nos vamos a iniciar la actividad encargada del inicio de sesion.
-//
-//                irSiguienteActivity = new Intent(getApplicationContext(), Login_SingUp.class);
-//
-//
-//            }
+            //TODO: implementar que consulte si sigue activa la sesión para ir directamente a la aplicación
             irSiguienteActivity = new Intent(getApplicationContext(), Login_SingUp.class);
             startActivity(irSiguienteActivity);
             finish();
@@ -244,7 +225,6 @@ public class PantallaCarga extends AppCompatActivity {
                         setResult(RESULT_OK);
 
                         habilitados++;
-//                        Toast.makeText(this, "" + permissions.toString(), Toast.LENGTH_SHORT).show();
 
                         avanzar();
                     } else {

@@ -33,7 +33,9 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
@@ -574,7 +576,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
                 }
 
                 //Agrego los marcadores
-                misMarcadores.add(new MarkerOptions().position(new LatLng(nodos.elementAt(i).getLatitud(), nodos.elementAt(i).getLongitud())).title(nodos.elementAt(i).getNombre() + " - " + texto).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                LatLng posicion = new LatLng(nodos.elementAt(i).getLatitud(), nodos.elementAt(i).getLongitud());
+                MarkerOptions markerOptions = new MarkerOptions().position(posicion );
+                markerOptions.title(nodos.elementAt(i).getNombre() + " - " + texto);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+                misMarcadores.add( markerOptions );
+
                 for (int j = 0; j < cantidad_edificios; j++) {
                     //Veo si ese marcador está dentro de algun edificio
                     if (hashMapBounds.containsKey("ed" + j + "_" + nodos.elementAt(i).getPiso())) {
@@ -597,10 +605,20 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             //Agrego los overlays a mi vector
             for (int i = 0; i < edificios.size(); i++) {
                 if (hashMapID.containsKey(edificios.elementAt(i))) {
-                    misOverlays.elementAt(Integer.parseInt(edificios.elementAt(i).substring(edificios.elementAt(i).indexOf("_") + 1)))
-                            .add(new GroundOverlayOptions()
-                                    .positionFromBounds(hashMapBounds.get(edificios.elementAt(i)))
-                                    .image(BitmapDescriptorFactory.fromResource(hashMapID.get(edificios.elementAt(i)))));
+
+                    GroundOverlayOptions groundOverlayOptions = new GroundOverlayOptions();
+                    String nombre = edificios.elementAt(i);
+                    LatLngBounds limites = hashMapBounds.get(nombre);
+                    groundOverlayOptions.positionFromBounds(limites);
+                    //FIX
+                    Integer id_img = hashMapID.get(edificios.elementAt(i));
+
+                    BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromResource( id_img  );
+                    groundOverlayOptions.image(bitmapDescriptor);
+
+                    misOverlays.elementAt(
+                            Integer.parseInt(edificios.elementAt(i).substring(edificios.elementAt(i).indexOf("_") + 1)))
+                            .add(groundOverlayOptions);
                 }
             }
 

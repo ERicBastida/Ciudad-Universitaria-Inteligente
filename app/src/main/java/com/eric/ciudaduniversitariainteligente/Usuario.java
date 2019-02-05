@@ -1,5 +1,15 @@
 package com.eric.ciudaduniversitariainteligente;
 
+/**
+ * Description:
+ * Clase desarrollada simplemente para insertarlo dentro de un spinner item.
+ * -------------------------------------
+ * Modify by ERic Bastida <eribastida@gmail.com>
+ * on 01-Feb-19.
+ * -------------------------------------
+ */
+
+import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -19,6 +29,8 @@ public class Usuario {
     private String pass;
     private int carrera;
     private String imagen = null;
+    private Activity actividad;
+    private LogginCUI log = new LogginCUI();
 
 
 
@@ -26,15 +38,15 @@ public class Usuario {
 
     }
 
-    public Usuario(String key, String nombre, String apellido, String correo, String pass, int carrera, String imagen) {
-
+    public Usuario(Activity actividad,String key, String nombre, String apellido, String correo, String pass, int carrera) {
+        this.actividad = actividad;
         this.key = key;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.pass = pass;
         this.carrera = carrera;
-        this.imagen = imagen;
+
 
     }
     public String getKey() {
@@ -46,35 +58,48 @@ public class Usuario {
     }
 
     public void copy(FirebaseUser user){
+        try{
 
-        if (user != null){
+            if (user != null){
 
-            String[] nombre_completo = user.getDisplayName().split(" ");
-            this.nombre = nombre_completo[0];
-            this.imagen = user.getPhotoUrl().toString();
-
-
-            String[] correo_completo = user.getEmail().split("@");
-            this.key = correo_completo[0];
-            this.correo = "@"+ correo_completo[1];
-            this.apellido = nombre_completo[1];
-
-            this.carrera = 0;
-            this.pass = "";
+                String[] nombre_completo = user.getDisplayName().split(" ");
+                this.nombre = nombre_completo[0];
+                this.imagen = user.getPhotoUrl().toString();
 
 
+                String[] correo_completo = user.getEmail().split("@");
+                this.key = correo_completo[0];
+                this.correo = "@"+ correo_completo[1];
+                this.apellido = nombre_completo[1];
+
+                this.carrera = 0;
+                this.pass = "";
+
+
+            }
+        }catch (Exception e){
+            log.registrar(this,"copy",e);
+            log.alertar("Ocurrió un error al momento de copiar un usuario de tipo Firebase.",actividad);
         }
 
     }
     public void copy(Bundle user){
-        if (user != null) {
-            this.nombre = user.getString("nombre");
-            this.apellido = user.getString("apellido");
-            this.key = user.getString("key");
-            this.correo = user.getString("correo");
-            this.pass = user.getString("pass");
-            this.carrera = user.getInt("carrera",0);
+        try {
+            if (user != null) {
+                this.nombre = user.getString("nombre");
+                this.apellido = user.getString("apellido");
+                this.key = user.getString("key");
+                this.correo = user.getString("correo");
+                this.pass = user.getString("pass");
+                this.carrera = user.getInt("carrera",0);
+            }
+
+
+        }catch (Exception e){
+            log.registrar(this,"copy",e);
+            log.alertar("Ocurrió un error al momento de copiar un usuario de tipo Bundle.",actividad);
         }
+
 
     }
 
@@ -146,19 +171,26 @@ public class Usuario {
     //Función encargada de enviar la info del usuario en formato Bundle (Util para pasarlo entre Activities)
     public Bundle toBundle(){
         Bundle usuario_bundle = new Bundle();
-        if (this.key != null && this.apellido!=null  && this.correo != null && this.nombre!=null) {
-            usuario_bundle.putString("nombre", this.nombre);
-            usuario_bundle.putString("apellido", this.apellido);
-            usuario_bundle.putString("key", this.key);
-            usuario_bundle.putString("correo", this.correo);
-            usuario_bundle.putString("pass", this.pass);
-            usuario_bundle.putInt("carrera", this.carrera);
-            if (this.imagen != null) {
-                usuario_bundle.putString("imagen", this.imagen.toString());
-            }else{
-                usuario_bundle.putString("imagen", null);
+        try {
+            if (this.key != null && this.apellido!=null  && this.correo != null && this.nombre!=null) {
+                usuario_bundle.putString("nombre", this.nombre);
+                usuario_bundle.putString("apellido", this.apellido);
+                usuario_bundle.putString("key", this.key);
+                usuario_bundle.putString("correo", this.correo);
+                usuario_bundle.putString("pass", this.pass);
+                usuario_bundle.putInt("carrera", this.carrera);
+                if (this.imagen != null) {
+                    usuario_bundle.putString("imagen", this.imagen.toString());
+                }else{
+                    usuario_bundle.putString("imagen", null);
+                }
             }
+
+        }catch (Exception e){
+            log.registrar(this,"toBundle",e);
+            log.alertar("Ocurrió un error al momento de convertir un usuario a tipo Bundle.",actividad);
         }
+
         return usuario_bundle;
 
     }
@@ -168,51 +200,36 @@ public class Usuario {
         String nombre = user.getCurrentUser().getDisplayName();
 
         if (user != null){
-
             return true;
         }else{
             return false;
         }
 
     }
-//    public Usuario getUsuarioActivo(){
-//        Usuario usuario_respuesta = null;
-//        if (esta_activo()){
-//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//            if (user != null){
-//                usuario_respuesta.copy(user);
-//            }
-//
-//        }
-//
-//        return usuario_respuesta;
-//
-//    }
-    public boolean cerrar_sesion(){
 
-//        AuthUI.getInstance()
-//                .signOut(this)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        // ...
-//                    }
-//                });
-        FirebaseAuth user = FirebaseAuth.getInstance();
-        if (user != null){
-            user.signOut();
-            LoginManager.getInstance().logOut();
-            FirebaseUser usuario = user.getCurrentUser();
-            usuario.delete();
 
-            return true;
-        }else{
-            return false;
+
+
+    public boolean cerrar_sesion() {
+        boolean resultado = false;
+        try {
+            FirebaseAuth user = FirebaseAuth.getInstance();
+            if (user != null) {
+                user.signOut();
+                LoginManager.getInstance().logOut();
+                FirebaseUser usuario = user.getCurrentUser();
+                usuario.delete();
+
+                resultado =  true;
+            } else {
+                resultado =  false;
+            }
+
+        } catch (Exception e) {
+            log.registrar(this, "cerrar_sesion", e);
+            log.alertar("Ocurrió un error al momento de cerrar la sesion en Firebase.", actividad);
         }
-
-
-
+        return resultado;
     }
-
-
 
 }
