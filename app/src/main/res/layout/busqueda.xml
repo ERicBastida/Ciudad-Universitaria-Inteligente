@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:weightSum="1"
+    android:background="@color/background_color"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_weight="0.15"
         android:weightSum="1"
+
+        android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_marginTop="15dp"
@@ -15,9 +18,9 @@
         <TextView
             android:textSize="20dp"
             android:layout_weight="0.1"
-            android:textColor="@color/negro"
+            android:textColor="@color/FontColor"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:text="Buscar "
             android:id="@+id/tv1" />
 
@@ -25,11 +28,15 @@
             android:scrollbarSize="30dp"
             android:layout_weight="0.3"
             android:layout_width="80dp"
+            android:popupBackground="@color/background_color"
             android:layout_height="wrap_content"
             android:id="@+id/busquedaSpinner" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_weight="0.15"
         android:weightSum="1"
         android:orientation="horizontal"
@@ -40,21 +47,23 @@
         <TextView
             android:textSize="20dp"
             android:layout_weight="0.1"
-            android:textColor="@color/negro"
+            android:textColor="@color/FontColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edificio "
             android:id="@+id/tv2" />
 
         <Spinner
-            android:scrollbarSize="30dp"
-            android:layout_weight="0.3"
+            android:id="@+id/busquedaSpinner2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:id="@+id/busquedaSpinner2" />
+            android:popupBackground="@color/background_color"
+            android:layout_weight="0.3"
+            android:scrollbarSize="30dp" />
     </LinearLayout>
 
     <LinearLayout
+        android:gravity="center"
         android:layout_weight="0.15"
         android:weightSum="1"
         android:orientation="horizontal"
@@ -66,6 +75,8 @@
             android:scrollbarSize="30dp"
             android:layout_width="wrap_content"
             android:layout_weight="0.3"
+            android:popupBackground="@color/background_color"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:id="@+id/busquedaSpinner3" />
     </LinearLayout>
@@ -74,12 +85,17 @@
         android:layout_weight="0.1"
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buscar"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient_color"
                 android:id="@+id/boton_busqueda" />
 
     </LinearLayout>

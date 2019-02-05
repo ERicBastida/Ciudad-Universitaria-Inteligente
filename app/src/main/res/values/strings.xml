@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="app_name">Ciudad Universitaria Inteligente</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -9,23 +9,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="universidad"> Universidad Nacional del Litoral </string>
     <string-array name="carreras">
         <item>Elige una carrera</item>
         <item>Ingeniería en Agrimensura</item>
         <item>Ingeniería en Informática</item>
         <item>Ingeniería en Recursos Hídricos</item>
-        <item>Arquitectura</item>
+        <item> Arquitectura     </item>
 
     </string-array>
-    <!--Firebase requirements-->
-    <resources>
-        <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-        <string name="facebook_application_id" translatable="false">tpfinal-3b46f</string>
-        <string name="facebook_login_protocol_scheme" translatable="false">fbtpfinal-3b46f</string>
-        <!--&lt;!&ndash; Twitter consumer key and secret &ndash;&gt;-->
-        <!--<string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>-->
-        <!--<string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>-->
-    </resources>
+    <!--Firebase requirements-->hConfig authConfig = new TwitterAuthConfig("Insert Consumer key here(CONSUMER KEY (API KEY)) ",Insert consumer secret key here(CO
+
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">519807988528963</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb519807988528963</string>
+    <!--&lt;!&ndash; Twitter consumer key and secret &ndash;&gt;-->
+    <string name="twitter_consumer_key" translatable="false">NzOcdq6EDmHVVuNq2zeICBPkZ</string>
+    <string name="twitter_consumer_secret" translatable="false">JLtKNLmgvCHSVE0nwq8xgrgNEJkOYZZmRltaO54aGt5S06HHc</string>
 
 </resources>

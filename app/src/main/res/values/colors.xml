@@ -6,6 +6,7 @@
     <color name="colorAccent">#006587</color>
     <color name="FontColor">#ffffff</color>
     <color name="transparente">#00ffffff</color>
+    <color name="rojo">#FF0000</color>
 
     <color name="negro">#000000</color>
     <color name="qrboton">#E41B5F</color>

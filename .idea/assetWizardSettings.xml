@@ -13,17 +13,17 @@
                       <PersistentState>
                         <option name="children">
                           <map>
-                            <entry key="launcher">
+                            <entry key="actionbar">
                               <value>
                                 <PersistentState>
                                   <option name="children">
                                     <map>
-                                      <entry key="foregroundImage">
+                                      <entry key="clipArt">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="54" />
+                                                <entry key="color" value="000000" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,11 +33,94 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundImage" value="C:\Users\ERic\Desktop\Practica_Android\z_material-TPFINAL\fondo.png" />
-                                      <entry key="backgroundLayerName" value="vacio" />
-                                      <entry key="foregroundImage" value="C:\Users\ERic\Desktop\ic_launcher.png" />
+                                      <entry key="theme" value="HOLO_DARK" />
+                                      <entry key="themeColor" value="ffffff" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="400" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="66" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundColor" value="f9fffd" />
+                                      <entry key="backgroundImage" value="C:\Users\ERic\Desktop\Practica_Android\CUI\app\src\main\res\mipmap-mdpi\vacio.png" />
+                                      <entry key="backgroundLayerName" value="transparentee" />
+                                      <entry key="foregroundImage" value="C:\Users\ERic\Desktop\Practica_Android\z_material-TPFINAL\CUI_icon.png" />
+                                      <entry key="foregroundLayerName" value="ic_launcher" />
+                                      <entry key="outputName" value="transparente" />
                                       <entry key="previewDensity" value="MEDIUM" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="notification">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                 </PersistentState>

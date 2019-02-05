@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\TPFINAL\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-af\\values-af.xml",
+            "outputFile": "C:\\Users\\ERic\\Desktop\\Practica_Android\\CUI\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-af\\values-af.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\a8f8d47c2df9b1fedf0a6714ec1263c7\\res\\values-af\\values.xml",
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\0f9ea0dbaf141e4193112b9ed4c06a0e\\res\\values-af\\values-af.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "61",
+                        "startColumns": "4",
+                        "startOffsets": "7116",
+                        "endColumns": "100",
+                        "endOffsets": "7212"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\0057d4d641d8bf960a1fa86467612d00\\res\\values-af\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,24 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\d35399b48e6391c70b1a91b0cfd6119e\\res\\values-af\\values-af.xml",
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\84c7b21e9dfc765e0dab443411ea728a\\res\\values-af\\values-af.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,309,415,500,603,721,797,874,955,1062,1165,1262,1370,1472,1574,1728,1826",
+                        "endColumns": "103,99,105,84,102,117,75,76,80,106,102,96,107,101,101,153,97,79",
+                        "endOffsets": "204,304,410,495,598,716,792,869,950,1057,1160,1257,1365,1467,1569,1723,1821,1901"
                     },
                     "to": {
-                        "startLines": "67",
-                        "startColumns": "4",
-                        "startOffsets": "7739",
-                        "endColumns": "100",
-                        "endOffsets": "7835"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,60",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,309,415,500,603,721,797,874,955,1062,1165,1262,1370,1472,1574,1728,7036",
+                        "endColumns": "103,99,105,84,102,117,75,76,80,106,102,96,107,101,101,153,97,79",
+                        "endOffsets": "204,304,410,495,598,716,792,869,950,1057,1160,1257,1365,1467,1569,1723,1821,7111"
                     }
                 },
                 {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.39.0.aar\\263ca0b8d5579b20bfec49d2700ea42b\\res\\values-af\\values-af.xml",
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.39.0.aar\\0484a676efaf8ce553222c31bcd85325\\res\\values-af\\values-af.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-15.0.1.aar\\f4465d3fa6a9f4a30613a23515a529dd\\res\\values-af\\values.xml",
+                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-16.1.0.aar\\34089c160c20fadca107f0830742d200\\res\\values-af\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -69,40 +86,6 @@
                         "startOffsets": "5503",
                         "endColumns": "201",
                         "endOffsets": "5700"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\bef25548eb3da7e1266a8f57316bc1f8\\res\\values-af\\values-af.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,209,309,415,500,603,721,797,874,955,1062,1165,1262,1370,1472,1574,1728,1826",
-                        "endColumns": "103,99,105,84,102,117,75,76,80,106,102,96,107,101,101,153,97,79",
-                        "endOffsets": "204,304,410,495,598,716,792,869,950,1057,1160,1257,1365,1467,1569,1723,1821,1901"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,66",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,209,309,415,500,603,721,797,874,955,1062,1165,1262,1370,1472,1574,1728,7659",
-                        "endColumns": "103,99,105,84,102,117,75,76,80,106,102,96,107,101,101,153,97,79",
-                        "endOffsets": "204,304,410,495,598,716,792,869,950,1057,1160,1257,1365,1467,1569,1723,1821,7734"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ERic\\.gradle\\caches\\transforms-1\\files-1.1\\mediarouter-v7-22.2.0.aar\\47105918bdabd4602f743b952b03b5fe\\res\\values-af\\values-af.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "293,407,523,629,733,820",
-                        "endColumns": "113,115,105,103,86,95",
-                        "endOffsets": "402,518,624,728,815,911"
-                    },
-                    "to": {
-                        "startLines": "60,61,62,63,64,65",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "7036,7150,7266,7372,7476,7563",
-                        "endColumns": "113,115,105,103,86,95",
-                        "endOffsets": "7145,7261,7367,7471,7558,7654"
                     }
                 }
             ]
