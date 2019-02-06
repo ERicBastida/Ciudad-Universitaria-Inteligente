@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 usuario_bundle  = i.getBundleExtra("usuario");
                 usuario =  usuarioFragment.newInstance(usuario_bundle);
 
-                Toast.makeText(this,"Vas a iniciar con usuario. " + usuario_bundle.getString("nombre") ,Toast.LENGTH_SHORT).show();
+
             }else{
                 modoInvitado(false);
                 MODO_INVITADO = true;
@@ -146,15 +146,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //Permission Granted
                     //Do your work here
                     //Perform operations here only which requires permission
-                    Toast.makeText(this,"Tengo permisos",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,"Tengo permisos",Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(this,"No tengo permisos",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,"No tengo permisos",Toast.LENGTH_SHORT).show();
 
                 }
 
             } else {
-                Toast.makeText(this,"No tengo permisos",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,"No tengo permisos",Toast.LENGTH_SHORT).show();
             }
         }catch (Exception e ){
             log.registrar(this,"onRequestPermissionsResult",e);
@@ -177,7 +177,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
             } else {
-                super.onBackPressed();
                 if(fm.getBackStackEntryCount() == 0){
                     super.onBackPressed();
                 }
@@ -186,7 +185,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         finish();
                     }
                     else {
-//                        fm.popBackStack();
                         mapsFragment.limpiarMapa();
 
                     }
@@ -275,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
 
             } else if (id == R.id.usuario) {
-                Toast.makeText(this, "Este es el usuario ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Este es el usuario ", Toast.LENGTH_SHORT).show();
 
                 qrBoton.hide();
                 menu.clear();
@@ -429,15 +427,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
 
-            Toast.makeText(this,"Soy la actividad Main y recibi este código : "+ Integer.toString(requestCode) + " , "+ Integer.toString(resultCode),Toast.LENGTH_SHORT).show();
-            switch (requestCode){
-                case 1:
-                    if (resultCode == RESULT_OK){
-                        Toast.makeText(this,"Recibiste estooooooooo",Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(this,"No se puede iniciar la apliacion sin los permisos",Toast.LENGTH_SHORT).show();
-                    }
-            }
 
             //Se obtiene el resultado del proceso de scaneo y se parsea
             IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);

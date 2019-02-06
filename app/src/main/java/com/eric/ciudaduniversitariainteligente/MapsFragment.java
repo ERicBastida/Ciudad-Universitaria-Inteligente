@@ -724,11 +724,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
     public void onDestroyView() {
         try {
             super.onDestroyView();
+
             FragmentManager fm = getActivity().getFragmentManager();
             Fragment fragment = (fm.findFragmentById(R.id.map));
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.remove(fragment);
-            ft.commit();
+            if (fragment != null) {
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.remove(fragment);
+                ft.commit();
+            }
         }catch (Exception e){
             log.registrar(this,"onDestroyView",e);
             log.alertar("Ocurrió un error al momento de destruir la vista del mapa.",getActivity());
