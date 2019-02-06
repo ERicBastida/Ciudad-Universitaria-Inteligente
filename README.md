@@ -18,11 +18,6 @@ Se ha procedido como consigna la mejora de la aplicación otorgada por la cáted
 ![Screenshot_2016-12-30-15-07-40-1.png](imagenes/Screenshot_2016-12-30-15-07-40-1.png)
 ![Screenshot_2016-12-30-15-08-16-1.png](imagenes/Screenshot_2016-12-30-15-08-16-1.png)
 
-![Screenshot_2016-12-30-15-06-52-1.png]({{site.baseurl}}/Screenshot_2016-12-30-15-06-52-1.png)
-![Screenshot_2016-12-30-15-07-40-1.png]({{site.baseurl}}/Screenshot_2016-12-30-15-07-40-1.png)
-![Screenshot_2016-12-30-15-08-16-1.png]({{site.baseurl}}/Screenshot_2016-12-30-15-08-16-1.png)
-
-
 
 ## [VERSION MEJORADA]
 
@@ -34,14 +29,6 @@ Se ha procedido como consigna la mejora de la aplicación otorgada por la cáted
 ![Creación de usuarios nuevos a una base de datos](imagenes/screen3.png)
 
 ![Nuevas funcionalidades y estética.](imagenes/screen4.png)
-
-![Pantalla de bienvenida]({{site.baseurl}}/screen1.png)
-
-![Integración con las redes sociales]({{site.baseurl}}/screen2.png)
-
-![Creación de usuarios nuevos a una base de datos]({{site.baseurl}}/screen3.png)
-
-![Nuevas funcionalidades y estética.]({{site.baseurl}}/screen4.png)
 
 
 
