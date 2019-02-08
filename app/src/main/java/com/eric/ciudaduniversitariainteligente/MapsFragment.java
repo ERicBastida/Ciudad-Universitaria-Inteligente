@@ -53,14 +53,10 @@ import java.util.Vector;
  * Created by Lautaro on 29/11/2016.
  */
 public class MapsFragment extends Fragment implements OnMapReadyCallback, SensorEventListener {
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
 
     // String utilizado para el tracking de errores
     LogginCUI log = new LogginCUI();
 
-=======
-    private String STRING_MENSAJE = "MapsFragment/%s => [Causa]: %s , [Mensaje]: %s , [Origen]: %s";
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
     private final int REQUEST_PERMISSION_PHONE_STATE=1;
 
     public GoogleMap miMapa = null;
@@ -359,25 +355,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
 
     public int getPisoActual(){return pisoActual;}
 
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
     public boolean modoPolilinea() throws Exception {
         boolean resultado = false;
-=======
-    public boolean modoPolilinea(){
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
         try{
             resultado =  !misPolilineas.isEmpty();
         }
         catch (Exception e){
 
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
             log.registrar(this,"modoPolilinea",e);
             log.alertar("Error sl consultar el estado de modo polilinea.",getActivity());
 
-=======
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"modoPolilinea",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
 
         }
         return resultado;
@@ -433,11 +420,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             log.registrar(this,"limpiarMapa",e);
             log.alertar("Error al limpiar el mapa.",getActivity());
 
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
-=======
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"limpiarMapa",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
         }
 
     }
@@ -464,43 +446,25 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Sensor
             }
         }catch (Exception e){
 
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
             log.registrar(this,"actualizaPosicion",e);
             log.alertar("Error al actualizar la posición.",getActivity());
 
-=======
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"actualizaPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
         }
 
     }
 
     //Obtengo mi latitud y longitud en un objeto LatLng
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
     public LatLng getPosicion()  {
         LatLng resultado = null;
         try {
             resultado =  new LatLng(this.lat, this.lon);
-=======
-    public LatLng getPosicion() {
-        try {
-
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
         }catch (Exception e){
             log.registrar(this,"getPosicion",e);
             log.alertar("Error al tratar de obtener la posición.",getActivity());
 
-<<<<<<< HEAD:app/src/main/java/com/eric/ciudaduniversitariainteligente/MapsFragment.java
         }
         return resultado;
 
-=======
-            Log.d("ERROR-CUI",String.format(STRING_MENSAJE,"getPosicion",e.getCause(),e.getMessage(),e.getClass().toString()));
-            throw e;
-        }
-        return new LatLng(this.lat, this.lon);
->>>>>>> 73afa956a024f75bf4c7b9dc0f531b4f776cf142:app/src/main/java/com/eric/tpfinal/MapsFragment.java
     }
 
     //Recibo un vector de puntos y creo un polilinea con ellos
